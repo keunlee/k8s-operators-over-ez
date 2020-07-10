@@ -1,14 +1,16 @@
 package task001
 
 import (
+	"context"
 	"testing"
+	"reflect"
 
 	task001v1alpha1 "github.com/keunlee/task-001-operator/pkg/apis/task001/v1alpha1"
+	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/types"
 	"k8s.io/client-go/kubernetes/scheme"
-	"reflect"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/client/fake"
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
@@ -40,7 +42,9 @@ func TestReconcileTask001_Reconcile(t *testing.T) {
 	}
 
 	// Objects to track in the fake client.
-	objs := []runtime.Object{ task001 }
+	objs := []runtime.Object{
+		task001,
+	}
 
 	// Register operator types with the runtime scheme.
 	s := scheme.Scheme
@@ -102,6 +106,15 @@ func TestReconcileTask001_Reconcile(t *testing.T) {
 			// Check the result of reconciliation to make sure it has the desired state.
 			if got.Requeue {
 				t.Error("reconcile unexpected requeued request")
+				return
+			}
+
+			// Check the pod is created
+			expectedPod := newPodForCR(task001)
+			pod := &corev1.Pod{}
+			err = cl.Get(context.TODO(), types.NamespacedName{Name: expectedPod.Name, Namespace: expectedPod.Namespace}, pod)
+			if err != nil {
+				t.Fatalf("get pod: (%v)", err)
 				return
 			}
 		})
