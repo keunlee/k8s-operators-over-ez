@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-001-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: task-001-operator
+  template:
+    metadata:
+      labels:
+        name: task-001-operator
+    spec:
+      serviceAccountName: task-001-operator
+      containers:
+        - name: task-001-operator
+          # Replace this with the built image name
+          image: REPLACE_IMAGE
+          command:
+          - task-001-operator
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "task-001-operator"
