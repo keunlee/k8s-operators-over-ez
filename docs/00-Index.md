@@ -3,16 +3,23 @@
 # Table of Contents
 
 - Introduction
-  - Introduction
-
-- The Basics
+  - How to Learn to Write Operators Using this Resource? 
   - What's an Operator?
   - Types of Operators
   - Operator Tooling & Resources
-  - Dev Environment Setup
 
 - Golang Operators
-  - A Golang Operator - Over Easy (Lab 001)
+  
+  - Golang Operator Life Cycle
+    - What Happens When You Deploy an Operator
+    - What Happens When You Create an Operator Instance
+    - Controller Runtime
+  
+  - Links and Tips
+  
+  - Dev Environment Setup
+
+  - Lab 001 - A Golang Operator - Over Easy
     - Overview
     - Lab Specification (BDD Style)
     - Step-by-Step Detailed Lab Walkthrough
@@ -24,9 +31,21 @@
       - End to End Testing
 
   - Lab 002 - A Golang Operator that Deploys Multiple Pods
+    - Overview
+    - Lab Specification (BDD Style)
+
   - Lab 003 - A Golang Operator that Deploys a Kubernetes Deployment
-  - Lab 004 - A Golang Operator that Deploys an Nginx Deployment + Service
-  - Lab 005 - A Golang Operator that Deploys a Web App and Makes it Accessible
+    - Overview
+    - Lab Specification (BDD Style)
+
+  - Lab 004 - A Golang Operator that Deploys Nginx + Service
+    - Overview
+    - Lab Specification (BDD Style)
+
+  - Lab 005 - A Golang Operator that Deploys a Web App and Makes it 
+  Accessible
+    - Overview
+    - Lab Specification (BDD Style)
 
 - Helm Operators
 
