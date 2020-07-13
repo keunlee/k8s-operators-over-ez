@@ -19,7 +19,7 @@
   
   - Dev Environment Setup
 
-  - Lab 001 - A Golang Operator - Over Easy
+  - A Golang Operator - Over Easy
     - Overview
     - Lab Specification (BDD Style)
     - Step-by-Step Detailed Lab Walkthrough
@@ -30,19 +30,19 @@
       - Unit Testing
       - End to End Testing
 
-  - Lab 002 - A Golang Operator that Deploys Multiple Pods
+  - Lab 001 - A Golang Operator that Deploys Multiple Pods
     - Overview
     - Lab Specification (BDD Style)
 
-  - Lab 003 - A Golang Operator that Deploys a Kubernetes Deployment
+  - Lab 002 - A Golang Operator that Deploys a Kubernetes Deployment
     - Overview
     - Lab Specification (BDD Style)
 
-  - Lab 004 - A Golang Operator that Deploys Nginx + Service
+  - Lab 003 - A Golang Operator that Deploys Nginx + Service
     - Overview
     - Lab Specification (BDD Style)
 
-  - Lab 005 - A Golang Operator that Deploys a Web App and Makes it 
+  - Lab 004 - A Golang Operator that Deploys a Web App and Makes it 
   Accessible
     - Overview
     - Lab Specification (BDD Style)
