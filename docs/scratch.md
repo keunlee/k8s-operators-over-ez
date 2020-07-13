@@ -1,6 +1,5 @@
 # I. Operator Development Lab - Tasks
 
-
 - [x] deploy a busy box pod
 - [x] deploy multiple busy box pods
 - [ ] deploy a deployment
@@ -10,8 +9,6 @@
 - [ ] helm based operators
 
 - [ ] ansible based operators
-
-
 
 # II. Basics
 
