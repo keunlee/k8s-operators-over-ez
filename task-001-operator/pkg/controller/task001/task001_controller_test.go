@@ -2,8 +2,8 @@ package task001
 
 import (
 	"context"
-	"testing"
 	"reflect"
+	"testing"
 
 	task001v1alpha1 "github.com/keunlee/task-001-operator/pkg/apis/task001/v1alpha1"
 	corev1 "k8s.io/api/core/v1"
