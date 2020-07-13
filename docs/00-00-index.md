@@ -1,5 +1,3 @@
-# Notes
-
 # Table of Contents
 
 - Introduction
