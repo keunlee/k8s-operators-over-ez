@@ -28,7 +28,7 @@
 - Lab 002 - A Golang Operator that Deploys a Kubernetes Deployment
 - Overview
 - Lab Specification (BDD Style)
-
+lifecycle
 - Lab 003 - A Golang Operator that Deploys Nginx + Service
 - Overview
 - Lab Specification (BDD Style)
