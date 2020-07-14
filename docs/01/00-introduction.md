@@ -33,11 +33,18 @@ The point is to illustrate, explain, and eventually, have you get to the point o
 
 From the author's point of view, an operator allows you to encapsulate a set/grouping of kubernetes deployable artifacts (i.e. pods, deployments, daemonsets, replicasets, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which drives the business logic of your CRD deployment instance(s).
 
+
+### What Happens When You Deploy an Operator
+
+`TODO`
+
+### What Happens When You Create an Operator Instance
+
+`TODO`
+
 ### Example
 
-```
-TODO: add illustrated example here
-```
+`TODO`
 
 ### Resources
 
