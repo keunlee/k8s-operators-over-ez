@@ -35,7 +35,9 @@ From the author's point of view, an operator allows you to encapsulate a set/gro
 
 ### Example
 
-TODO
+```
+TODO: add illustrated example here
+```
 
 ### Resources
 
@@ -62,15 +64,12 @@ It should be noted there is a certain amount of flexibility and choice that you 
 
 ## Operator Tooling & Resources
 
-### Frameworks to Help you Create Operators
+### Frameworks to Help you Create Operators (Not an Exhaustive List)
 
 - https://kudo.dev/
 - https://book.kubebuilder.io/
 - https://metacontroller.app/
 - https://github.com/operator-framework/getting-started
 - https://github.com/fabric8io/kubernetes-client
-- 
 
-
-
-For the entirety of this documentation, the author has decided to leverage Coreos's Operator SDK. 
+For the entirety of this documentation, the author has decided to leverage Coreos's [Operator Framework](https://github.com/operator-framework). 
