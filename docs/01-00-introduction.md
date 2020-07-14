@@ -31,6 +31,18 @@ The point is to illustrate, explain, and eventually, have you get to the point o
 
 ## What's an Operator?
 
+From the author's point of view, an operator allows you to encapsulate a set/grouping of kubernetes deployable artifacts (i.e. pods, deployments, daemonsets, replicasets, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which drives the business logic of your CRD deployment instance(s).
+
+### Example
+
+TODO
+
+### Resources
+
+- https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
+- https://coreos.com/blog/introducing-operators.html
+
+
 ## Types of Operators
 
 With regards to the Red Hat's Operator SDK, the following Operator Types are supported: 
@@ -49,3 +61,16 @@ But wait, there's more! Outside of the Operator SDK ecosystem:
 It should be noted there is a certain amount of flexibility and choice that you have
 
 ## Operator Tooling & Resources
+
+### Frameworks to Help you Create Operators
+
+- https://kudo.dev/
+- https://book.kubebuilder.io/
+- https://metacontroller.app/
+- https://github.com/operator-framework/getting-started
+- https://github.com/fabric8io/kubernetes-client
+- 
+
+
+
+For the entirety of this documentation, the author has decided to leverage Coreos's Operator SDK. 
