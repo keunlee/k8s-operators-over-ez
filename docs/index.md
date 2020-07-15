@@ -28,7 +28,7 @@
       - Unit Testing
       - End to End Testing
 
-  - Lab 001 - A Golang Operator that Deploys Multiple Pods
+  - Lab 001 - A Golang Operator that De01/00ploys Multiple Pods
     - Overview
     - Lab Specification (BDD Style)
 
