@@ -1,6 +1,6 @@
 # Table of Contents
 
-- Introduction
+- [Introduction](01/00-introduction.md)
   - How to Learn to Write Operators Using this Resource
   - What's an Operator?
   - Types of Operators
