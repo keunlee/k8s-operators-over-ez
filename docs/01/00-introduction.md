@@ -33,9 +33,9 @@ The point is to illustrate, explain, and eventually, have you get to the point o
 
 From the author's point of view, an operator allows you to encapsulate a set/grouping of kubernetes deployable artifacts (i.e. pods, deployments, daemonsets, replicasets, services, configmaps, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which may drive deployment and/or business logic of your CRD deployment instance(s).
 
-The advantages of an operator can be seen when you start thinking about how you manage your applications deployed into a Kubernetes cluster. Typically, you manage the deployment of each individual artifact (i.e. pods, deployments, daemonsets, replicasets, services, configmaps, etc) which may compose the entirety of the application you deploy to kubernetes cluster.
+The advantages of an operator can be seen when you start thinking about how you manage your applications deployed into a Kubernetes cluster. Typically, you manage the deployment of each individual artifact (i.e. pods, deployments, daemonsets, replicasets, services, configmaps, etc) which may compose the entirety of the application you deploy.
 
-With operators, these artifacts are packaged up, and only expose the necessities (i.e. configurations, specifications, etc. ) of each artifact in one place of configuration -- your "Operator" instance. 
+With operators, these artifacts are packaged up, and generally expose domain specific attributes (i.e. configurations, specifications, etc. ) for your deployment from a single point of configuration -- your "Operator" instance. 
 
 ![](../assets/conventional-vs-operators.png)
 
@@ -45,11 +45,11 @@ With operators, these artifacts are packaged up, and only expose the necessities
 - https://coreos.com/blog/introducing-operators.html
 - https://www.openshift.com/blog/operator-framework-moves-to-cncf-for-incubation
 - https://www.openshift.com/blog/kubernetes-operators-best-practices
-
+- https://www.youtube.com/watch?v=8_DaCcRMp5I&t=3453s
 
 ## Types of Operators
 
-With regards to the Red Hat's Operator SDK, the following Operator Types are supported: 
+With regards to the Operator Framework, the following Operator Types are supported: 
 
 - Golang Operators
 - Helm Operators
@@ -73,5 +73,6 @@ It should be noted there is a certain amount of flexibility and choice that you 
 - https://metacontroller.app/
 - https://github.com/operator-framework/getting-started
 - https://github.com/fabric8io/kubernetes-client
+- https://github.com/zalando-incubator/kopf
 
-For the entirety of this documentation, the author has decided to leverage Coreos's [Operator Framework](https://github.com/operator-framework). 
+For the entirety of this documentation, we will be leveraging the [Operator Framework](https://github.com/operator-framework). 
