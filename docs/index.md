@@ -1,10 +1,10 @@
 # Table of Contents
 
 - [Introduction](01/00-introduction.md)
-  - How to Learn to Write Operators Using this Resource
-  - What's an Operator?
-  - Types of Operators
-  - Operator Tooling & Resources
+  - [How to Learn to Write Operators Using this Resource](01/00-introduction.md#how-to-learn-to-write-operators-using-this-resource)
+  - [What's an Operator?](00-introduction.md#whats-an-operator)
+  - [Types of Operators](01/00-introduction.md#types-of-operators)
+  - [Operator Tooling & Resources](01/00-introduction.md#operator-tooling--resources)
 
 - Golang Operators
   
