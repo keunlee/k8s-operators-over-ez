@@ -1,3 +1,0 @@
-<!--
-  - Links and Tips
--->

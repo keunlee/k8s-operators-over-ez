@@ -1,7 +1,3 @@
-<!-- 
-    - Golang Operator Life Cycle
-    - Controller Runtime
--->
 # Golang Operators
 
 ## What Happens When You Deploy an Operator (CRD)
