@@ -31,11 +31,11 @@ The point is to illustrate, explain, and eventually, have you get to the point o
 
 ## What's an Operator?
 
-From the author's point of view, an operator allows you to encapsulate a set/grouping of kubernetes deployable artifacts (i.e. pods, deployments, daemonsets, replicasets, services, configmaps, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which may drive deployment and/or business logic of your CRD deployment instance(s).
+From the author's point of view, an operator allows you to encapsulate kubernetes application resources (i.e. pods, deployments, daemonsets, statefulsets, jobs, services, configmaps, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which manages the state of your application resources and drives deployment and/or business logic of your CRD deployment instance(s).
 
-The advantages of an operator can be seen when you start thinking about how you manage your applications deployed into a Kubernetes cluster. Typically, you manage the deployment of each individual artifact (i.e. pods, deployments, daemonsets, replicasets, services, configmaps, etc) which may compose the entirety of the application you deploy.
+The advantages of an operator can be seen when you start thinking about how you manage your applications deployed into a Kubernetes cluster. Typically, you manage the deployment of each individual resource (i.e. pods, deployments, daemonsets, replicasets, services, configmaps, etc) which usually composes the entirety of the application you deploy.
 
-With operators, these artifacts are packaged up, and generally expose domain specific attributes (i.e. configurations, specifications, etc. ) for your deployment from a single point of configuration -- your "Operator" instance. 
+With operators, these resources are packaged up, and generally expose domain specific attributes (i.e. configurations, specifications, etc. ) for your deployment from a single point of configuration -- your "Operator" instance. 
 
 ![](../assets/conventional-vs-operators.png)
 
