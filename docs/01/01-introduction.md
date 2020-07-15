@@ -23,9 +23,7 @@ The approach to learning from this resource is composed into the following compo
 - labs
 - repetition
 
-The views and opinions w/in this guide are that of the author. You may not agree with all the views expressed. Feel free to raise a defect/issue/etc whereever you encounter one. 
-
-You will see that the labs are pretty basic in regards to a functional aspect of an operator. While the complexity of the labs may increase, the author's hope is that it does in a comprehensible and easy to understand fashion.  
+The labs are meant to be pretty basic in regards to a functional aspect of an operator. While the complexity of the labs may increase as you move along, the strategy, is that it does in a comprehensible and easy to understand fashion.  
 
 The point is to illustrate, explain, and eventually, have you get to the point of not thinking about language and api semantics, but to get you to focus on what you want to build and what you want your operator to do. 
 
@@ -56,15 +54,6 @@ But wait, there's more! Outside of the Operator SDK ecosystem:
 
 It should be noted there is a certain amount of flexibility and choice that you have
 
-## Operator Tooling & Resources
-
-### Frameworks to Help you Create Operators (Not an Exhaustive List)
-
-- https://kudo.dev/
-- https://book.kubebuilder.io/
-- https://metacontroller.app/
-- https://github.com/operator-framework/getting-started
-- https://github.com/fabric8io/kubernetes-client
-- https://github.com/zalando-incubator/kopf
+## Additional Notes
 
 For the entirety of this documentation, we will be leveraging the [Operator Framework](https://github.com/operator-framework). 

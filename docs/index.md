@@ -4,7 +4,10 @@
   - [How to Learn to Write Operators Using this Resource](01/01-introduction.md#how-to-learn-to-write-operators-using-this-resource)
   - [What's an Operator?](01/01-introduction.md#whats-an-operator)
   - [Types of Operators](01/01-introduction.md#types-of-operators)
-  - [Operator Tooling & Resources](01/01-introduction.md#operator-tooling--resources)
+
+- Resources
+
+- Setting up a Development Environment
 
 - Golang Operators
   
