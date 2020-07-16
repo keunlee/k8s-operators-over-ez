@@ -7,6 +7,9 @@
 
 - [Resources](01/02-resources.md)
 
+- [Lab Requirements](01/03-lab-requirements.md)
+  - K8S Development Cluster Options
+
 - [Golang Operators](02/01-golang-operators-overview.md)
   
   - Golang Operator Life Cycle
