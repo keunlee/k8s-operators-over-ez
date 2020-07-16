@@ -7,14 +7,14 @@
 
 - [Resources](01/02-resources.md)
 
-- Golang Operators
+- [Golang Operators](02/01-golang-operators-overview.md)
   
   - Golang Operator Life Cycle
     - What Happens When You Deploy an Operator
     - What Happens When You Create an Operator Instance
     - Controller Runtime
     
-  - A Golang Operator Lab - Over Easy
+  - [A Golang Operator Lab - Over Easy](02/02-a-golang-operator-over-easy.md)
     - Overview
     - Lab Specification (BDD Style)
     - Step-by-Step Detailed Lab Walkthrough
@@ -44,8 +44,14 @@
     - Overview
     - Lab Specification (BDD Style)
 
-- Helm Operators
+- [Helm Operators](03/01-helm-operators.md)
 
-- Ansible Operators
+  - Lab 001
+
+- [Ansible Operators](04/01-ansible-operators.md)
+
+  - Lab 001
 
 - Other Types of Operators
+
+  - Lab 001
