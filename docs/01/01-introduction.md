@@ -51,13 +51,13 @@ An example of this is if we specified the number of pods of a resource through a
 
 The following idempotent cycle takes place when a resource change event occurs. 
 
-* **Observe/Watch**: In this phase, the controller observes the state of th cluster. Typically this is initiated by observing the events on the custom resource instance. These events are usually subscribed to from the custom resource. Consider this to be similar in ways to a pub/sub mechanism between the resource controller and cluster. 
+* **Observe/Watch**: In this phase, the controller observes the state of th cluster. Typically this is initiated by observing the events on the custom resource instance. These events are usually subscribed from the custom resource controller. Consider this to be similar in ways to a pub/sub mechanism between the resource controller and cluster. 
 
 * **Analyze**: In this phase, the resource controller compares the current state of the resource instance to the desired state. The desired state is typically reflective of what is specified in the `spec` attributes of the resource. 
 
-* **Act/Reconcile**: In this phase, the resource controller performs all necessary actions to make the current resource state match the desired state. This is called reconciliation, is typically where operational knowledge is implemented (i.e. business/domain logic).
+* **Act/Reconcile**: In this phase, the resource controller performs all necessary actions to make the current resource state match the desired state. This is called reconciliation, and is typically where operational knowledge is implemented (i.e. business/domain logic).
 
-The reconciliation cycle runs until the desired state is achieved or if an error occurs during reconciliation.
+The reconciliation cycle generally runs until the desired state is achieved or until an error is thrown. It is not uncommon to see the reconciliation cycle run repeatedly as it treats each run as an itempotent process. 
 
 ## Types of Operators
 
