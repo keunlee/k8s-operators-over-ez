@@ -5,9 +5,9 @@
   - [How do Operators Work?](01/01-introduction.md#how-do-operators-work)
   - [Types of Operators](01/01-introduction.md#types-of-operators)
 
-- Resources
+- [Resources](01/02-resources.md)
 
-- Setting up a Development Environment
+- [Setting up a Development Environment](01/03-dev-environment-setup.md)
 
 - Golang Operators
   
