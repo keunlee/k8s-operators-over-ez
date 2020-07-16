@@ -7,6 +7,8 @@
 - https://www.openshift.com/blog/operator-framework-moves-to-cncf-for-incubation
 - https://www.openshift.com/blog/kubernetes-operators-best-practices
 - https://www.youtube.com/watch?v=8_DaCcRMp5I&t=3453s
+- https://www.twitch.tv/videos/680494909
+
 
 ## Frameworks to Help you Create Operators (Not an Exhaustive List)
 
