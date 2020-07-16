@@ -7,20 +7,14 @@
 
 - [Resources](01/02-resources.md)
 
-- [Setting up a Development Environment](01/03-dev-environment-setup.md)
-
 - Golang Operators
   
   - Golang Operator Life Cycle
     - What Happens When You Deploy an Operator
     - What Happens When You Create an Operator Instance
     - Controller Runtime
-  
-  - Links and Tips
-  
-  - Dev Environment Setup
-
-  - A Golang Operator - Over Easy
+    
+  - A Golang Operator Lab - Over Easy
     - Overview
     - Lab Specification (BDD Style)
     - Step-by-Step Detailed Lab Walkthrough
@@ -30,6 +24,8 @@
       - Writing Your Operator Controller Implementation
       - Unit Testing
       - End to End Testing
+
+  - [Debugging Golang Operators](02/03-debugging-golang-operators.md)
 
   - Lab 001 - A Golang Operator that De01/00ploys Multiple Pods
     - Overview
