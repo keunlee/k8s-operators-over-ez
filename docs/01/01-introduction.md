@@ -12,21 +12,6 @@ This guide serves all but one purpose:
 
 **To help assist people like you to understand how to write kubernetes operators**
 
-## How to Learn to Write Operators Using this Resource
-
-The approach to learning from this resource is composed into the following components (not in any particular order). 
-
-- direct and straighforward explanation of things
-- illustrations
-- links to other related resources
-- step by step instructions
-- labs
-- repetition
-
-The labs are meant to be pretty basic in regards to a functional aspect of an operator. While the complexity of the labs may increase as you move along, the strategy, is that it does in a comprehensible and easy to understand fashion.  
-
-The point is to illustrate, explain, and eventually, have you get to the point of not thinking about language and api semantics, but to get you to focus on what you want to build and what you want your operator to do. 
-
 ## What's an Operator?
 
 An operator allows you to encapsulate kubernetes application resources (i.e. pods, deployments, daemonsets, statefulsets, jobs, services, configmaps, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which manages the state of your application resources and drives deployment and/or business logic (operational knowledge) of your CRD deployment instance(s).
@@ -66,7 +51,7 @@ An example of this is if we specified the number of pods of a resource through a
 
 The following idempotent cycle takes place when a resource change event occurs. 
 
-* **Observe/Watch**: In this phase, the controller observes the state of th cluster. Typically this is initiated by observing the events on the custom resource instance. These events are usually subscribed to from the custom resource. Consider this to be similar in ways to a pub/sub mechanism between the resource, controller, and cluster. 
+* **Observe/Watch**: In this phase, the controller observes the state of th cluster. Typically this is initiated by observing the events on the custom resource instance. These events are usually subscribed to from the custom resource. Consider this to be similar in ways to a pub/sub mechanism between the resource controller and cluster. 
 
 * **Analyze**: In this phase, the resource controller compares the current state of the resource instance to the desired state. The desired state is typically reflective of what is specified in the `spec` attributes of the resource. 
 

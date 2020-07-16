@@ -1,8 +1,8 @@
 # Table of Contents
 
 - [Introduction](01/01-introduction.md)
-  - [How to Learn to Write Operators Using this Resource](01/01-introduction.md#how-to-learn-to-write-operators-using-this-resource)
   - [What's an Operator?](01/01-introduction.md#whats-an-operator)
+  - [How do Operators Work?](01/01-introduction.md#how-do-operators-work)
   - [Types of Operators](01/01-introduction.md#types-of-operators)
 
 - Resources
