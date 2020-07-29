@@ -30,16 +30,18 @@ In case you are curious of some of the differences between the two, here's a rec
 
 # Useful Golang API References
 
-While developing Golang Operators, much of what is written, can leverage common libraries for Kubernetes API development, as shown below. The resources below are ideal for using as reference. Many of them come with inline examples of how to use them in code. This is just small subset of what's actually available out here in the community. 
+While developing Golang Operators, much of what is written, can leverage common libraries for Kubernetes API development, as shown below. The resources below are ideal for using as reference. Many of them come with inline examples of how to use them in code. This is just a small subset of what's actually available out here in the community. 
 
+- Controller Runtime
+    - https://pkg.go.dev/github.com/kubernetes-sigs/controller-runtime?tab=doc
+        - The Kubernetes controller-runtime Project is a set of go libraries for building Controllers. It is leveraged by Kubebuilder and Operator SDK. Both are a great place to start for new projects. See Kubebuilder's Quick Start to see how it can be used. see: https://github.com/kubernetes-sigs/controller-runtime
+        - Package controllerruntime alias' common functions and types to improve discoverability and reduce the number of imports for simple Controllers.
+
+    - https://pkg.go.dev/sigs.k8s.io/controller-runtime?tab=doc
+        - Package controllerruntime provides tools to construct Kubernetes-style controllers that manipulate both Kubernetes CRDs and aggregated/built-in Kubernetes APIs. It defines easy helpers for the common use cases when building CRDs, built on top of customizable layers of abstraction. Common cases should be easy, and uncommon cases should be possible. In general, controller-runtime tries to guide users towards Kubernetes controller best-practices.
+  
 - https://pkg.go.dev/k8s.io/apimachinery?tab=overview
   - Scheme, typing, encoding, decoding, and conversion packages for Kubernetes and Kubernetes-like API objects.
-
-- https://pkg.go.dev/github.com/kubernetes-sigs/controller-runtime?tab=doc
-  - Package controllerruntime alias' common functions and types to improve discoverability and reduce the number of imports for simple Controllers.
-
-- https://pkg.go.dev/sigs.k8s.io/controller-runtime?tab=doc
-  - Package controllerruntime provides tools to construct Kubernetes-style controllers that manipulate both Kubernetes CRDs and aggregated/built-in Kubernetes APIs. It defines easy helpers for the common use cases when building CRDs, built on top of customizable layers of abstraction. Common cases should be easy, and uncommon cases should be possible. In general, controller-runtime tries to guide users towards Kubernetes controller best-practices.
 
 - https://pkg.go.dev/k8s.io/api?tab=overview
   - Schema of the external API types that are served by the Kubernetes API server.

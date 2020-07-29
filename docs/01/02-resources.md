@@ -13,6 +13,7 @@
 
 - https://kudo.dev/
 - https://book.kubebuilder.io/
+- https://github.com/kubernetes-sigs/kubebuilder
 - https://metacontroller.app/
 - https://github.com/operator-framework/getting-started
 - https://github.com/fabric8io/kubernetes-client
