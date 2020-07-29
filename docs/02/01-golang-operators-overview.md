@@ -2,7 +2,7 @@
 
 ## Prereqisites
 
-If you are not familiar with Go, atleast go through this resource: https://tour.golang.org/welcome/1
+- Familiarity with Golang. If you are not familiar with Go, atleast go through this resource: https://tour.golang.org/welcome/1
 
 ## Agenda
 

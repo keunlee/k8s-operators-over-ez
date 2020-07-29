@@ -47,7 +47,7 @@ How does the controller work? What does it do?
 
 In a nutshell, the Resource Controller ensures that the current state of a resource matches the desired state of a resource. 
 
-An example of this is if we specified the number of pods of a resource through a specification attribute `size` on the custom resource instance. If we increase/decrease the  value, then we are setting the desired state. 
+An example of this is if we specified the number of pods of a resource through an arbitrary specification/attribute, `size`, on the custom resource instance. If we increase/decrease the value, then we are setting the desired state. 
 
 The following idempotent cycle takes place when a resource change event occurs. 
 
@@ -73,3 +73,4 @@ But wait, there's more! Outside of the Operator Framework:
 - Python Operators
 - Javascript/Typescript Operators
 - JSONNET Operators
+
