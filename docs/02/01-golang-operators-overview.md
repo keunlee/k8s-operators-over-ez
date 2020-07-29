@@ -7,6 +7,8 @@
 
 ## Agenda
 
+This section will cover the following: 
+
 - Review options for working with Operators in Golang
 - Additional Golang References for working with CRDs, Controllers, and the [Controller Runtime](https://github.com/kubernetes-sigs/controller-runtime)
 - Review the [Reconciliation Cycle](../01/01-introduction.md#how-do-operators-work) with Golang semantics
@@ -14,6 +16,8 @@
 Afterwards, you will take the plunge in a guided walkthrough. 
 
 # Golang Operator Resources
+
+## Development Libraries
 
 Two resources you can check out for writing Operators in Golang: 
 
@@ -24,6 +28,12 @@ In this documentation, you will be leveraging the Operator Framework.
 
 In case you are curious of some of the differences between the two, here's a recap: [What is the difference between kubebuilder and operator-sdk?](https://github.com/operator-framework/operator-sdk/issues/1758#issuecomment-517432349)
 
+## Useful Golang API References (While Developing Golang Operators)
+
+- https://pkg.go.dev/k8s.io/apimachinery?tab=overview
+- https://pkg.go.dev/github.com/kubernetes-sigs/controller-runtime?tab=doc
+- https://pkg.go.dev/sigs.k8s.io/controller-runtime?tab=doc
+- https://pkg.go.dev/k8s.io/api?tab=overview
 
 # The Reconciliation Cycle - Revisited
 
