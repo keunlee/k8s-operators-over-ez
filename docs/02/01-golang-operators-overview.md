@@ -2,22 +2,35 @@
 
 ## Prereqisites
 
+- Review the [introduction](../01/01-introduction.md), if you have not already
 - Familiarity with Golang. If you are not familiar with Go, atleast go through this resource: https://tour.golang.org/welcome/1
 
 ## Agenda
 
-This is what we're going to do: 
+- Review options for working with Operators in Golang
+- Discuss and explain fundamentals with regards to CRDs, Controllers, and the Controller Runtime
+- Review the [Reconciliation Cycle](../01/01-introduction.md#how-do-operators-work) with Golang semantics
 
-- We are going to embellish that illustration of the _Reconciliation Cycle_ we saw in the [introduction](../01/01-introduction.md#how-do-operators-work) with Golang Semantics.
+Afterwards, you will take the plunge in a guided walkthrough. 
 
-- We'll explain some of the fundamentals, specifically on CRDS, Controllers, and the Controller Runtime 
+# Golang Operator Resources
 
-- We'll discuss some of the options you have in regards to selecting a Golang Operator Framework to work with. 
 
-- We'll talk about leveraging tooling to help you avoid writing tons of boiler plate code -- we may even try to explain the boilerplate to answer any potential inquiries you might have as we go through it. 
-
-Afterwards, you will be ready to take the plunge with the author in a guided walkthrough. 
 
 # The Reconciliation Cycle - Revisited
 
 ![](../assets/resource-controller-reconciliation-cycle-golang-operators.png)
+
+Let's recap the Reconciliation Cycle in a bit more detail. 
+
+## Observe/Watch
+
+In this phase, the controller observes the state of th cluster. Typically this is initiated by observing the events on the custom resource instance. These events are usually subscribed from the custom resource controller. Consider this to be similar in ways to a pub/sub mechanism between the resource controller and cluster. 
+
+## Analyze
+
+In this phase, the resource controller compares the current state of the resource instance to the desired state. The desired state is typically reflective of what is specified in the `spec` attributes of the resource. 
+
+## Act/Reconcile
+
+In this phase, the resource controller performs all necessary actions to make the current resource state match the desired state. This is called reconciliation, and is typically where operational knowledge is implemented (i.e. business/domain logic).
