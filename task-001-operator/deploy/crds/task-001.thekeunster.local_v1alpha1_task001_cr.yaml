@@ -1,7 +1,0 @@
-apiVersion: task-001.thekeunster.local/v1alpha1
-kind: Task001
-metadata:
-  name: example-task001
-spec:
-  # Add fields here
-  size: 3

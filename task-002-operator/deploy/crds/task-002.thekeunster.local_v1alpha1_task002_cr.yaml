@@ -1,7 +1,0 @@
-apiVersion: task-002.thekeunster.local/v1alpha1
-kind: Task002
-metadata:
-  name: example-task002
-spec:
-  # Add fields here
-  numpods: 3
