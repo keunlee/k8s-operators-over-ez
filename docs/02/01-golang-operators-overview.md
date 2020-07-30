@@ -61,7 +61,7 @@ The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also
 
 ![](../assets/resource-controller-reconciliation-cycle.png)
 
-> In this section, we will recap the Reconciliation Cycle in more detail, with respect to a Golang Operator Controller. The embellishments to the Reconciliation Cycle are shown below: 
+> In this section, we will recap the Reconciliation Cycle in more detail with Golang Operator specific embellishments to the Reconciliation Cycle, as shown below:  
 
 ![](../assets/resource-controller-reconciliation-cycle-golang-operators.png)
 
