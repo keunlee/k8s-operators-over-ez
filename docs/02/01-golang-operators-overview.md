@@ -1,6 +1,6 @@
 # Golang Operators
 
-## Prereqisites
+## Prerequisites
 
 - Review the [introduction](../01/01-introduction.md), if you have not already
 - Familiarity with Golang. If you are not familiar with Go, atleast go through this resource: https://tour.golang.org/welcome/1
