@@ -30,12 +30,13 @@ In case you are curious of some of the differences between the two, here's a rec
 
 # Useful Golang API References
 
-While developing Golang Operators, much of what is written, can leverage common libraries for Kubernetes API development, as shown below. The resources below are ideal for using as reference. Many of them come with inline examples of how to use them in code. This is just a small subset of what's actually available out here in the community. 
+The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also commonly leveraged by Golang Operator development libraries. You will usage of these libaries, as well as others, when scaffolding your Operators for development. Many of the API reference docs come with inline examples of how to use them in code. This is just a small subset of what's actually available out here in the community. 
 
 - Controller Runtime
     - https://pkg.go.dev/github.com/kubernetes-sigs/controller-runtime?tab=doc
-        - The Kubernetes controller-runtime Project is a set of go libraries for building Controllers. It is leveraged by Kubebuilder and Operator SDK. Both are a great place to start for new projects. See Kubebuilder's Quick Start to see how it can be used. see: https://github.com/kubernetes-sigs/controller-runtime
+        - The Kubernetes controller-runtime Project is a set of go libraries for building Controllers. It is leveraged by Kubebuilder and Operator SDK. Both are a great place to start for new projects. See Kubebuilder's Quick Start to see how it can be used. 
         - Package controllerruntime alias' common functions and types to improve discoverability and reduce the number of imports for simple Controllers.
+        - see: https://github.com/kubernetes-sigs/controller-runtime
 
     - https://pkg.go.dev/sigs.k8s.io/controller-runtime?tab=doc
         - Package controllerruntime provides tools to construct Kubernetes-style controllers that manipulate both Kubernetes CRDs and aggregated/built-in Kubernetes APIs. It defines easy helpers for the common use cases when building CRDs, built on top of customizable layers of abstraction. Common cases should be easy, and uncommon cases should be possible. In general, controller-runtime tries to guide users towards Kubernetes controller best-practices.
