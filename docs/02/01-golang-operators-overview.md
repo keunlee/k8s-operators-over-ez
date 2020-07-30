@@ -24,7 +24,7 @@ Two resources you can check out for writing Operators in Golang:
 - [Operator Framework](https://operatorframework.io/)
 - [Kubebuilder](https://book.kubebuilder.io/quick-start.html)
 
-In this documentation, you will be leveraging the Operator Framework. 
+> In this section, we will be leveraging the Operator Framework. 
 
 In case you are curious of some of the differences between the two, here's a recap: [What is the difference between kubebuilder and operator-sdk?](https://github.com/operator-framework/operator-sdk/issues/1758#issuecomment-517432349)
 
