@@ -30,6 +30,8 @@ In case you are curious of some of the differences between the two, here's a rec
 
 ## Useful Golang API References
 
+>>>DISCLAIMER
+
 The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also commonly leveraged by Golang Operator development libraries. You will usage of these libaries, as well as others, when scaffolding your Operators for development. Many of the API reference docs come with inline examples of how to use them in code. This is just a small subset of what's actually available out here in the community. 
 
 - Controller Runtime
