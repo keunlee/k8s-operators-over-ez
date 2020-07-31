@@ -1,6 +1,6 @@
 # Table of Contents
 
-## Chapter 00 - Introduction
+## I - Introduction
 
 - [Introduction](01/01-introduction.md)
   - [What's an Operator?](01/01-introduction.md#whats-an-operator)
@@ -11,7 +11,7 @@
 
 - [Lab Requirements](01/03-lab-requirements.md)
 
-## Chapter 01 - Golang Operators
+## II - Golang Operators
 
 - [Golang Operators](02/01-golang-operators-overview.md)
   - Golang Operator Resources
@@ -49,19 +49,19 @@ Accessible
   - Overview
   - Lab Specification (BDD Style)
 
-## Chapter 02 - Helm Operators
+## III - Helm Operators
 
 - [Helm Operators](03/01-helm-operators.md)
 
   - Lab 001
 
-## Chapter 03 - Ansible Operators
+## IV - Ansible Operators
 
 - [Ansible Operators](04/01-ansible-operators.md)
 
   - Lab 001
 
-## Chapter 04 - Other types of  Operators
+## V - Other types of  Operators
 
 - Other Types of Operators
 
