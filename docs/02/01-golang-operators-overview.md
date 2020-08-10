@@ -187,15 +187,30 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 
 We won't go into the specifics of filling out the template here. For now, we are only interested in illustrating "where" we add code, with a purpose, in our resource controller. 
 
-
 ## Analyze
 
 In this phase, the resource controller compares the current state of the resource instance to the desired state. The desired state is typically reflective of what is specified in the `spec` attributes of the resource. 
 
-TODO: add more
+When we request a modification on the resource, then that calls for a modification to the current state of the resource. An example of request like this would be if we wanted to change the `spec: size: 3` to `spec: size: 4` of the resource. 
 
 ## Act/Reconcile
 
 In this phase, the resource controller performs all necessary actions to make the current resource state match the desired state. This is called reconciliation, and is typically where operational knowledge is implemented (i.e. business/domain logic).
 
-TODO: add more
+Since the current state doesn't match the desired state, the resource controller must reconcile the state differences and make the desired state the new current state. This is done in the `Reconcile` function of the resource controller. 
+
+```golang
+// --------------------
+// ACT/RECONCILE STAGE : Perform all necessary actions to the make current resource state match
+// the desired state. This is called reconciliation.
+// --------------------
+func (r *ReconcileMyCRD) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+
+  // TODO: Implement reconciliation controller logic
+  // 
+  // ADD RECONCILIATION LOGIC HERE
+  //
+
+	return reconcile.Result{}, nil
+}
+```
