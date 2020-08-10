@@ -67,6 +67,8 @@ The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also
 
 Each stage in the Reconciliation Cycle, correspond to particular points of interest in a Resource Controller. In the context of the Operator Framework, A resource controller has the following general templated structure. 
 
+> FYI, don't try to memorize this template. Do understand that their are entry points for where you will implement the logic corresponding to specific reconciliation cycles. Those entry points are noted in the code comments below (i.e. OBSERVE/WATCH and ACT/RECONCILE stage)
+
 ```golang
 package mycrd
 
@@ -100,7 +102,7 @@ func newReconciler(mgr manager.Manager) reconcile.Reconciler {
 }
 
 // --------------------
-// OBSERVE/WATCH PHASE: Observe the current state of the cluster. Add a watch to observe
+// OBSERVE/WATCH STAGE: Observe the current state of the cluster. Add a watch to observe
 // artifacts w/in the customer resource
 // --------------------
 func add(mgr manager.Manager, r reconcile.Reconciler) error {
@@ -120,10 +122,10 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 }
 
 // --------------------
-// ACT/RECONCILE PHASE : Perform all necessary actions to the make current resource state match
+// ACT/RECONCILE STAGE : Perform all necessary actions to the make current resource state match
 // the desired state. This is called reconciliation.
 // --------------------
-func (r *ReconcileTask001) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+func (r *ReconcileMyCRD) Reconcile(request reconcile.Request) (reconcile.Result, error) {
 
 	// TODO: Implement reconciliation controller logic
 
