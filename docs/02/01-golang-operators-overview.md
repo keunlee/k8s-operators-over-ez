@@ -139,7 +139,7 @@ func (r *ReconcileMyCRD) Reconcile(request reconcile.Request) (reconcile.Result,
 }
 ```
 
-> It should be noted that the template above is a "code generated" artifact when using the Operator Framework. As the developer, once you've generated your resource controller template, it is then your responsiblity to fill in the rest of the template so that it functions and operates as you want. 
+> **The template above can be a "code generated" artifact**, when using the Operator Framework. Once you've generated your resource controller template, it is then your responsiblity to fill in the rest of the template so that it functions and operates as you want. We will examine in more detail this feature when executing the labs portion of this guide. 
 
 ## Observe/Watch
 
