@@ -32,7 +32,7 @@ In case you are curious of some of the differences between the two, here's a rec
 
 >NOTE: By no means, I'm not expecting you to memorize or review in detail what the APIs below are and do. I expect you to just be aware of the location of these API docs, as they may come in handy as you build out your own operator(s) and would like to understand better what these APIs are, as the Golang Operator libaries make heavy use of them, without a ton of explanation, rhyme, or reason of what they are and what they do. 
 
-The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also commonly leveraged by Golang Operator development libraries. You will usage of these libaries, as well as others, when scaffolding your Operators for development. Many of the API reference docs come with inline examples of how to use them in code. This is just a small subset of what's actually available out here in the community. 
+The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also commonly leveraged by Golang Operator development libraries. You will make usage of these libaries, as well as others, when scaffolding your Operators for development. Many of the API reference docs come with inline examples of how to use them in code. This is just a small subset of what's actually available out here in the community. 
 
 - Controller Runtime
     - https://pkg.go.dev/github.com/kubernetes-sigs/controller-runtime?tab=doc
@@ -65,6 +65,71 @@ The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also
 
 ![](../assets/resource-controller-reconciliation-cycle-golang-operators.png)
 
+Each stage in the Reconciliation Cycle, correspond to particular points of interest in a Resource Controller. In the context of the Operator Framework, A resource controller has the following general templated structure. 
+
+```golang
+package mycrd
+
+import (
+	mycrdv1alpha1 "github.com/keunlee/task-001-operator/pkg/apis/mycrd/v1alpha1"
+	"k8s.io/apimachinery/pkg/runtime"
+	"sigs.k8s.io/controller-runtime/pkg/client"
+	"sigs.k8s.io/controller-runtime/pkg/controller"
+	"sigs.k8s.io/controller-runtime/pkg/handler"
+	logf "sigs.k8s.io/controller-runtime/pkg/log"
+	"sigs.k8s.io/controller-runtime/pkg/manager"
+	"sigs.k8s.io/controller-runtime/pkg/reconcile"
+	"sigs.k8s.io/controller-runtime/pkg/source"
+)
+
+var log = logf.Log.WithName("controller_mycrd")
+
+var _ reconcile.Reconciler = &MyCRD{}
+
+type ReconcileTask001 struct {
+	client client.Client
+	scheme *runtime.Scheme
+}
+
+func Add(mgr manager.Manager) error {
+	return add(mgr, newReconciler(mgr))
+}
+
+func newReconciler(mgr manager.Manager) reconcile.Reconciler {
+	return &MyCRD{client: mgr.GetClient(), scheme: mgr.GetScheme()}
+}
+
+// --------------------
+// OBSERVE/WATCH PHASE: Observe the current state of the cluster. Add a watch to observe
+// artifacts w/in the customer resource
+// --------------------
+func add(mgr manager.Manager, r reconcile.Reconciler) error {
+	c, err := controller.New("mycrd-controller", mgr, controller.Options{Reconciler: r})
+	if err != nil {
+		return err
+	}
+
+	err = c.Watch(&source.Kind{Type: &mycrdv1alpha1.MyCRD{}}, &handler.EnqueueRequestForObject{})
+	if err != nil {
+		return err
+	}
+
+	// TODO: Watch for changes to secondary resources
+
+	return nil
+}
+
+// --------------------
+// ACT/RECONCILE PHASE : Perform all necessary actions to the make current resource state match
+// the desired state. This is called reconciliation.
+// --------------------
+func (r *ReconcileTask001) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+
+	// TODO: Implement reconciliation controller logic
+
+	return reconcile.Result{}, nil
+}
+```
 
 ## Observe/Watch
 
