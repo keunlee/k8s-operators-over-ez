@@ -24,7 +24,7 @@ Two resources you can check out for writing Operators in Golang:
 - [Operator Framework](https://operatorframework.io/)
 - [Kubebuilder](https://book.kubebuilder.io/quick-start.html)
 
-> In this section, as we discuss Golang Operators, we will be referring to the __Operator SDK__ libary, as we continue to discuss. 
+> In this section, as we discuss Golang Operators, we will be referring to the __Operator Framework__, as we continue to discuss. 
 
 In case you are curious of some of the differences between the two, here's a recap: [What is the difference between kubebuilder and operator-sdk?](https://github.com/operator-framework/operator-sdk/issues/1758#issuecomment-517432349)
 
@@ -116,7 +116,10 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 		return err
 	}
 
-	// TODO: Watch for changes to secondary resources
+  // TODO: Watch for changes to secondary resources
+  // 
+  // ADD WATCHES HERE
+  //
 
 	return nil
 }
@@ -127,7 +130,10 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
 // --------------------
 func (r *ReconcileMyCRD) Reconcile(request reconcile.Request) (reconcile.Result, error) {
 
-	// TODO: Implement reconciliation controller logic
+  // TODO: Implement reconciliation controller logic
+  // 
+  // ADD RECONCILIATION LOGIC HERE
+  //
 
 	return reconcile.Result{}, nil
 }
@@ -135,9 +141,50 @@ func (r *ReconcileMyCRD) Reconcile(request reconcile.Request) (reconcile.Result,
 
 ## Observe/Watch
 
-In this phase, the controller observes the state of th cluster. Typically this is initiated by observing the events on the custom resource instance. These events are usually subscribed from the custom resource controller. Consider this to be similar in ways to a pub/sub mechanism between the resource controller and cluster. 
+In this phase, the controller observes the state of the cluster. Typically this is initiated by observing the events on the custom resource instance. These events are usually subscribed from the custom resource controller. Consider this to be similar in ways to a pub/sub mechanism between the resource controller and cluster. 
 
-TODO: add more
+The execution of this stage occurs when we've either created or updated a custom resource. Behind the scenes, the create/update operations are essentially the same operation since all kubernetes resources are idempotent. 
+
+A simplified example definition of a resource might look like the following: 
+
+```yaml
+apiVersion: operator.local/v1alpha1
+kind: MyCRD
+metadata: 
+  name: my-app
+spec:
+  size: 3
+```
+
+When this resource is created, part of the resource creation process involves adding "watches" on the resource. A "watch" is essentially an observer, which observes the current state of the resource. They can be added in code w/in the resource controller (see code below and templated code above): 
+
+```golang
+// --------------------
+// OBSERVE/WATCH STAGE: Observe the current state of the cluster. Add a watch to observe
+// artifacts w/in the customer resource
+// --------------------
+func add(mgr manager.Manager, r reconcile.Reconciler) error {
+	c, err := controller.New("mycrd-controller", mgr, controller.Options{Reconciler: r})
+	if err != nil {
+		return err
+	}
+
+	err = c.Watch(&source.Kind{Type: &mycrdv1alpha1.MyCRD{}}, &handler.EnqueueRequestForObject{})
+	if err != nil {
+		return err
+	}
+
+  // TODO: Watch for changes to secondary resources
+  // 
+  // ADD WATCHES HERE
+  //
+
+	return nil
+}
+```
+
+
+
 
 ## Analyze
 
