@@ -139,6 +139,8 @@ func (r *ReconcileMyCRD) Reconcile(request reconcile.Request) (reconcile.Result,
 }
 ```
 
+> It should be noted that the template above is a "code generated" artifact when using the Operator Framework. As the developer, once you've generated your resource controller template, it is then your responsiblity to fill in the rest of the template so that it functions and operates as you want. 
+
 ## Observe/Watch
 
 In this phase, the controller observes the state of the cluster. Typically this is initiated by observing the events on the custom resource instance. These events are usually subscribed from the custom resource controller. Consider this to be similar in ways to a pub/sub mechanism between the resource controller and cluster. 
