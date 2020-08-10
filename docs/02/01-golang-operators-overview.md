@@ -55,6 +55,10 @@ The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also
     - Replicasets
     - Daemonsets
 
+- https://pkg.go.dev/k8s.io/client-go?tab=overview
+  - Go clients for talking to a kubernetes cluster.
+  - see also: https://github.com/kubernetes/client-go
+
 # The Reconciliation Cycle - Revisited
 
 > In the introduction, we presented the reconciliation cycle in an operator controller as followed: 
