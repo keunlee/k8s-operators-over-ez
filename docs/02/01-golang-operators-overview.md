@@ -156,7 +156,7 @@ spec:
   size: 3
 ```
 
-When this resource is created, part of the resource creation process involves adding "watches" on the resource. A "watch" is essentially an observer, which observes the current state of the resource. They can be added in code w/in the resource controller (see code below and templated code above): 
+When this resource is created, part of the resource creation process involves adding "watches" on the resource. A "watch" is essentially an observer, which observes the current state of the resource. They can be added in code w/in the resource controller (see code below and/or templated code above): 
 
 ```golang
 // --------------------
@@ -178,12 +178,12 @@ func add(mgr manager.Manager, r reconcile.Reconciler) error {
   // 
   // ADD WATCHES HERE
   //
-
-	return nil
+  
+  return nil
 }
 ```
 
-
+We won't go into the specifics of filling out the template here. For now, we are only interested in illustrating "where" we add code, with a purpose, in our resource controller. 
 
 
 ## Analyze
