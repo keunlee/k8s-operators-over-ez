@@ -61,7 +61,7 @@ The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also
 
 # The Reconciliation Cycle - Revisited
 
-> In the introduction, we presented the reconciliation cycle in an operator controller as followed: 
+> In the introduction, we presented the reconciliation cycle in a resource controller as followed: 
 
 ![](../assets/resource-controller-reconciliation-cycle.png)
 
