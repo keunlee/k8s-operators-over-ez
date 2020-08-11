@@ -73,6 +73,8 @@ Each stage in the Reconciliation Cycle, correspond to particular points of inter
 
 > FYI, don't try to memorize this template. Do understand that their are entry points for where you will implement the logic corresponding to specific stages in the reconciliation cycles. Those entry points are noted in the code comments below (i.e. OBSERVE/WATCH and ACT/RECONCILE stage)
 
+> **The template below can be a "code generated" artifact**, when using the Operator Framework. Once you've generated your resource controller template, it is then your responsiblity to fill in the rest of the template so that it functions and operates as you want. We will examine in more detail this feature when executing the labs portion of this guide. 
+
 ```golang
 package mycrd
 
@@ -142,8 +144,6 @@ func (r *ReconcileMyCRD) Reconcile(request reconcile.Request) (reconcile.Result,
 	return reconcile.Result{}, nil
 }
 ```
-
-> **The template above can be a "code generated" artifact**, when using the Operator Framework. Once you've generated your resource controller template, it is then your responsiblity to fill in the rest of the template so that it functions and operates as you want. We will examine in more detail this feature when executing the labs portion of this guide. 
 
 ## Observe/Watch
 
