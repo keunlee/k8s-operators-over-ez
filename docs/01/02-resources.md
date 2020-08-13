@@ -3,6 +3,7 @@
 ## Learn more about Operators
 
 - https://kubernetes.io/docs/concepts/extend-kubernetes/operator/
+- https://enterprisersproject.com/article/2019/2/kubernetes-operators-plain-english
 - https://coreos.com/blog/introducing-operators.html
 - https://www.openshift.com/blog/operator-framework-moves-to-cncf-for-incubation
 - https://www.openshift.com/blog/kubernetes-operators-best-practices
