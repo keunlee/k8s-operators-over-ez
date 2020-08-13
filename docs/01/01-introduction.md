@@ -21,7 +21,7 @@ This guide serves all but one purpose:
 
 ## What's an Operator
 
-> :grey_exclamation: Operators are software extensions to Kubernetes that make use of custom resources to manage applications and their components. Operators follow Kubernetes principles, notably the control loop.
+> :information_source: Operators are software extensions to Kubernetes that make use of custom resources to manage applications and their components. Operators follow Kubernetes principles, notably the control loop.
 
 Let's break down what that means
 
