@@ -61,19 +61,19 @@ The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also
 
 # The Reconciliation Cycle - Revisited
 
-> In the introduction, we presented the reconciliation cycle in a resource controller as followed: 
+> :information_source: In the introduction, we presented the reconciliation cycle in a resource controller as followed: 
 
 ![](../assets/resource-controller-reconciliation-cycle.png)
 
-> In this section, we will recap the Reconciliation Cycle in more detail with Golang Operator specific embellishments to the Reconciliation Cycle, as shown below:  
+> :information_source: In this section, we will recap the Reconciliation Cycle in more detail with Golang Operator specific embellishments to the Reconciliation Cycle, as shown below:  
 
 ![](../assets/resource-controller-reconciliation-cycle-golang-operators.png)
 
 Each stage in the Reconciliation Cycle, correspond to particular points of interest in a Resource Controller. In the context of the Operator Framework, A resource controller has the following general templated structure. 
 
-> FYI, don't try to memorize this template. Do understand that their are entry points for where you will implement the logic corresponding to specific stages in the reconciliation cycles. Those entry points are noted in the code comments below (i.e. OBSERVE/WATCH and ACT/RECONCILE stage)
+> :information_source: FYI, don't try to memorize this template. Do understand that their are entry points for where you will implement the logic corresponding to specific stages in the reconciliation cycles. Those entry points are noted in the code comments below (i.e. OBSERVE/WATCH and ACT/RECONCILE stage)
 
-> **The template below can be a "code generated" artifact**, when using the Operator Framework. Once you've generated your resource controller, it is then your responsiblity to fill in the rest of the template so that it functions and operates as you want. We will examine in more detail this feature when executing the labs portion of this guide. 
+> :information_source: **The template below can be a "code generated" artifact**, when using the Operator Framework. Once you've generated your resource controller, it is then your responsiblity to fill in the rest of the template so that it functions and operates as you want. We will examine in more detail this feature when executing the labs portion of this guide. 
 
 ```golang
 package mycrd
