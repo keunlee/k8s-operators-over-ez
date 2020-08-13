@@ -21,11 +21,7 @@ This guide serves all but one purpose:
 
 ## What's an Operator?
 
-<style type="text/css" rel="stylesheet">
-* { color: red; }
-</style>
-
-> <div style="position: relative !important; padding: 1px 0px 15px 0px; margin: 0px 0px 0px 0px"><img src="../assets/info.svg" alt="drawing" width="50" align="left" style="margin: 10px 10px 0px 0px"/><p >Operators are software extensions to Kubernetes.</p></div>
+> <img src="../assets/info.svg" alt="drawing" width="50" align="left" style="margin: 10px 10px 0px 0px"/>Operators are software extensions to Kubernetes.
 
 An operator allows you to encapsulate kubernetes application resources (i.e. pods, deployments, daemonsets, statefulsets, jobs, services, configmaps, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which manages the state of your application resources and drives deployment and/or business logic (operational knowledge) of your CRD deployment instance(s).
 
