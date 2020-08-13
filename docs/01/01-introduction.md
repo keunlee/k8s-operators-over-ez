@@ -23,16 +23,22 @@ This guide serves all but one purpose:
 
 An operator is a software extension to Kubernetes. It's a design pattern which allows you to: 
 
-- automate the creation and update of resources and constructs
+- automate the creation and updating of resources and constructs
 - automate the execution of processes
-- automate the exectuion domain specific operations
+- automate the exectuion of domain specific operations
 - automate the triggering and execution of rules
-
-To better understand the "what", 
 
 An operator allows you to encapsulate kubernetes application resources (i.e. pods, deployments, daemonsets, statefulsets, jobs, services, configmaps, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which manages the state of your application resources and drives deployment and/or business logic (operational knowledge) of your CRD deployment instance(s).
 
 ## Why should I care about Operators? 
+
+### The Problem
+
+To better understand the "what", we need to focus on the motivations for why Kubernetes Operators came to be and what problem(s) Operators solve. 
+
+
+
+### The "Why"
 
 The advantages of an operator can be seen when you start thinking about how you manage your applications deployed into a Kubernetes cluster. Typically, you manage the deployment of each individual resource which usually composes the entirety of the application you deploy.
 
