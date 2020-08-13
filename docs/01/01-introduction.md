@@ -10,7 +10,7 @@
   - work on the description of "what is an operator". Maybe more of the what and why and less of the how. Your description assumes a lot of what someone knows already.
 
   - start by defining the problem that operators solve.  It's a good way to set the context and makes the definitions easier to fully understand.  Typically the technology is easy to follow, but the "why" is lacking.  
-  
+
 -->
 
 # Introduction
@@ -20,6 +20,8 @@ This guide serves all but one purpose:
 **To help assist people like you to understand how to write kubernetes operators**
 
 ## What's an Operator?
+
+> <img src="../assets/info.svg" alt="drawing" width="50" align="left" style="margin: 10px 10px 0px 0px"/><p style="position: relative; min-height: 50px; padding: 10px 0px 10px 0px;">Operators are software extensions to Kubernetes.</p>
 
 An operator allows you to encapsulate kubernetes application resources (i.e. pods, deployments, daemonsets, statefulsets, jobs, services, configmaps, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which manages the state of your application resources and drives deployment and/or business logic (operational knowledge) of your CRD deployment instance(s).
 
