@@ -17,13 +17,17 @@
 
 This guide serves all but one purpose: 
 
-**To help assist people like you to understand how to write kubernetes operators**
+**To help assist people like you understand what Kubernetes Operators are and how to write them**
 
-## What's an Operator?
+## What's an Operator
 
-> :information_source: Operators are software extensions to Kubernetes. 
+> :exclamation: Operators are software extensions to Kubernetes that make use of custom resources to manage applications and their components. Operators follow Kubernetes principles, notably the control loop.
+
+Let's break down what that means
 
 An operator allows you to encapsulate kubernetes application resources (i.e. pods, deployments, daemonsets, statefulsets, jobs, services, configmaps, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which manages the state of your application resources and drives deployment and/or business logic (operational knowledge) of your CRD deployment instance(s).
+
+## Why should I care about Operators? 
 
 The advantages of an operator can be seen when you start thinking about how you manage your applications deployed into a Kubernetes cluster. Typically, you manage the deployment of each individual resource which usually composes the entirety of the application you deploy.
 
