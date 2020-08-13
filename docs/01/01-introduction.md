@@ -7,9 +7,9 @@
 
   address feedback: 
   
-  - work on the description of "what is an operator". Maybe more of the what and why and less of the how. Your description assumes a lot of what someone knows already.
+  - [x] work on the description of "what is an operator". Maybe more of the what and why and less of the how. Your description assumes a lot of what someone knows already.
 
-  - start by defining the problem that operators solve.  It's a good way to set the context and makes the definitions easier to fully understand.  Typically the technology is easy to follow, but the "why" is lacking.  
+  - [x] start by defining the problem that operators solve.  It's a good way to set the context and makes the definitions easier to fully understand.  Typically the technology is easy to follow, but the "why" is lacking.  
 
 -->
 
@@ -18,6 +18,20 @@
 This guide serves all but one purpose: 
 
 **To help assist people like you understand what Kubernetes Operators are and how to write them**
+
+## The Problem
+
+To better understand the "What" and the "How" about Kubernetes Operators, we need to understand the problem(s) that motivated the need for Kubenertes Operators. 
+
+Kubernetes is notorious in it's ability to integrate and facilitate declarative configuration and automation. This was out-of-the-box manageable for most stateless applications. 
+
+However, for stateful applications this was a bit problematic. How do you manage and persist the state of your application and it's dependencies? How do you keep the rest of your application going when you add/remove depedencies? Of course, much of this management was done manually and/or required additional personnel resources to help manage (i.e. DevOps) and in general, required more of your attention.  
+
+Much of these types of problems, equated to the ultimate question at hand: 
+
+**How do you effectively automate Stateful Applications on Kubernetes?** 
+
+That answer came in the form of what we call an Operator. 
 
 ## What's an Operator?
 
@@ -29,16 +43,6 @@ An operator is a software extension to Kubernetes. It's a design pattern which a
 - automate the triggering and execution of rules
 
 An operator allows you to encapsulate kubernetes application resources (i.e. pods, deployments, daemonsets, statefulsets, jobs, services, configmaps, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which manages the state of your application resources and drives deployment and/or business logic (operational knowledge) of your CRD deployment instance(s).
-
-## Why should I care about Operators? 
-
-### The Problem
-
-To better understand the "what", we need to focus on the motivations for why Kubernetes Operators came to be and what problem(s) Operators solve. 
-
-
-
-### The "Why"
 
 The advantages of an operator can be seen when you start thinking about how you manage your applications deployed into a Kubernetes cluster. Typically, you manage the deployment of each individual resource which usually composes the entirety of the application you deploy.
 
