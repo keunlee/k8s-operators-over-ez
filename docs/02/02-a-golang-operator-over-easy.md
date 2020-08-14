@@ -16,18 +16,18 @@
 
 Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-requirements.md)
 
-## Lab Specifications (BDD Style)
+## Lab Specifications
 
 ### Story
 
 - **DESCRIPTION**: An Operator with a single busy box pod that shuts down after a user specified amount of time
-- **GIVEN**: A scaffolded operator
-- **WHEN**: the specification `timeout` is added as an attribute to the operator
-- **AND**: the specification `timeout` is set to a numeric value in seconds
-- **AND**: and an Operator instance is created
-- **THEN**: the busy box pod will remain available for the specified `timeout` in seconds,
-- **AND**: log the message, `busybox pod expired` upon `timeout` expiration 
-- **AND**: shutdown after the specified amount `timeout` duration
+  - **GIVEN**: A scaffolded operator
+  - **WHEN**: the specification `timeout` is added as an attribute to the operator
+  - **AND**: the specification `timeout` is set to a numeric value in seconds
+  - **AND**: and an Operator instance is created
+  - **THEN**: the busy box pod will remain available for the specified `timeout` in seconds,
+  - **AND**: log the message, `busybox pod expired` upon `timeout` expiration 
+  - **AND**: shutdown after the specified amount `timeout` duration
 
 ### Acceptance Criteria
 
@@ -36,18 +36,39 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 - the Operator instance must shut down after duration of `timeout` in seconds, has expired
 - the Operator instance must log a message before expiration
 
-## Lab Walkthrough
+## Execution Strategy
 
-### Strategy
+In a nutshell, we want to start up a pod, running a busybox image for a specific duration. But we want our Operator to do this for us, eventually. Our strategy to reach the end state is detailed as followed: 
 
-In a nutshell, we want to start up a pod, running a busybox image for a specific duration. But we want our Operator to do this for us, eventually. Our strategy for this is detailed as followed: 
+- **I - Design** - Create a YAML specification for a pod which runs for a specified amount of time. Do this to validate that our busybox pod can run for a set duration. 
 
-1. **Design** - Create a YAML specification for a pod which runs for a specified amount of time. Do this to validate that our busybox pod can run for a set duration. 
-2. **Scaffolding** - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
-3. **TDD** - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
-4. **CR Design** - Add the `timeout` attribute to our CRD.
-5. **CR Controller Implementation**- Implement our Resource Controller logic to help fulfill the Story and Acceptance Criteria.
-6. **Unit Test Validation** - Validate our Unit Tests
-7. **Deployment** - Deploy the Operator to your Kubernetes cluster
+- **II - Scaffolding** - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
+
+- **III - TDD** - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
+
+- **IV - CR Definition Implementation** - Add the `timeout` attribute to our CRD.
+
+- **V - CR Controller Implementation**- Implement our Resource Controller logic to help fulfill the Story and Acceptance Criteria.
+
+- **VI - Test Validation** - Validate our Unit Tests. Sanity check our Operator so that it is indeed operating as intended. 
+
+- **VII - Deployment** - Deploy the Operator to your Kubernetes cluster
 
 > :information_source: CR is an acronym for "Custom Resource"
+
+## I. Design
+
+## II. Scaffolding
+
+## III. TDD
+
+## IV. CR Definition Implementation
+
+## V. CR Controller Implementation
+
+## VI. Test Validation
+
+## VII. Deployment
+
+## Going Forward
+
