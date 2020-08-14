@@ -16,8 +16,8 @@
 
 Ensure each of the items in the list below have been completed before moving on to next steps. 
 
-- [ ] test
-- [x] test2
+- [ ] Ensure lab requirements have been met. See: [Lab Requirements](../01/03-lab-requirements.md)
+- [ ] test2
 
 ## Lab Specification (BDD Style)
 
