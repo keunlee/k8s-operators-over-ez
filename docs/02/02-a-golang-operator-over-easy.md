@@ -10,7 +10,7 @@
       - Unit Testing
       - End to End Testing
 -->
-# A Golang Operato - Over Easy
+# A Golang Operator - Over Easy
 
 ## Lab Specification (BDD Style)
 
