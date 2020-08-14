@@ -279,4 +279,75 @@ kubectl apply -f deploy/crds/cache.example.com_v1alpha1_memcached_cr.yaml
 # run with olm
 ```
 
+## Random Scratch
+
+```bash
+# create project
+mkdir over-ez-operator
+
+cd over-ez-operator
+
+operator-sdk init --domain=mydomain.com --repo=github.com/mydomain/over-ez-operator
+```
+
+```bash
+# tree
+.
+├── bin
+│   └── manager
+├── config
+│   ├── certmanager
+│   │   ├── certificate.yaml
+│   │   ├── kustomization.yaml
+│   │   └── kustomizeconfig.yaml
+│   ├── default
+│   │   ├── kustomization.yaml
+│   │   ├── manager_auth_proxy_patch.yaml
+│   │   ├── manager_webhook_patch.yaml
+│   │   └── webhookcainjection_patch.yaml
+│   ├── manager
+│   │   ├── kustomization.yaml
+│   │   └── manager.yaml
+│   ├── prometheus
+│   │   ├── kustomization.yaml
+│   │   └── monitor.yaml
+│   ├── rbac
+│   │   ├── auth_proxy_client_clusterrole.yaml
+│   │   ├── auth_proxy_role_binding.yaml
+│   │   ├── auth_proxy_role.yaml
+│   │   ├── auth_proxy_service.yaml
+│   │   ├── kustomization.yaml
+│   │   ├── leader_election_role_binding.yaml
+│   │   ├── leader_election_role.yaml
+│   │   └── role_binding.yaml
+│   ├── scorecard
+│   │   ├── bases
+│   │   │   └── config.yaml
+│   │   ├── kustomization.yaml
+│   │   └── patches
+│   │       ├── basic.config.yaml
+│   │       └── olm.config.yaml
+│   └── webhook
+│       ├── kustomization.yaml
+│       ├── kustomizeconfig.yaml
+│       └── service.yaml
+├── Dockerfile
+├── go.mod
+├── go.sum
+├── hack
+│   └── boilerplate.go.txt
+├── main.go
+├── Makefile
+└── PROJECT
+```
+
+```bash
+# create new api and controller
+operator-sdk create api --group=lab00 --version=v1alpha1 --kind=Mycrd
+Create Resource [y/n]
+y
+Create Controller [y/n]
+y
+```
+
 

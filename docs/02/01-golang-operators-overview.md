@@ -76,72 +76,59 @@ Each stage in the Reconciliation Cycle, correspond to particular points of inter
 > :information_source: **The template below can be a "code generated" artifact**, when using the Operator Framework. Once you've generated your resource controller, it is then your responsiblity to fill in the rest of the template so that it functions and operates as you want. We will examine in more detail this feature when executing the labs portion of this guide. 
 
 ```golang
-package mycrd
+package controllers
 
 import (
-	mycrdv1alpha1 "github.com/keunlee/task-001-operator/pkg/apis/mycrd/v1alpha1"
+	"context"
+
+	"github.com/go-logr/logr"
 	"k8s.io/apimachinery/pkg/runtime"
+	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
-	"sigs.k8s.io/controller-runtime/pkg/controller"
-	"sigs.k8s.io/controller-runtime/pkg/handler"
-	logf "sigs.k8s.io/controller-runtime/pkg/log"
-	"sigs.k8s.io/controller-runtime/pkg/manager"
-	"sigs.k8s.io/controller-runtime/pkg/reconcile"
-	"sigs.k8s.io/controller-runtime/pkg/source"
+
+	lab00v1alpha1 "github.com/sample-domain/over-ez-operator/api/v1alpha1"
 )
 
-var log = logf.Log.WithName("controller_mycrd")
-
-var _ reconcile.Reconciler = &MyCRD{}
-
-type ReconcileTask001 struct {
-	client client.Client
-	scheme *runtime.Scheme
+// MycrdReconciler reconciles a Mycrd object
+type MycrdReconciler struct {
+	client.Client
+	Log    logr.Logger
+	Scheme *runtime.Scheme
 }
 
-func Add(mgr manager.Manager) error {
-	return add(mgr, newReconciler(mgr))
-}
-
-func newReconciler(mgr manager.Manager) reconcile.Reconciler {
-	return &MyCRD{client: mgr.GetClient(), scheme: mgr.GetScheme()}
-}
-
-// --------------------
-// OBSERVE/WATCH STAGE: Observe the current state of the cluster. Add a watch to observe
-// artifacts w/in the customer resource
-// --------------------
-func add(mgr manager.Manager, r reconcile.Reconciler) error {
-	c, err := controller.New("mycrd-controller", mgr, controller.Options{Reconciler: r})
-	if err != nil {
-		return err
-	}
-
-	err = c.Watch(&source.Kind{Type: &mycrdv1alpha1.MyCRD{}}, &handler.EnqueueRequestForObject{})
-	if err != nil {
-		return err
-	}
-
-  // TODO: Watch for changes to secondary resources
-  // 
-  // ADD WATCHES HERE
-  //
-
-	return nil
-}
+// +kubebuilder:rbac:groups=lab00.sample-domain.com,resources=mycrds,verbs=get;list;watch;create;update;patch;delete
+// +kubebuilder:rbac:groups=lab00.sample-domain.com,resources=mycrds/status,verbs=get;update;patch
 
 // --------------------
 // ACT/RECONCILE STAGE : Perform all necessary actions to the make current resource state match
 // the desired state. This is called reconciliation.
 // --------------------
-func (r *ReconcileMyCRD) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+func (r *MycrdReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
+	_ = context.Background()
+	_ = r.Log.WithValues("mycrd", req.NamespacedName)
 
   // TODO: Implement reconciliation controller logic
   // 
   // ADD RECONCILIATION LOGIC HERE
   //
 
-	return reconcile.Result{}, nil
+	return ctrl.Result{}, nil
+}
+
+// --------------------
+// OBSERVE/WATCH STAGE: Observe the current state of the cluster. Add a watch to observe
+// artifacts w/in the customer resource
+// --------------------
+func (r *MycrdReconciler) SetupWithManager(mgr ctrl.Manager) error {
+	return ctrl.NewControllerManagedBy(mgr).
+    For(&lab00v1alpha1.Mycrd{}).
+    
+    // TODO: Watch for changes to secondary resources
+    // 
+    // ADD WATCHES HERE
+    //
+
+		Complete(r)
 }
 ```
 
@@ -169,23 +156,16 @@ When this resource is created, part of the resource creation process involves ad
 // OBSERVE/WATCH STAGE: Observe the current state of the cluster. Add a watch to observe
 // artifacts w/in the customer resource
 // --------------------
-func add(mgr manager.Manager, r reconcile.Reconciler) error {
-	c, err := controller.New("mycrd-controller", mgr, controller.Options{Reconciler: r})
-	if err != nil {
-		return err
-	}
+func (r *MycrdReconciler) SetupWithManager(mgr ctrl.Manager) error {
+	return ctrl.NewControllerManagedBy(mgr).
+    For(&lab00v1alpha1.Mycrd{}).
+    
+    // TODO: Watch for changes to secondary resources
+    // 
+    // ADD WATCHES HERE
+    //
 
-	err = c.Watch(&source.Kind{Type: &mycrdv1alpha1.MyCRD{}}, &handler.EnqueueRequestForObject{})
-	if err != nil {
-		return err
-	}
-
-  // TODO: Watch for changes to secondary resources
-  // 
-  // ADD WATCHES HERE
-  //
-  
-  return nil
+		Complete(r)
 }
 ```
 
@@ -210,13 +190,15 @@ Since the current state doesn't match the desired state, the resource controller
 // ACT/RECONCILE STAGE : Perform all necessary actions to the make current resource state match
 // the desired state. This is called reconciliation.
 // --------------------
-func (r *ReconcileMyCRD) Reconcile(request reconcile.Request) (reconcile.Result, error) {
+func (r *MycrdReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
+	_ = context.Background()
+	_ = r.Log.WithValues("mycrd", req.NamespacedName)
 
   // TODO: Implement reconciliation controller logic
   // 
   // ADD RECONCILIATION LOGIC HERE
   //
 
-	return reconcile.Result{}, nil
+	return ctrl.Result{}, nil
 }
 ```
