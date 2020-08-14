@@ -47,7 +47,7 @@ In a nutshell, we want to start up a pod, running a busybox image for a specific
 3. **TDD** - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
 4. **CR Design** - Add the `timeout` attribute to our CRD.
 5. **CR Controller Implementation**- Implement our Resource Controller logic to help fulfill the Story and Acceptance Criteria.
-6. Unit Test Validation - Validate our Unit Tests
-7. Deployment - Deploy the Operator to your Kubernetes cluster
+6. **Unit Test Validation** - Validate our Unit Tests
+7. **Deployment** - Deploy the Operator to your Kubernetes cluster
 
 > :information_source: CR is an acronym for "Custom Resource"
