@@ -14,12 +14,18 @@
 
 ## Environment Setup
 
-Ensure each of the items in the list below have been completed before moving on to next steps. 
+Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-requirements.md)
 
-- [ ] Ensure lab requirements have been met. See: [Lab Requirements](../01/03-lab-requirements.md)
-- [ ] test2
+## Lab Specifications (BDD Style)
 
-## Lab Specification (BDD Style)
+- **DESCRIPTION**: An Operator with a single busy box pod that shuts down after a user specified amount of time
+- **GIVEN**: A scaffolded operator
+- **WHEN**: the specification `timeout` is added as an attribute to the operator
+- **AND**: the specification `timeout` is set to a numeric value in seconds
+- **AND**: and an Operator instance is created
+- **THEN**: the busy box pod will remain available for the specified `timeout` in seconds,
+- **AND**: log a message before timing out
+- **AND**: shutdown after the specified amount time
 
 ## Lab Walkthrough
 

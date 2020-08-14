@@ -5,7 +5,7 @@ To run the labs and scripts in this guide, you will need the following:
 * An accessible kubernetes cluster with sufficient privileges
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 * [kubectx/kubens](https://github.com/ahmetb/kubectx)
-* [operator-sdk](https://sdk.operatorframework.io/docs/install-operator-sdk/)
+* [operator-sdk](https://sdk.operatorframework.io/docs/installation/install-operator-sdk/)
 * a shell environment (i.e. bash, zsh)
 * a text editor
 
