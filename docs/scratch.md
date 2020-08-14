@@ -348,6 +348,14 @@ Create Resource [y/n]
 y
 Create Controller [y/n]
 y
+
+make generate
+make manifests
+```
+
+```bash
+# create sample pod
+kubectl create ns golang-lab00
 ```
 
 

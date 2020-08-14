@@ -40,7 +40,7 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 
 In a nutshell, we want to start up a pod, running a busybox image for a specific duration. But we want our Operator to do this for us, eventually. Our strategy to reach the end state is detailed as followed: 
 
-- **I - Design** - Create a YAML specification for a pod which runs for a specified amount of time. Do this to validate that our busybox pod can run for a set duration. 
+- **I - Design** - Create a YAML specification for a pod which runs for a specified amount of time. Do this to validate our design and to validate that our busybox pod can run for a set duration. 
 
 - **II - Scaffolding** - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
 
@@ -57,6 +57,59 @@ In a nutshell, we want to start up a pod, running a busybox image for a specific
 > :information_source: CR is an acronym for "Custom Resource"
 
 ## I. Design
+
+Let's begin by creating a project namespace in our cluster. 
+
+```bash
+kubectl create ns golang-op-lab-00
+```
+
+set the current context to newly created namespace
+
+```bash
+kubens golang-op-lab-00
+```
+
+Let's try to create to a yaml for a pod which will start a busybox container and run for a specified duration, 15 seconds.  
+
+```bash
+kubectl run busybox --image=busybox --restart=Never --dry-run -o yaml -- /bin/sh -c 'sleep 15' > golang-op-lab-00-pod.yaml
+```
+
+Running the following will yield the following generated yaml contents: 
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: busybox
+  name: busybox
+spec:
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - sleep 10
+    image: busybox
+    name: busybox
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+```
+
+If we deploy this yaml, we'll see that it will run for 15 seconds and shutdown afterwards. To deploy the pod and watch it's change in status after the set duration:  
+
+```bash
+# deploy the pod
+kubectl apply -f golang-op-lab-00-pod.yaml
+
+# watch for changes on the pod, ctrl-c to exit
+watch kubectl get po
+```
+
 
 ## II. Scaffolding
 
