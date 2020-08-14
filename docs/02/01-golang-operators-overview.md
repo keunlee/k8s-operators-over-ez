@@ -195,7 +195,7 @@ We won't go into the specifics of filling out the template here. For now, we are
 
 In this phase, the resource controller compares the current state of the resource instance to the desired state. The desired state is typically reflective of what is specified in the `spec` attributes of the resource. 
 
-An example of request like this would be if we wanted to change the `spec: size: 3` to `spec: size: 4` of the resource. 
+An example of a request like this would be if we wanted to change the `spec: size: 3` to `spec: size: 4` of the resource. 
 
 ![](../assets/current-state-desired-state.png)
 
