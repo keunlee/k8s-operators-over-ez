@@ -42,10 +42,12 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 
 In a nutshell, we want to start up a pod, running a busybox image for a specific duration. But we want our Operator to do this for us, eventually. Our strategy for this is detailed as followed: 
 
-- [ ] - Create a YAML specification for a pod which runs for a specified amount of time. Do this to validate that our busybox pod can run for a set duration. 
-- [ ] - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
-- [ ] - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
-- [ ] - Add the `timeout` attribute to our CRD.
-- [ ] - Implement our Resource Controller logic to help fulfill the Story and Acceptance Criteria.
-- [ ] - Validate our Unit Tests
-- [ ] - Deploy the Operator to your Kubernetes cluster
+1. **Design** - Create a YAML specification for a pod which runs for a specified amount of time. Do this to validate that our busybox pod can run for a set duration. 
+2. **Scaffolding** - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
+3. **TDD** - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
+4. **CR Design** - Add the `timeout` attribute to our CRD.
+5. **CR Controller Implementation**- Implement our Resource Controller logic to help fulfill the Story and Acceptance Criteria.
+6. Unit Test Validation - Validate our Unit Tests
+7. Deployment - Deploy the Operator to your Kubernetes cluster
+
+> :information_source: CR: Custom Resource
