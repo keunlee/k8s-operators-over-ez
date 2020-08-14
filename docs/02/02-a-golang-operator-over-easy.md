@@ -50,4 +50,4 @@ In a nutshell, we want to start up a pod, running a busybox image for a specific
 6. Unit Test Validation - Validate our Unit Tests
 7. Deployment - Deploy the Operator to your Kubernetes cluster
 
-> :information_source: CR: Custom Resource
+> :information_source: CR is an acronym for "Custom Resource"
