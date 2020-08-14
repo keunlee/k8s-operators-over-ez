@@ -31,10 +31,21 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 
 ### Acceptance Criteria
 
-- [ ] - the Operator must have a `timeout` specification attribute
-- [ ] - the Operator instance must start a busybox pod for the duration of `timeout` in seconds
-- [ ] - the Operator instance must shut down after duration of `timeout` in seconds, has expired
-- [ ] - the Operator instance must log a message before expiration
+- the Operator must have a `timeout` specification attribute
+- the Operator instance must start a busybox pod for the duration of `timeout` in seconds
+- the Operator instance must shut down after duration of `timeout` in seconds, has expired
+- the Operator instance must log a message before expiration
 
 ## Lab Walkthrough
 
+### Strategy
+
+In a nutshell, we want to start up a pod, running a busybox image for a specific duration. But we want our Operator to do this for us, eventually. Our strategy for this is detailed as followed: 
+
+- [ ] - Create a YAML specification for a pod which runs for a specified amount of time. Do this to validate that our busybox pod can run for a set duration. 
+- [ ] - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
+- [ ] - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
+- [ ] - Add the `timeout` attribute to our CRD.
+- [ ] - Implement our Resource Controller logic to help fulfill the Story and Acceptance Criteria.
+- [ ] - Validate our Unit Tests
+- [ ] - Deploy the Operator to your Kubernetes cluster
