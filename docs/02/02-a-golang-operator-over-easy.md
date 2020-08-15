@@ -18,11 +18,11 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 
 ## Lab Specifications
 
-### Stories (BDD/Gherkin Style)
+### Story (BDD/Gherkin Style)
 
 **DESCRIPTION**
 
-An Operator with a single busy box pod that logs a user specified message and shuts down after a user specified amount of time
+An Operator with a single busy box pod that logs a user specified message and shuts down after a user specified amount of time. If a duration or message are not specified, then both will be supplied by a REST API call. 
 
 - **SCENARIO**: Shutdown the busybox pod after a user specified amount of time in seconds
   - **GIVEN**: A scaffolded operator
@@ -37,12 +37,19 @@ An Operator with a single busy box pod that logs a user specified message and sh
   - **WHEN**: the specification `message` is set to a string value
   - **THEN**: the busy box pod will log the message, from the `message` specification after the `timeout` duration has expired. 
 
+- **SCENARIO**: Retrieve the `timeout` and `message` from a given REST API if one and/or the other is not supplied. 
+  - **GIVEN**: A scaffolded operator
+  - **AND**: an Operator instance
+  - **WHEN**: the specification `message` OR `timeout` is NOT set
+  - **THEN**: the busy box pod will supply these values from the following REST API: `GET http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response`
+
 ### Acceptance Criteria
 
 - The CRD must have a `timeout` specification attribute
 - The Operator instance must shut down after duration of `timeout` in seconds, has expired
 - The CRD must have a `message` specification attribute
 - The Operator instance must log the message `message` before the container has stopped
+- The Operator instance must retrieve a `message` and `timeout` value from a REST API call, if both are not initially supplied on the Operator Instance. 
 
 ## Execution Strategy
 
@@ -125,11 +132,6 @@ watch kubectl get po
 # display log messages
 kubectl logs busybox -c busybox
 ```
-
-For the sake of simplicity over practicality, we will make two observations on domain specific operations: 
-
-- we need to be able to set the `timeout` duration
-- we need to be able to set the `message`
 
 
 
