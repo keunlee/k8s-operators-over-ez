@@ -54,9 +54,9 @@ For now, our strategy to reach the end state is detailed as followed:
 
 - **I - Prototyping** - Create a YAML specification for a pod which runs for a specified amount of time and logs a specific message. Do this to validate our design. We'll eventually want our Operator controller implementation to dynamically set the pods timeout duration and log message. For now, we will validate our prototype. 
 
-- **II - Scaffolding** - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
+- **II - Operator Scaffolding** - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
 
-- **III - TDD** - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
+- **III - TDD Setup** - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
 
 - **IV - CR Definition Implementation** - Add the `timeout` attribute to our CRD.
 
@@ -140,5 +140,5 @@ kubectl logs busybox -c busybox
 
 ## VII. Deployment
 
-## Going Forward
+# Going Forward
 

@@ -21,15 +21,18 @@
   - [The Reconciliation Cycle - Revisited](02/01-golang-operators-overview.md#the-reconciliation-cycle---revisited)
     
 - [A Golang Operator Lab - Over Easy](02/02-a-golang-operator-over-easy.md)
-  - Overview
-  - Lab Specification (BDD Style)
-  - Step-by-Step Detailed Lab Walkthrough
-    - Summary
-    - Scaffolding
-    - Writing Your Operator Specifications and Status 
-    - Writing Your Operator Controller Implementation
-    - Unit Testing
-    - End to End Testing
+  - [Environment Setup](02/02-a-golang-operator-over-easy.md#environment-setup)
+  - [Lab Specifications](02/02-a-golang-operator-over-easy.md#lab-specifications)
+  - [Execution Strategy](02/02-a-golang-operator-over-easy.md#execution-strategy)
+  - [I. Prototyping](02/02-a-golang-operator-over-easy.md#i-prototyping)
+  - [II. Operating Scaffolding](02/02-a-golang-operator-over-easy.md#ii-scaffolding)
+  - [III. TDD Setup (Test Driven Design)]()
+  - [IV. CR Definition Implementation]()
+  - [V. CR Controller Implementation]()
+  - [VI. Test Validation]()
+  - [VII. Deployment]()
+
+- [Going Forward]()
 
 - [Debugging Golang Operators](02/03-debugging-golang-operators.md)
 
