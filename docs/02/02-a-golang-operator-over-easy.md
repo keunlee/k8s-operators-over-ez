@@ -70,9 +70,10 @@ set the current context to newly created namespace
 kubens golang-op-lab-00
 ```
 
-Let's try to create to a yaml for a pod which will start a busybox container and run for a specified duration, 15 seconds.  
+Let's try to create the yaml for a pod which will start a busybox container and run for a specified duration, 15 seconds.  
 
 ```bash
+# create the pod yaml
 kubectl run busybox --image=busybox --restart=Never --dry-run -o yaml -- /bin/sh -c 'sleep 15' > golang-op-lab-00-pod.yaml
 ```
 
@@ -106,7 +107,7 @@ If we deploy this yaml, we'll see that it will run for 15 seconds and shutdown a
 # deploy the pod
 kubectl apply -f golang-op-lab-00-pod.yaml
 
-# watch for changes on the pod, ctrl-c to exit
+# watch for changes on the pod, ctrl-c to
 watch kubectl get po
 ```
 
