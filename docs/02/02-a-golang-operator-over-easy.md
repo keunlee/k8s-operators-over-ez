@@ -68,7 +68,7 @@ For now, our strategy to reach the end state is detailed as followed:
 
 > :information_source: CR is an acronym for "Custom Resource"
 
-## I. Prototyping
+### I. Prototyping
 
 Let's begin by creating a project namespace in our cluster. 
 
@@ -128,17 +128,17 @@ watch kubectl get po
 kubectl logs busybox -c busybox
 ```
 
-## II. Operator Scaffolding
+### II. Operator Scaffolding
 
-## III. TDD Setup
+### III. TDD Setup
 
-## IV. CR Definition Implementation
+### IV. CR Definition Implementation
 
-## V. CR Controller Implementation
+### V. CR Controller Implementation
 
-## VI. Test Validation
+### VI. Test Validation
 
-## VII. Deployment
+### VII. Deployment
 
-# Going Forward
+## Going Forward
 
