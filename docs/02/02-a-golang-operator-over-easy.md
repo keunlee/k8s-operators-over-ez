@@ -22,25 +22,33 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 
 - **DESCRIPTION**: An Operator with a single busy box pod that shuts down after a user specified amount of time
   - **GIVEN**: A scaffolded operator
-  - **WHEN**: the specification `timeout` is added as an attribute to the operator
-  - **AND**: the specification `timeout` is set to a numeric value in seconds
-  - **AND**: and an Operator instance is created
+  - **AND**: an Operator instance
+  - **WHEN**: the specification `timeout` is set to a numeric value in seconds
   - **THEN**: the busy box pod will remain available for the specified `timeout` in seconds,
-  - **AND**: log the message, `busybox pod expired` upon `timeout` expiration 
   - **AND**: shutdown after the specified amount `timeout` duration
+
+- **DESCRIPTION**: An Operator with a single busy box pod that logs a user specified message
+  - **GIVEN**: A scaffolded operator
+  - **AND**: an Operator instance
+  - **WHEN**: the specification `message` is set to a string value
+  - **THEN**: the busy box pod will log the message, from the `message` specification after the `timeout` duration has expired. 
 
 ### Acceptance Criteria
 
 - the Operator must have a `timeout` specification attribute
-- the Operator instance must start a busybox pod for the duration of `timeout` in seconds
 - the Operator instance must shut down after duration of `timeout` in seconds, has expired
-- the Operator instance must log a message before expiration
+- the Operator must have a `message` specification attribute
+- the Operator instance must log the message `message` before the container has stopped
 
 ## Execution Strategy
 
-In a nutshell, we want to start up a pod, running a busybox image for a specific duration. But we want our Operator to do this for us, eventually. Our strategy to reach the end state is detailed as followed: 
+In a nutshell, we want to start up a pod, running a busybox image for a specific duration and logging a user specific message. 
 
-- **I - Design** - Create a YAML specification for a pod which runs for a specified amount of time. Do this to validate our design and to validate that our busybox pod can run for a set duration. 
+We'll want our Operator to provision our pod with our user specified attribute selections, eventually. 
+
+For now, our strategy to reach the end state is detailed as followed: 
+
+- **I - Prototyping** - Create a YAML specification for a pod which runs for a specified amount of time and logs a specific message. Do this to validate our design. We'll eventually want our Operator controller implementation to dynamically set the pods timeout duration and log message. For now, we will validate our prototype. 
 
 - **II - Scaffolding** - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
 
@@ -56,7 +64,7 @@ In a nutshell, we want to start up a pod, running a busybox image for a specific
 
 > :information_source: CR is an acronym for "Custom Resource"
 
-## I. Design
+## I. Prototyping
 
 Let's begin by creating a project namespace in our cluster. 
 
@@ -74,7 +82,7 @@ Let's try to create the yaml for a pod which will start a busybox container and 
 
 ```bash
 # create the pod yaml
-kubectl run busybox --image=busybox --restart=Never --dry-run -o yaml -- /bin/sh -c 'sleep 15' > golang-op-lab-00-pod.yaml
+kubectl run busybox --image=busybox --restart=Never --dry-run -o yaml -- /bin/sh -c 'sleep 15; echo "hello world"' > golang-op-lab-00-pod.yam
 ```
 
 Running the following will yield the following generated yaml contents: 
@@ -102,6 +110,8 @@ status: {}
 ```
 
 If we deploy this yaml, we'll see that it will run for 15 seconds and shutdown afterwards. To deploy the pod and watch it's change in status after the set duration:  
+
+At this point, the only thing that we haven't accomodated for is how we will log a message right before the pod is shutdown. 
 
 ```bash
 # deploy the pod
