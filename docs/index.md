@@ -24,15 +24,14 @@
   - [Environment Setup](02/02-a-golang-operator-over-easy.md#environment-setup)
   - [Lab Specifications](02/02-a-golang-operator-over-easy.md#lab-specifications)
   - [Execution Strategy](02/02-a-golang-operator-over-easy.md#execution-strategy)
-  - [I. Prototyping](02/02-a-golang-operator-over-easy.md#i-prototyping)
-  - [II. Operating Scaffolding](02/02-a-golang-operator-over-easy.md#ii-operator-scaffolding)
-  - [III. TDD Setup (Test Driven Design)](02/02-a-golang-operator-over-easy.md#iii-tdd-setup)
-  - [IV. CR Definition Implementation](02/02-a-golang-operator-over-easy.md#iv-cr-definition-implementation)
-  - [V. CR Controller Implementation](02/02-a-golang-operator-over-easy.md#v-cr-controller-implementation)
-  - [VI. Test Validation](02/02-a-golang-operator-over-easy.md#vi-test-validation)
-  - [VII. Deployment](02/02-a-golang-operator-over-easy.md#vii-deployment)
-
-- [Going Forward]()
+    - [I. Prototyping](02/02-a-golang-operator-over-easy.md#i-prototyping)
+    - [II. Operating Scaffolding](02/02-a-golang-operator-over-easy.md#ii-operator-scaffolding)
+    - [III. TDD Setup (Test Driven Design)](02/02-a-golang-operator-over-easy.md#iii-tdd-setup)
+    - [IV. CR Definition Implementation](02/02-a-golang-operator-over-easy.md#iv-cr-definition-implementation)
+    - [V. CR Controller Implementation](02/02-a-golang-operator-over-easy.md#v-cr-controller-implementation)
+    - [VI. Test Validation](02/02-a-golang-operator-over-easy.md#vi-test-validation)
+    - [VII. Deployment](02/02-a-golang-operator-over-easy.md#vii-deployment)
+  - [Going Forward]()
 
 - [Debugging Golang Operators](02/03-debugging-golang-operators.md)
 
