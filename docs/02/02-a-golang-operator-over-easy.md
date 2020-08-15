@@ -128,9 +128,9 @@ watch kubectl get po
 kubectl logs busybox -c busybox
 ```
 
-## II. Scaffolding
+## II. Operator Scaffolding
 
-## III. TDD
+## III. TDD Setup
 
 ## IV. CR Definition Implementation
 
