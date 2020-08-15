@@ -150,9 +150,9 @@ operator-sdk init --domain=mydomain.com --repo=github.com/mydomain/over-ez-opera
 # create new api and controller
 operator-sdk create api --group=golang-op-lab00 --version=v1alpha1 --kind=Mycrd
 
-# create resource [y/n] y
+# (you will be prompted the following) - create resource [y/n] y
 
-# create controller [y/n] y
+# (you will be prompted the following) - create controller [y/n] y
 ```
 
 ### III. CR Definition Implementation
