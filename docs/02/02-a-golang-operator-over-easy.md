@@ -55,7 +55,7 @@ An Operator with a single busy box pod that logs a user specified message and sh
 
 In a nutshell, we want to start up a pod, running a busybox image for a specific duration and logging a user specific message. 
 
-We'll want our Operator to provision our pod with our user specified attribute selections, eventually. 
+We'll want our Operator to provision our pod with the necessary attribute specifications, eventually. 
 
 For now, our strategy to reach the end state is detailed as followed: 
 
@@ -133,9 +133,17 @@ watch kubectl get po
 kubectl logs busybox -c busybox
 ```
 
+We've got a basic prototype of what we'd like the final deployment state of our Operator instance to be. In this case, it's a single busybox pod. 
 
+At this point, we need to think about what our domain specific **operations** are. The previously generated pod YAML will not handle all of these operations as is. Rehashing those requirements into domain specific operations: 
+
+**If a message and duration are supplied, create a busybox pod with a duration and message** : This is pretty straightforward to automate. You just specify the `timeout` duration and `message` in the pods YAML. 
+
+**If a message and duration are NOT supplied, then supply one from a REST API call, and then create a busybox pod with the a duration and message**:  Since we've got a dynamic element at play here, how do we automate this? Of course, in code w/in our CR Controller implementation.  
 
 ### II. Operator Scaffolding
+
+
 
 ### III. TDD Setup
 
@@ -147,5 +155,7 @@ kubectl logs busybox -c busybox
 
 ### VII. Deployment
 
-## Going Forward
+## "Ok, that was too simple of an example!"
+
+If that is what you are thinking, you are probably right. 
 
