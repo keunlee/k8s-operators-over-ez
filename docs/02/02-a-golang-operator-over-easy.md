@@ -171,5 +171,9 @@ make manifests
 
 ### VI. Test Validation
 
+```bash
+go test ./controllers -timeout 30s -run ^TestAPIs$ -v
+```
+
 ### VII. Deployment
 
