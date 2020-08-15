@@ -63,9 +63,9 @@ For now, our strategy to reach the end state is detailed as followed:
 
 - **II - Operator Scaffolding** - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
 
-- **III - TDD Setup** - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
+- **III - CR Definition Implementation** - Add the `timeout` attribute to our CRD.
 
-- **IV - CR Definition Implementation** - Add the `timeout` attribute to our CRD.
+- **IV - TDD Setup** - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
 
 - **V - CR Controller Implementation**- Implement our Resource Controller logic to help fulfill the Story and Acceptance Criteria.
 
@@ -143,11 +143,29 @@ At this point, we need to think about what our domain specific **operations** ar
 
 ### II. Operator Scaffolding
 
+```bash
+# scaffold a new operator - over-ez-operator
+operator-sdk init --domain=mydomain.com --repo=github.com/mydomain/over-ez-operator
 
+# create new api and controller
+operator-sdk create api --group=golang-op-lab00 --version=v1alpha1 --kind=Mycrd
 
-### III. TDD Setup
+# create resource [y/n] y
 
-### IV. CR Definition Implementation
+# create controller [y/n] y
+```
+
+### III. CR Definition Implementation
+
+```bash
+# generate/update code for resource types
+make generate
+
+# generate/update manifests for the CRD
+make manifests
+```
+
+### IV. TDD Setup
 
 ### V. CR Controller Implementation
 
