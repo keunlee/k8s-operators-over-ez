@@ -18,16 +18,20 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 
 ## Lab Specifications
 
-### Stories (BDD)
+### Stories (BDD/Gherkin Style)
 
-- **DESCRIPTION**: An Operator with a single busy box pod that shuts down after a user specified amount of time
+**DESCRIPTION**
+
+An Operator with a single busy box pod that logs a user specified message and shuts down after a user specified amount of time
+
+- **SCENARIO**: Shutdown the busybox pod after a user specified amount of time in seconds
   - **GIVEN**: A scaffolded operator
   - **AND**: an Operator instance
   - **WHEN**: the specification `timeout` is set to a numeric value in seconds
   - **THEN**: the busy box pod will remain available for the specified `timeout` in seconds,
   - **AND**: shutdown after the specified amount `timeout` duration
 
-- **DESCRIPTION**: An Operator with a single busy box pod that logs a user specified message
+- **SCENARIO**: Log a user specified message before shutting down the busybox pod
   - **GIVEN**: A scaffolded operator
   - **AND**: an Operator instance
   - **WHEN**: the specification `message` is set to a string value
@@ -100,7 +104,7 @@ spec:
   - args:
     - /bin/sh
     - -c
-    - sleep 10
+    - sleep 15; echo "hello world"
     image: busybox
     name: busybox
     resources: {}
@@ -109,9 +113,9 @@ spec:
 status: {}
 ```
 
-If we deploy this yaml, we'll see that it will run for 15 seconds and shutdown afterwards. To deploy the pod and watch it's change in status after the set duration:  
+If we deploy this yaml, we'll see that it will run for 15 seconds, log a message to the console and shutdown afterwards. 
 
-At this point, the only thing that we haven't accomodated for is how we will log a message right before the pod is shutdown. 
+To deploy the pod, watch it's change in status after the set duration, and view the pods logs:  
 
 ```bash
 # deploy the pod
@@ -119,8 +123,10 @@ kubectl apply -f golang-op-lab-00-pod.yaml
 
 # watch for changes on the pod, ctrl-c to
 watch kubectl get po
-```
 
+# display log messages
+kubectl logs busybox -c busybox
+```
 
 ## II. Scaffolding
 
