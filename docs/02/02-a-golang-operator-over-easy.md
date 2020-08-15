@@ -139,7 +139,7 @@ At this point, we need to think about what our domain specific **operations** ar
 
 **If a message and duration are supplied, create a busybox pod with a duration and message** : This is pretty straightforward to automate. You just specify the `timeout` duration and `message` in the pods YAML. 
 
-**If a message and duration are NOT supplied, then supply one from a REST API call, and then create a busybox pod with the a duration and message**:  Since we've got a dynamic element at play here, how do we automate this? Of course, in code w/in our CR Controller implementation.  
+**If a message and duration are NOT supplied, then supply one from a REST API call, and then create a busybox pod with the duration and message**:  Since we've got a dynamic element at play here, how do we automate this? Of course, in code w/in our CR Controller implementation.  
 
 ### II. Operator Scaffolding
 
@@ -154,8 +154,4 @@ At this point, we need to think about what our domain specific **operations** ar
 ### VI. Test Validation
 
 ### VII. Deployment
-
-## "Ok, that was too simple of an example!"
-
-If that is what you are thinking, you are probably right. 
 
