@@ -7,6 +7,7 @@ To run the labs and scripts in this guide, you will need the following:
 * [kubectx/kubens](https://github.com/ahmetb/kubectx)
 * [operator-sdk >= 1.0.0](https://sdk.operatorframework.io/docs/installation/install-operator-sdk/)
 * [kustomize](https://kubernetes-sigs.github.io/kustomize/installation/)
+* [golang](https://golang.org/doc/install)
 * make - build uitlity
 * a shell environment (i.e. bash, zsh)
 * a text editor
