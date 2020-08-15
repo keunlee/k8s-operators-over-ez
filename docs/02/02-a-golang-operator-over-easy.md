@@ -39,10 +39,10 @@ An Operator with a single busy box pod that logs a user specified message and sh
 
 ### Acceptance Criteria
 
-- the Operator must have a `timeout` specification attribute
-- the Operator instance must shut down after duration of `timeout` in seconds, has expired
-- the Operator must have a `message` specification attribute
-- the Operator instance must log the message `message` before the container has stopped
+- The CRD must have a `timeout` specification attribute
+- The Operator instance must shut down after duration of `timeout` in seconds, has expired
+- The CRD must have a `message` specification attribute
+- The Operator instance must log the message `message` before the container has stopped
 
 ## Execution Strategy
 
@@ -82,7 +82,7 @@ set the current context to newly created namespace
 kubens golang-op-lab-00
 ```
 
-Let's try to create the yaml for a pod which will start a busybox container and run for a specified duration, 15 seconds.  
+Let's try to create the yaml for a pod which will start a busybox container and run for a specified duration, 15 seconds, and logs the message "hello world".
 
 ```bash
 # create the pod yaml
@@ -113,15 +113,13 @@ spec:
 status: {}
 ```
 
-If we deploy this yaml, we'll see that it will run for 15 seconds, log a message to the console and shutdown afterwards. 
-
 To deploy the pod, watch it's change in status after the set duration, and view the pods logs:  
 
 ```bash
 # deploy the pod
 kubectl apply -f golang-op-lab-00-pod.yaml
 
-# watch for changes on the pod, ctrl-c to
+# watch for changes on the pod, ctrl-c to exit the watch
 watch kubectl get po
 
 # display log messages
