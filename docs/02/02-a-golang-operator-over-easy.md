@@ -18,7 +18,7 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 
 ## Lab Specifications
 
-### Story
+### Stories (BDD)
 
 - **DESCRIPTION**: An Operator with a single busy box pod that shuts down after a user specified amount of time
   - **GIVEN**: A scaffolded operator
