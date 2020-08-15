@@ -126,6 +126,13 @@ watch kubectl get po
 kubectl logs busybox -c busybox
 ```
 
+For the sake of simplicity over practicality, we will make two observations on domain specific operations: 
+
+- we need to be able to set the `timeout` duration
+- we need to be able to set the `message`
+
+
+
 ### II. Operator Scaffolding
 
 ### III. TDD Setup
