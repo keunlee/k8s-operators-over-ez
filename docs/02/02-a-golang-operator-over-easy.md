@@ -143,11 +143,13 @@ The next step from here, is thinking about what our **domain specific operations
 
 - **If a message and duration are supplied, create a busybox pod with a duration and message** : This is pretty straightforward to automate. You just specify the `timeout` duration and `message` in the pods YAML. No real issues here. 
 
-- **If a message and duration are NOT supplied, then supply one from a REST API call, and then create a busybox pod with the duration and message**:  Since we've got a dynamic element at play here, we can automate this in code, w/in our Golang CR Controller. 
+- **If a message and duration are NOT supplied, then supply one from a REST API call, and then create a busybox pod with the duration and message**:  Since we've got a dynamic element at play here, we can automate this in code, w/in our CR Controller. 
+
+We now have a purpose for building an operator, which will automate our domain specification operations. 
 
 ### II. Operator Scaffolding
 
-Run the following to scaffold your operator and create a resource and controller. Say 'yes' to all prompts. 
+To begin codifying our domain specific operations, run the following to scaffold your operator and create a resource and controller. Say 'yes' to all prompts. 
 
 ```bash
 # scaffold a new operator - over-ez-operator
@@ -166,6 +168,8 @@ One you run the above, you'll see a number of files generated. Of those files, t
 - CR Implementation location: `api/v1alpha1/mycrd_types.go`
 
 - CR Controller location: `controllers/mycrd_controller.go`
+
+These resources will be particularly important going forward. 
 
 ### III. CR Definition Implementation
 
