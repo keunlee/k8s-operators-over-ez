@@ -175,7 +175,7 @@ These resources will be particularly important going forward.
 
 (1) Add specification attributes, per requirements. 
 
-edit the file `api/v1alpha1/mycrd_types.go` by adding the `timeout` and `message` specifications w/in the `MycrdSpec struct` definition. It should look like the following: 
+Edit the file `api/v1alpha1/mycrd_types.go` by adding the `timeout` and `message` specifications w/in the `MycrdSpec struct` definition. It should look like the following: 
 
 ```golang
 // MycrdSpec defines the desired state of Mycrd
@@ -183,11 +183,49 @@ type MycrdSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-  // Accommodate requirements and acceptance criteria
-	Timeout int32  `json:"timeout,omitempty"`
+	// Accommodate requirements and acceptance criteria
+
+	// Timeout duration, in seconds
+	Timeout int32 `json:"timeout,omitempty"`
+
+	// Log message to output before container expires
 	Message string `json:"message,omitempty"`
 }
+
+// MycrdStatus defines the observed state of Mycrd
+type MycrdStatus struct {
+	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
+	// Important: Run "make" to regenerate code after modifying this file
+
+	// Denotes if the time duration has expired
+	TimeoutExpired bool `json:"expired,omitempty"`
+
+	// Denotes if a message was logged
+	MessageLogged bool `json:"logged,omitempty"`
+}
 ```
+
+This is where you add your operator specifications and status attributes.
+
+**Operator Specifications**:
+
+These are user defined properties of your operator. When you add a specification, you typically implement your operator to respond/react off of the specification that is set. 
+
+<ins>Example 1</ins>
+
+We set the specification `timeout` to the value of `30` and `message` to the value `my arbitrary message` in our operator instance yaml. When we create the operator instance, our operator, according to our requirements, is expected to then deploy a busybox pod, which will run the busybox container for the `timeout` duration and log the `message`. 
+
+<ins>Example 2</ins>
+
+We leave the specifications for `timeout` and `message` unset in our operator instance yaml. When we create the operator instance, our operator, according to our requirements, is expected to then obtain values for `timeout` and `message` from a REST API call and then deploy a busybox pod, which will run the busybox container for the `timeout` duration and log the `message`. 
+
+Our controller logic, must implement the workflow and functionality to facilitate to these examples, which are based on our requirements. 
+
+**Operator Statuses**:
+
+<ins>Example 1</ins>
+
+These are user defined properties for checking the status/state of your operator deployment. When you add a status, you typically implement your operator to provide the state/value of the status. For example: when we deploy the operator with a specification numpods equal to 3, we expect that there will be three pods that are spun up, all with unique names. The status listedpods will need to list the names of the pods currently deployed. Our controller logic must implement the functionality required to fullfill the values of listedpods
 
 (2) Regenerate/update resource and manifest
 
