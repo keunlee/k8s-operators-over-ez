@@ -141,9 +141,9 @@ At this point, we've got a basic prototype of what we'd like the final deploymen
 
 The next step from here, is thinking about what our **domain specific operations** are. The previously generated pod YAML will not handle all of these operations as is. Rehashing requirements into domain specific operations: 
 
-**If a message and duration are supplied, create a busybox pod with a duration and message** : This is pretty straightforward to automate. You just specify the `timeout` duration and `message` in the pods YAML. No real issues here. 
+- **If a message and duration are supplied, create a busybox pod with a duration and message** : This is pretty straightforward to automate. You just specify the `timeout` duration and `message` in the pods YAML. No real issues here. 
 
-**If a message and duration are NOT supplied, then supply one from a REST API call, and then create a busybox pod with the duration and message**:  Since we've got a dynamic element at play here, we can automate this in code, w/in our Golang CR Controller. 
+- **If a message and duration are NOT supplied, then supply one from a REST API call, and then create a busybox pod with the duration and message**:  Since we've got a dynamic element at play here, we can automate this in code, w/in our Golang CR Controller. 
 
 ### II. Operator Scaffolding
 
@@ -163,9 +163,9 @@ operator-sdk create api --group=golang-op-lab00 --version=v1alpha1 --kind=Mycrd
 
 One you run the above, you'll see a number of files generated. Of those files, the CR Implementation and controller: 
 
-CR Implementation location: `api/v1alpha1/mycrd_types.go`
+- CR Implementation location: `api/v1alpha1/mycrd_types.go`
 
-CR Controller location: `controllers/mycrd_controller.go`
+- CR Controller location: `controllers/mycrd_controller.go`
 
 ### III. CR Definition Implementation
 
