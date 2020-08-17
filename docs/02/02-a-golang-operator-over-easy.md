@@ -49,7 +49,7 @@ An Operator with a single busy box pod that logs a user specified message and sh
 - The Operator instance must shut down after duration of `timeout` in seconds, has expired
 - The CRD must have a `message` specification attribute
 - The Operator instance must log the message `message` before the container has stopped
-- The Operator instance must retrieve a `message` and `timeout` value from a REST API call, if both are not initially supplied on the Operator Instance. 
+- The Operator instance must retrieve a `message` and `timeout` value from a REST API call (`GET http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response`), if both are not initially supplied on the Operator Instance. 
 
 ## Execution Strategy
 
@@ -77,6 +77,8 @@ For now, our strategy to reach the end state is detailed as followed:
 
 ### I. Prototyping
 
+(1) Build a Proof of Concept
+
 Let's begin by creating a project namespace in our cluster. 
 
 ```bash
@@ -89,7 +91,7 @@ set the current context to newly created namespace
 kubens golang-op-lab-00
 ```
 
-Let's try to create the yaml for a pod which will start a busybox container and run for a specified duration, 15 seconds, and logs the message "hello world".
+Create the yaml for a pod which will start a busybox container and run for a specified duration, 15 seconds, and logs the message "hello world".
 
 ```bash
 # create the pod yaml
@@ -133,15 +135,19 @@ watch kubectl get po
 kubectl logs busybox -c busybox
 ```
 
-We've got a basic prototype of what we'd like the final deployment state of our Operator instance to be. In this case, it's a single busybox pod. 
+(2) Identify Domain Specific Operations
 
-At this point, we need to think about what our domain specific **operations** are. The previously generated pod YAML will not handle all of these operations as is. Rehashing those requirements into domain specific operations: 
+At this point, we've got a basic prototype of what we'd like the final deployment state of our Operator instance to be. In this case, it's a single busybox pod. 
 
-**If a message and duration are supplied, create a busybox pod with a duration and message** : This is pretty straightforward to automate. You just specify the `timeout` duration and `message` in the pods YAML. 
+The next step from here, is thinking about what our **domain specific operations** are. The previously generated pod YAML will not handle all of these operations as is. Rehashing requirements into domain specific operations: 
 
-**If a message and duration are NOT supplied, then supply one from a REST API call, and then create a busybox pod with the duration and message**:  Since we've got a dynamic element at play here, how do we automate this? Of course, in code w/in our CR Controller implementation.  
+**If a message and duration are supplied, create a busybox pod with a duration and message** : This is pretty straightforward to automate. You just specify the `timeout` duration and `message` in the pods YAML. No real issues here. 
+
+**If a message and duration are NOT supplied, then supply one from a REST API call, and then create a busybox pod with the duration and message**:  Since we've got a dynamic element at play here, we can automate this in code, w/in our Golang CR Controller. 
 
 ### II. Operator Scaffolding
+
+Run the following to scaffold your operator and create a resource and controller. Say 'yes' to all prompts. 
 
 ```bash
 # scaffold a new operator - over-ez-operator
@@ -155,7 +161,31 @@ operator-sdk create api --group=golang-op-lab00 --version=v1alpha1 --kind=Mycrd
 # (you will be prompted the following) - create controller [y/n] y
 ```
 
+CR Definition implementation location: `api/v1alpha1/mycrd_types.go`
+
+CR Controller location: `controllers/mycrd_controller.go`
+
 ### III. CR Definition Implementation
+
+(1) Add specification attributes, per requirements. 
+
+edit the file `api/v1alpha1/mycrd_types.go` by adding the `timeout` and `message` specifications w/in the `MycrdSpec struct` definition. It should look like the following: 
+
+```golang
+// MycrdSpec defines the desired state of Mycrd
+type MycrdSpec struct {
+	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
+	// Important: Run "make" to regenerate code after modifying this file
+
+  // Accommodate requirements and acceptance criteria
+	Timeout int32  `json:"timeout,omitempty"`
+	Message string `json:"message,omitempty"`
+}
+```
+
+(2) Regenerate/update resource and manifest
+
+Always do this after you update your custom resource in `*_types.go`
 
 ```bash
 # generate/update code for resource types
@@ -164,6 +194,8 @@ make generate
 # generate/update manifests for the CRD
 make manifests
 ```
+
+You can validate specification updates on your CRD by examining the updated file: `crd/bases/golang-op-lab00.mydomain.com_mycrds.yaml`. You should see that your newly added specifications, `timeout` and `message`, have been added. 
 
 ### IV. TDD Setup
 
