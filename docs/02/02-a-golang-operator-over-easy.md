@@ -223,7 +223,7 @@ Our **CR Controller**, must implement the logic, workflow and functionality to f
 
 **Operator Statuses**:
 
-<ins>Example 1</ins>
+<ins>Example</ins>
 
 These are user defined properties for checking the status/state of your operator deployment. When you add a status, you typically implement your operator to provide the state/value of the status. 
 
