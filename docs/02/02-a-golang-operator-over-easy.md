@@ -161,9 +161,9 @@ operator-sdk create api --group=golang-op-lab00 --version=v1alpha1 --kind=Mycrd
 # (you will be prompted the following) - create controller [y/n] y
 ```
 
-One you run the above, you'll see a number of files generated. A few files t
+One you run the above, you'll see a number of files generated. Of those files, the CR Implementation and controller: 
 
-CR Definition implementation location: `api/v1alpha1/mycrd_types.go`
+CR Implementation location: `api/v1alpha1/mycrd_types.go`
 
 CR Controller location: `controllers/mycrd_controller.go`
 
