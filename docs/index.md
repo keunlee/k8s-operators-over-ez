@@ -35,34 +35,13 @@
 
 - [Debugging Golang Operators](02/03-debugging-golang-operators.md)
 
-- Lab 001 - A Golang Operator that De01/00ploys Multiple Pods
-  - Overview
-  - Lab Specification (BDD Style)
-
-- Lab 002 - A Golang Operator that Deploys a Kubernetes Deployment
-  - Overview
-  - Lab Specification (BDD Style)
-
-- Lab 003 - A Golang Operator that Deploys Nginx + Service
-  - Overview
-  - Lab Specification (BDD Style)
-
-- Lab 004 - A Golang Operator that Deploys a Web App and Makes it 
-Accessible
-  - Overview
-  - Lab Specification (BDD Style)
-
 ## III - Helm Operators
 
 - [Helm Operators](03/01-helm-operators.md)
 
-  - Lab 001
-
 ## IV - Ansible Operators
 
 - [Ansible Operators](04/01-ansible-operators.md)
-
-  - Lab 001
 
 ## V - Other types of  Operators
 
