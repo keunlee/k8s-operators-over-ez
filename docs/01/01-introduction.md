@@ -35,15 +35,10 @@ That answer came in the form of what we call an Operator.
 
 ## What's an Operator?
 
-An operator is a software extension to Kubernetes. It's a design pattern which allows you to: 
+"An operator is a Kubernetes controller that understands 2 domains: Kubernetes and something else. By combining knowledge of both domains, it can automate tasks that usually require a human operator that understands both domains."
+-Jimmy Zelinskie - https://bit.ly/3iS6AFx
 
-- automate the creation and updating of resources and constructs
-- automate the execution of processes
-- automate the execution of domain specific operations
-- automate the triggering and execution of rules
-- utlimately extend the capabilities and features of Kubernetes
-
-An operator allows you to encapsulate kubernetes application resources (i.e. pods, deployments, daemonsets, statefulsets, jobs, services, configmaps, etc), by creating a [CRD/Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a custom [Controller](https://kubernetes.io/docs/concepts/architecture/controller/) implementation which manages the state of your application resources and drives deployment and/or business logic (operational knowledge) of your CRD deployment instance(s).
+An operator allows you to encapsulate kubernetes application resources (i.e. pods, deployments, daemonsets, statefulsets, jobs, services, configmaps, etc), by creating a [CRD (Custom Resource Definition)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a Kubernetes [Controller](https://kubernetes.io/docs/concepts/architecture/controller/). It manages the state of your application resources and drives deployment and domain specific operations (operational knowledge) of your CRD deployment instance(s).
 
 The advantages of an operator can be seen when you start thinking about how you manage your applications deployed into a Kubernetes cluster. Typically, you manage the deployment of each individual resource which usually composes the entirety of the application you deploy.
 
@@ -55,7 +50,7 @@ In the illustration above, the real work to allocate and configure the service, 
 
 You see the immediate benefits of an operator, when you begin configuring and deploying instances of your operator instead of deployments for various resources of a convential deployment. Notice, how much simpler and less error proned the operator configuration is in comparison to a conventional deployment. 
 
-An operator based deployment in this regards, buys consistency, by offering you a way to templatize your conventional deployment as well as allow you to develop business logic ( or operational knowledge) into your operator via a controller implementation. Essentially, you create what the community calls a Kubernetes Application. 
+An operator based deployment in this regards, buys consistency, by offering you a way to templatize your conventional deployment as well as allow you to develop domain specific operations ( or operational knowledge) into your operator via a controller implementation. Essentially, you create what the community calls a Kubernetes Application. 
 
 ## How do Operators Work? 
 

@@ -257,6 +257,12 @@ You can validate specification updates on your CRD by examining the updated file
 
 ### IV. TDD Setup
 
+Up until now, things have been pretty peachy.
+
+Well... it's about to get "real" now. buckle up.
+
+
+
 ### V. CR Controller Implementation
 
 ### VI. Test Validation
