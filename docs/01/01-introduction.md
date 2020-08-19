@@ -17,7 +17,20 @@
 
 This guide serves all but one purpose: 
 
-**To help assist people like you understand what Kubernetes Operators are and how to write them**
+**To help assist people like you understand what Kubernetes Operators are and how to write them to do "stuff"**
+
+## Prerequisites
+
+You should have:
+
+- Basic working knowledge of creating and deploying resources in Kubernetes. 
+- Basic working knowledge of the `kubectl` CLI utility
+- Development experience across one or more projects (...as a coder). The more, the merrier.  
+
+You will be best served from this material, if you come in with any of the following training (though not required): 
+
+- CKAD/CKA certification or similar training
+- Kubernetes courses (i.e. Coursera, Udemy, KodeKloud, etc. etc.)
 
 ## The Problem
 

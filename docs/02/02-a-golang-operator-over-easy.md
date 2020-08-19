@@ -12,6 +12,14 @@
 -->
 # A Golang Operator - Over Easy
 
+## Overview
+
+This is a guided lab. In comparison to some of the other golang opeator labs that you will find in this guide, you will notice that this lab is heavier in annotations and explanations then you will see in other labs. 
+
+Please do not rush through this lab. You should leverage this lab to **learn**, usget things to work, experiment and "break" stuff. It's okay to do that here. We will clean up the mess together!
+
+That being said, these labs are meant to be run in a sandboxed development environment.
+
 ## Environment Setup
 
 Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-requirements.md)
@@ -26,8 +34,6 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
     - **AS A**: Developer
     - **I WANT**: An Operator with a single busybox pod that logs a user specified message and shuts down after a user specified amount of time. If a duration or message are not specified, then both will be supplied by a REST API call. 
     - **SO THAT**: I can demonstrate the encapsulation of operational knowlege, leveraging the Operator Design Pattern.  
-
-An Operator with a single busy box pod that logs a user specified message and shuts down after a user specified amount of time. If a duration or message are not specified, then both will be supplied by a REST API call. 
 
 - **SCENARIO 1**: Shutdown the busybox pod after a user specified amount of time in seconds
   - **GIVEN**: An Operator instance

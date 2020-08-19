@@ -30,9 +30,9 @@ In case you are curious of some of the differences between the two, here's a rec
 
 ## Useful Golang API References
 
->:information_source: By no means, I'm not expecting you to memorize or review in detail what the APIs below are and do. I expect you to just be aware of the location of these API docs, as they may come in handy as you build out your own operator(s) and would like to understand better what these APIs are, as the Golang Operator libaries/frameworks make heavy use of them, without a ton of explanation, rhyme, or reason of what they are and what they do. 
+>:information_source: By no means, I'm not expecting you to memorize or review in detail what the APIs below are and do. I expect you to just be aware of the location of these API docs, as they may come in handy as you build out your own operator(s) and would like to understand better what these APIs are, as the Golang Operator libaries/frameworks make heavy use of them.
 
-The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also commonly leveraged by Golang Operator development libraries. You will make usage of these libaries, as well as others, when scaffolding your Operators for development. Many of the API reference docs come with inline examples of how to use them in code. This is just a small subset of what's actually available out here in the community. 
+The APIs below are commonly leveraged by Kubernetes. Subsequently, they are also commonly leveraged by Golang Operator development libraries (i.e. Operator SDK, Kubebuilder, etc.). You will make usage of these libaries, as well as others, when scaffolding your Operators for development. Many of the API reference docs come with inline examples of how to use them in code. This is just a small subset of what's actually available out here in the community. 
 
 - Controller Runtime
     - https://pkg.go.dev/github.com/kubernetes-sigs/controller-runtime?tab=doc
