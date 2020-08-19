@@ -202,11 +202,11 @@ These are user defined properties of your operator. When you add a specification
 
 <ins>Example 1</ins>
 
-We set the specifications `timeout` and `message` to finite/non-null values in our operator instance yaml. When we create the operator instance, our operator is expected to then deploy a busybox pod, which will run the busybox container for the `timeout` duration and log the `message`. 
+*We set the specifications `timeout` and `message` to finite/non-null values in our operator instance yaml. When we create the operator instance, our operator is expected to then deploy a busybox pod, which will run the busybox container for the `timeout` duration and log the `message`.* 
 
 <ins>Example 2</ins>
 
-We leave the specifications for `timeout` and `message` unset in our operator instance yaml. When we create the operator instance, our operator is expected to then obtain values for `timeout` and `message` from a REST API call and then deploy a busybox pod, which will run the busybox container for the `timeout` duration and log the `message`. 
+*We leave the specifications for `timeout` and `message` unset in our operator instance yaml. When we create the operator instance, our operator is expected to then obtain values for `timeout` and `message` from a REST API call and then deploy a busybox pod, which will run the busybox container for the `timeout` duration and log the `message`.* 
 
 Edit the file `api/v1alpha1/mycrd_types.go` by adding the `timeout` and `message` specifications w/in the `MycrdSpec struct` definition. It should look like the following: 
 
@@ -230,11 +230,11 @@ Our **CR Controller**, must implement the logic, workflow and functionality to f
 
 **Operator Statuses**:
 
-<ins>Example</ins>
-
 These are user defined properties for checking the status/state of your operator deployment. When you add a status, you typically implement your operator to provide the state/value of the status. 
 
-For example: when we deploy the operator with a specification numpods equal to 3, we expect that there will be three pods that are spun up, all with unique names. The status listedpods will need to list the names of the pods currently deployed. Our controller logic must implement the functionality required to fullfill the values of listedpods
+<ins>Example</ins>
+
+*When we deploy our operator, we expect a busybox pod to be spun up, log message, and then spin down after set duration. When the pod has reached this state, then the operator will need to set it's status for `expired` and `logged` to `true`.* 
 
 Edit the file `api/v1alpha1/mycrd_types.go` by adding the `expired` and `logged` statuses w/in the `MycrdStatus struct` definition. It should look like the following: 
 
