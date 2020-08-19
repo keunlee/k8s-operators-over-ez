@@ -20,34 +20,39 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 
 ### Story (BDD/Gherkin Style)
 
-**DESCRIPTION**
+**TITLE**: Overeasy Operator Requirements
+
+- **DESCRIPTION**
+    - **AS A**: Developer
+    - **I WANT**: An Operator with a single busybox pod that logs a user specified message and shuts down after a user specified amount of time. If a duration or message are not specified, then both will be supplied by a REST API call. 
+    - **SO THAT**: I can demonstrate the encapsulation of operational knowlege, leveraging the Operator Design Pattern.  
 
 An Operator with a single busy box pod that logs a user specified message and shuts down after a user specified amount of time. If a duration or message are not specified, then both will be supplied by a REST API call. 
 
-- **SCENARIO**: Shutdown the busybox pod after a user specified amount of time in seconds
+- **SCENARIO 1**: Shutdown the busybox pod after a user specified amount of time in seconds
   - **GIVEN**: An Operator instance
   - **WHEN**: the specification `timeout` is set to a numeric value in seconds
   - **THEN**: the busy box pod will remain available for the specified `timeout` in seconds,
   - **AND**: shutdown after the specified amount `timeout` duration
 
-- **SCENARIO**: Log a user specified message before shutting down the busybox pod
+- **SCENARIO 2**: Log a user specified message before shutting down the busybox pod
   - **GIVEN**: An Operator instance
   - **WHEN**: the specification `message` is set to a string value
   - **THEN**: the busy box pod will log the message, from the `message` specification after the `timeout` duration has expired. 
 
-- **SCENARIO**: Retrieve the `timeout` and `message` from a given REST API if one and/or the other is not supplied. 
+- **SCENARIO 3**: Retrieve the `timeout` and `message` from a given REST API if one and/or the other is not supplied. 
   - **GIVEN**: An Operator instance
   - **WHEN**: the specification `message` OR `timeout` is NOT set
   - **THEN**: the busy box pod will supply these values from the following REST API: `GET http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response`
 
-- **SCENARIO**: Update status `expired` and `logged` when the busybox pod has expired
+- **SCENARIO 4**: Update status `expired` and `logged` when the busybox pod has expired
   - **GIVEN**: An Operator instance
   - **WHEN**: the busy box pod's duration has expired
   - **AND**: the busy box pod has logged a message
   - **THEN**: set the `expired` status to `true`
   - **AND**: set the `logged` status to `true`
 
-### Acceptance Criteria
+### Acceptance Criteria Notes
 
 - The CRD must have a `timeout` specification attribute
 - The Operator instance must shut down after the duration of `timeout` in seconds, has been reached
@@ -256,10 +261,6 @@ make manifests
 You can validate specification updates on your CRD by examining the updated file: `crd/bases/golang-op-lab00.mydomain.com_mycrds.yaml`. You should see that your newly added specifications, `timeout` and `message`, have been added. 
 
 ### IV. TDD Setup
-
-Up until now, things have been pretty peachy.
-
-Well... it's about to get "real" now. buckle up.
 
 
 
