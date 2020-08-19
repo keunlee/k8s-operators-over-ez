@@ -268,6 +268,8 @@ You can validate specification updates on your CRD by examining the updated file
 
 ### IV. TDD Setup
 
+For this lab we will be taking a TDD (Test Driven Design) approach to building and implementing our operator. 
+
 
 
 ### V. CR Controller Implementation
