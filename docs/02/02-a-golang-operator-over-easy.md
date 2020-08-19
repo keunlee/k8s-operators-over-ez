@@ -14,9 +14,9 @@
 
 ## Overview
 
-This is a guided lab. In comparison to some of the other golang opeator labs that you will find in this guide, you will notice that this lab is heavier in annotations and explanations then you will see in other labs. 
+This is a guided lab. In comparison to some of the other golang opeator labs that you will find in this guide, you will notice that this lab is heavier in annotations and explanations.
 
-Please do not rush through this lab. You should leverage this lab to **learn**, usget things to work, experiment and "break" stuff. It's okay to do that here. We will clean up the mess together!
+Please do not rush through this lab. You should leverage this lab to **learn**, get things to work, experiment and "break" stuff. It's okay to do that here. We will clean up the mess together!
 
 That being said, these labs are meant to be run in a sandboxed development environment.
 
