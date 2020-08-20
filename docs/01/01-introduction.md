@@ -62,6 +62,8 @@ That answer came in the form of what we call...
 
 An operator allows you to encapsulate kubernetes application resources (i.e. pods, deployments, daemonsets, statefulsets, jobs, services, configmaps, etc), by creating a [CRD (Custom Resource Definition)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) and a Kubernetes [Controller](https://kubernetes.io/docs/concepts/architecture/controller/). It manages the state of your application resources and drives deployment and domain specific operations (operational knowledge) of your CRD deployment instance(s).
 
+Operator = Resource + Controller + Domain Specific Operations
+
 The advantages of an operator can be seen when you start thinking about how you manage your applications deployed into a Kubernetes cluster. Typically, you manage the deployment of each individual resource which usually composes the entirety of the application you deploy.
 
 With operators, these resources are packaged up, and generally expose domain specific attributes (i.e. specifications ) for your deployment from a single point of configuration -- your "Operator" instance. 
