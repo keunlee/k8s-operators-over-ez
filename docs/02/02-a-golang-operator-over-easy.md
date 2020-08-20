@@ -35,7 +35,15 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
     - **I WANT**: An Operator with a single busybox pod that logs a user specified message and shuts down after a user specified amount of time. If a duration or message are not specified, then both will be supplied by a REST API call. 
     - **SO THAT**: I can demonstrate the encapsulation of operational knowlege, leveraging the Operator Design Pattern.  
 
-- **SCENARIO 1**: Shutdown the busybox pod after a user that there will be three pods that are spun up, all with unique names. The status listedpods will need to list the names of the pods currently deployed. Our controller logic must implement the functionality required to fullfill the values of listedpodstring value
+- **SCENARIO 1**: Shutdown the busybox pod after a user specified amount of time in seconds
+  - **GIVEN**: An Operator instance
+  - **WHEN**: the specification `timeout` is set to a numeric value in seconds
+  - **THEN**: the busy box pod will remain available for the specified `timeout` in seconds,
+  - **AND**: shutdown after the specified amount `timeout` duration
+
+- **SCENARIO 2**: Log a user specified message before shutting down the busybox pod
+  - **GIVEN**: An Operator instance
+  - **WHEN**: the specification `message` is set to a string value
   - **THEN**: the busy box pod will log the message, from the `message` specification after the `timeout` duration has expired. 
 
 - **SCENARIO 3**: Retrieve the `timeout` and `message` from a given REST API if one and/or the other is not supplied. 
