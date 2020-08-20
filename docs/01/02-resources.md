@@ -12,11 +12,11 @@
 
 ## Frameworks to Help you Create Operators (Not an Exhaustive List)
 
+- https://sdk.operatorframework.io/build/
 - https://kudo.dev/
 - https://book.kubebuilder.io/
 - https://github.com/kubernetes-sigs/kubebuilder
-- https://metacontroller.app/
-- https://github.com/operator-framework/getting-started
+- https://github.com/metacontroller/metacontroller
 - https://github.com/zalando-incubator/kopf
 - https://github.com/ContainerSolutions/java-operator-sdk
 
