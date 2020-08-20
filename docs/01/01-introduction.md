@@ -23,6 +23,7 @@ This guide serves all but one purpose:
 
 You should have:
 
+- Basic working knowledge of what containers and tools like, Docker, are.
 - Basic working knowledge of creating and deploying resources in Kubernetes. 
 - Basic working knowledge of the `kubectl` CLI utility
 - Development experience across one or more projects (...as a coder). The more, the merrier.  

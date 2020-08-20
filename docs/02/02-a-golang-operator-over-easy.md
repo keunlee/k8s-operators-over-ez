@@ -200,6 +200,8 @@ These are user defined properties of your operator. When you add a specification
 
 *We leave the specifications for `timeout` and `message` unset in our operator instance yaml. When we create the operator instance, our operator is expected to then obtain values for `timeout` and `message` from a REST API call and then deploy a busybox pod, which will run the busybox container for the `timeout` duration and log the `message`.* 
 
+<ins>Do This</ins>
+
 Edit the file `api/v1alpha1/mycrd_types.go` by adding the `timeout` and `message` specifications w/in the `MycrdSpec struct` definition. It should look like the following: 
 
 ```golang
@@ -227,6 +229,8 @@ These are user defined properties for checking the status/state of your operator
 <ins>Example</ins>
 
 *When we deploy our operator, we expect a busybox pod to be spun up, log message, and then spin down after set duration. When the pod has reached this state, then the operator will need to set it's status for `expired` and `logged` to `true`.* 
+
+<ins>Do This</ins>
 
 Edit the file `api/v1alpha1/mycrd_types.go` by adding the `expired` and `logged` statuses w/in the `MycrdStatus struct` definition. It should look like the following: 
 
