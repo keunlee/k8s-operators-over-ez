@@ -274,6 +274,25 @@ You can validate specification updates on your CRD by examining the updated file
 
 For this lab we will be taking a TDD (Test Driven Design) approach to building and implementing our operator. 
 
+(1) Update the Test Suite
+
+When we generated our custom resource definition and controller, we also generated a stub for a test suite: `controllers\suite_test.go`
+
+We are going to want update our Test Suite file to look like the following:  https://bit.ly/2Yveih6
+
+When observing the additions made to the generated stub: 
+
+- add imports to additional packages that we will be leveraging ![Screenshot from 2020-08-24 15-26-01](https://user-images.githubusercontent.com/61749/91093790-87816400-e61f-11ea-91a5-b9ca1cf9e6fe.png)
+
+- add additional variables and helper functions that we'd like to make available to our controller tests. ![Screenshot from 2020-08-24 15-26-35](https://user-images.githubusercontent.com/61749/91093791-8819fa80-e61f-11ea-8e8f-d2fe926d2524.png)
+
+- initializer an instance of a controller reconciler we'll be using in our test ![Screenshot from 2020-08-24 15-27-11](https://user-images.githubusercontent.com/61749/91093794-88b29100-e61f-11ea-8df5-f3e855770e57.png)
+
+
+(2) Add Test Controller and Test Stubs
+
+(3) Run Tests
+
 
 
 ### V. CR Controller Implementation

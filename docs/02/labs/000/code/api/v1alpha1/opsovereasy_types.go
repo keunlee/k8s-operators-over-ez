@@ -9,7 +9,7 @@ You may obtain a copy of the License at
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+WITHOUT WARRANTIES OR bCONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
@@ -28,8 +28,13 @@ type OpsOverEasySpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of OpsOverEasy. Edit OpsOverEasy_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Accommodate requirements and acceptance criteria
+
+	// Timeout duration, in seconds
+	Timeout int32 `json:"timeout,omitempty"`
+
+	// Log message to output before container expires
+	Message string `json:"message,omitempty"`
 }
 
 // OpsOverEasyStatus defines the observed state of OpsOverEasy

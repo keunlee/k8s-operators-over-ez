@@ -17,8 +17,12 @@ limitations under the License.
 package controllers
 
 import (
-	"path/filepath"
+	"context"
+	"k8s.io/apimachinery/pkg/types"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	ctrl "sigs.k8s.io/controller-runtime"
+
+	"path/filepath"
 	"testing"
 
 	. "github.com/onsi/ginkgo"
@@ -44,6 +48,39 @@ var testEnv *envtest.Environment
 
 var k8sManager ctrl.Manager
 var opsOverEasyReconciler *OpsOverEasyReconciler
+var crdInstance = &operatorsoverezv1alpha1.OpsOverEasy{}
+var testCtx = context.Background()
+var crKey = types.NamespacedName{
+	Name:      "operator-overeasy",
+	Namespace: "default",
+}
+
+func getCrd(withSpecification bool) *operatorsoverezv1alpha1.OpsOverEasy {
+	var crd *operatorsoverezv1alpha1.OpsOverEasy
+
+	if withSpecification {
+		crd = &operatorsoverezv1alpha1.OpsOverEasy{
+			ObjectMeta: metav1.ObjectMeta{
+				Name:      crKey.Name,
+				Namespace: crKey.Namespace,
+			},
+
+			Spec: operatorsoverezv1alpha1.OpsOverEasySpec{
+				Timeout: 30,
+				Message: "message",
+			},
+		}
+	} else {
+		crd = &operatorsoverezv1alpha1.OpsOverEasy{
+			ObjectMeta: metav1.ObjectMeta{
+				Name:      crKey.Name,
+				Namespace: crKey.Namespace,
+			},
+		}
+	}
+
+	return crd
+}
 
 func TestAPIs(t *testing.T) {
 	RegisterFailHandler(Fail)
@@ -71,21 +108,23 @@ var _ = BeforeSuite(func(done Done) {
 
 	// +kubebuilder:scaffold:scheme
 
+	k8sClient, err = client.New(cfg, client.Options{Scheme: scheme.Scheme})
+	Expect(err).ToNot(HaveOccurred())
+	Expect(k8sClient).ToNot(BeNil())
+
 	k8sManager, err = ctrl.NewManager(cfg, ctrl.Options{
 		Scheme: scheme.Scheme,
 	})
 	Expect(err).ToNot(HaveOccurred())
+	Expect(k8sManager).ToNot(BeNil())
 
 	opsOverEasyReconciler = &OpsOverEasyReconciler{
-		Client: k8sManager.GetClient(),
+		Client: k8sClient,
 		Log:    ctrl.Log.WithName("controllers").WithName("OpsOverEasy"),
+		Scheme: scheme.Scheme,
 	}
 	err = (opsOverEasyReconciler).SetupWithManager(k8sManager)
 	Expect(err).ToNot(HaveOccurred())
-
-	k8sClient, err = client.New(cfg, client.Options{Scheme: scheme.Scheme})
-	Expect(err).ToNot(HaveOccurred())
-	Expect(k8sClient).ToNot(BeNil())
 
 	close(done)
 }, 60)
