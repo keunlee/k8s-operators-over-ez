@@ -392,7 +392,7 @@ When("some condition", func() {
 
 As we implement each BDD scenario we will also leverage these stubs to test and validate our scenario requirements. 
 
-Current when these tests are executed they will fail as expected. 
+Currently when these tests are executed they will fail as expected. 
 
 This will change as we implement our controller and update these tests. 
 
