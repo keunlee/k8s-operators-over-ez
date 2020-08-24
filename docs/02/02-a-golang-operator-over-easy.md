@@ -291,6 +291,14 @@ When observing the additions made to the generated stub:
 
 (2) Add Test Controller and Test Stubs
 
+Create the following file: `controller/opsovereasy_controller_test.go`
+
+Add the following contents to the file:
+
+```golang
+
+```
+
 (3) Run Tests
 
 

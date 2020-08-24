@@ -9,40 +9,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/reconcile"
 )
 
-//var testCtx = context.Background()
-//
-//var crKey = types.NamespacedName{
-//	Name:      "operator-overeasy",
-//	Namespace: "default",
-//}
-//
-//func getCrd(withSpecification bool) *operatorsoverezv1alpha1.OpsOverEasy {
-//	var crd *operatorsoverezv1alpha1.OpsOverEasy
-//
-//	if withSpecification {
-//		crd = &operatorsoverezv1alpha1.OpsOverEasy{
-//			ObjectMeta: metav1.ObjectMeta{
-//				Name:      crKey.Name,
-//				Namespace: crKey.Namespace,
-//			},
-//
-//			Spec: operatorsoverezv1alpha1.OpsOverEasySpec{
-//				Timeout: 30,
-//				Message: "message",
-//			},
-//		}
-//	} else {
-//		crd = &operatorsoverezv1alpha1.OpsOverEasy{
-//			ObjectMeta: metav1.ObjectMeta{
-//				Name:      crKey.Name,
-//				Namespace: crKey.Namespace,
-//			},
-//		}
-//	}
-//
-//	return crd
-//}
-
 var _ = Describe("CR Controller", func() {
 
 	Context("BDD Test Scenarios", func() {
@@ -110,7 +76,6 @@ var _ = Describe("CR Controller", func() {
 				It("Should supply these values from the following REST API: GET http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response", func() {})
 			})
 		})
-
 	})
 
 	Context("Unit Tests", func() {
