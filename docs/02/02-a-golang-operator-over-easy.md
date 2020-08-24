@@ -156,8 +156,7 @@ kubectl logs busybox -c busybox
 
 (2) Identify Domain Specific Operations
 
-At this point, we've got a basic prototype of what we'd like the final deployment state of our Operator instance to be. In this case, it's a single busybox pod. 
-
+At this point, we've got a basic prototype of what we'd like the final deployment state of our Operator in tried to
 The next step from here, is thinking about what our **domain specific operations** are. The previously generated pod YAML will not handle all of these operations as is. Rehashing requirements into domain specific operations: 
 
 - **If a message and duration are supplied, create a busybox pod with a duration and message** : This is pretty straightforward to automate. You just specify the `timeout` duration and `message` in the pods YAML. No real issues here. 
@@ -278,6 +277,8 @@ For this lab we will be taking a TDD (Test Driven Design) approach to building a
 
 When we generated our custom resource definition and controller, we also generated a stub for a test suite: `controllers\suite_test.go`
 
+<ins>Do This</ins>
+
 We are going to want update our Test Suite file to look like the following:  https://bit.ly/2Qi9ZRQ
 
 When observing the additions made to the generated stub: 
@@ -290,6 +291,8 @@ When observing the additions made to the generated stub:
 
 
 (2) Add Test Controller and Test Stubs
+
+<ins>Do This</ins>
 
 Create the following file: `controllers/opsovereasy_controller_test.go`
 
@@ -380,6 +383,8 @@ var _ = Describe("CR Controller", func() {
 
 Notice how we we've created stubs for each corresponding BDD scenario. 
 
+<ins>Do This</ins>
+
 For now, add the following line to each test stub definition. So that it looks similar to the following: 
 
 ```golang
@@ -400,7 +405,13 @@ This will change as we implement our controller and update these tests.
 
 (3) Run Tests
 
+You can these tests by running the following at the terminal of the root directory of the lab: 
 
+```bash
+make test
+```
+
+All tests should fail at this point. This is normal. 
 
 ### V. CR Controller Implementation
 
