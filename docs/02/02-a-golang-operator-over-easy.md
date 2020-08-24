@@ -172,10 +172,10 @@ To begin codifying our domain specific operations, run the following to scaffold
 
 ```bash
 # scaffold a new operator - over-ez-operator
-operator-sdk init --domain=mydomain.com --repo=github.com/mydomain/over-ez-operator
+operator-sdk init --domain=mydomain.com --repo=github.com/mydomain/operators-over-ez
 
 # create new api and controller
-operator-sdk create api --group=golang-op-lab00 --version=v1alpha1 --kind=Mycrd
+ operator-sdk create api --group=operators-over-ez --version=v1alpha1 --kind=OpsOverEasy
 
 # (you will be prompted the following) - create resource [y/n] y
 
@@ -184,9 +184,9 @@ operator-sdk create api --group=golang-op-lab00 --version=v1alpha1 --kind=Mycrd
 
 One you run the above, you'll see a number of files generated. Of those files, the CR Implementation and controller: 
 
-- CR Implementation location: `api/v1alpha1/mycrd_types.go`
+- CR Implementation location: `api/v1alpha1/opsovereasy_types.go`
 
-- CR Controller location: `controllers/mycrd_controller.go`
+- CR Controller location: `controllers/opsovereasy_controller.go`
 
 These resources will be particularly important going forward. 
 
@@ -210,11 +210,11 @@ These are user defined properties of your operator. When you add a specification
 
 <ins>Do This</ins>
 
-Edit the file `api/v1alpha1/mycrd_types.go` by adding the `timeout` and `message` specifications w/in the `MycrdSpec struct` definition. It should look like the following: 
+Edit the file `api/v1alpha1/opsovereasy_types.go` by adding the `timeout` and `message` specifications w/in the `OpsOverEasySpec struct` definition. It should look like the following: 
 
 ```golang
-// MycrdSpec defines the desired state of Mycrd
-type MycrdSpec struct {
+// OpsOverEasySpec defines the desired state of Mycrd
+type OpsOverEasySpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
@@ -240,11 +240,11 @@ These are user defined properties for checking the status/state of your operator
 
 <ins>Do This</ins>
 
-Edit the file `api/v1alpha1/mycrd_types.go` by adding the `expired` and `logged` statuses w/in the `MycrdStatus struct` definition. It should look like the following: 
+Edit the file `api/v1alpha1/opsovereasy_types.go` by adding the `expired` and `logged` statuses w/in the `OpsOverEasyStatus struct` definition. It should look like the following: 
 
 ```golang
 // MycrdStatus defines the observed state of Mycrd
-type MycrdStatus struct {
+type OpsOverEasyStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
@@ -268,7 +268,7 @@ make generate
 make manifests
 ```
 
-You can validate specification updates on your CRD by examining the updated file: `crd/bases/golang-op-lab00.mydomain.com_mycrds.yaml`. You should see that your newly added specifications, `timeout` and `message`, have been added. 
+You can validate specification updates on your CRD by examining the updated file: `config/crd/bases/operators-over-ez.mydomain.com_opsovereasies.yaml`. You should see that your newly added specifications, `timeout` and `message`, have been added. 
 
 ### IV. TDD Setup
 

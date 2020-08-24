@@ -1,0 +1,24 @@
+# permissions for end users to edit opsovereasies.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: opsovereasy-editor-role
+rules:
+- apiGroups:
+  - operators-over-ez.mydomain.com
+  resources:
+  - opsovereasies
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - operators-over-ez.mydomain.com
+  resources:
+  - opsovereasies/status
+  verbs:
+  - get
