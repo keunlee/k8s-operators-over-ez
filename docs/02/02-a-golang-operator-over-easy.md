@@ -293,7 +293,7 @@ When observing the additions made to the generated stub:
 
 Create the following file: `controllers/opsovereasy_controller_test.go`
 
-Add the following contents to the file:
+Copy the following contents of test implementation stub to the file:
 
 ```golang
 package controllers
@@ -378,7 +378,25 @@ var _ = Describe("CR Controller", func() {
 })
 ```
 
-You can find a full implementation of this file here: https://bit.ly/2YxaAnb
+Notice how we we've created stubs for each corresponding BDD scenario. 
+
+For now, add the following line to each test stub definition. So that it looks similar to the following: 
+
+```golang
+When("some condition", func() {
+  It("should fullfill some requirement", func() {
+    Expect(true).To(BeFalse())
+  })
+})
+```
+
+As we implement each BDD scenario we will also leverage these stubs to test and validate our scenario requirements. 
+
+Current when these tests are executed they will fail as expected. 
+
+This will change as we implement our controller and update these tests. 
+
+> You can find a full implementation of this file here: https://bit.ly/2YxaAnb
 
 (3) Run Tests
 
