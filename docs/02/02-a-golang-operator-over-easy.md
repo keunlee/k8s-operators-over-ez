@@ -333,12 +333,12 @@ var _ = Describe("CR Controller", func() {
 			//AND: shutdown after the specified amount timeout duration
 			When("The specification timeout is set to a numeric value in seconds", func() {
 				It("Should remain available for the specified timeout duration in seconds", func() {
-          Expect(true).To(BeFalse())
-        })
+					Expect(true).To(BeFalse())
+				})
 
 				It("Should shutdown after the specified amount timeout duration", func() {
-          Expect(true).To(BeFalse())
-        })
+					Expect(true).To(BeFalse())
+				})
 			})
 
 			//SCENARIO: Log a user specified message before shutting down the busybox pod
@@ -347,8 +347,8 @@ var _ = Describe("CR Controller", func() {
 			//THEN: the busy box pod will log the message, from the message specification after the timeout duration has expired.
 			When("The specification message is set to a string value", func() {
 				It("Should log the message, from the message specification after the time out duration has expired", func() {
-          Expect(true).To(BeFalse())
-        })
+					Expect(true).To(BeFalse())
+				})
 			})
 
 			//SCENARIO: Update status expired and logged when the busybox pod has expired
@@ -358,12 +358,12 @@ var _ = Describe("CR Controller", func() {
 			//AND: set the logged status to true
 			When("The duration has expired", func() {
 				It("Should set the expired status to true", func() {
-          Expect(true).To(BeFalse())
-        })
+					Expect(true).To(BeFalse())
+				})
 
 				It("Should set the logged status to true", func() {
-          Expect(true).To(BeFalse())
-        })
+					Expect(true).To(BeFalse())
+				})
 			})
 		})
 
@@ -386,8 +386,8 @@ var _ = Describe("CR Controller", func() {
 			//THEN: the busy box pod will supply these values from the following REST API: GET http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response
 			When("The specification message OR timeout is NOT set", func() {
 				It("Should supply these values from the following REST API: GET http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response", func() {
-          Expect(true).To(BeFalse())
-        })
+					Expect(true).To(BeFalse())
+				})
 			})
 		})
 	})
