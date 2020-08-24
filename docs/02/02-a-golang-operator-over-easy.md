@@ -278,7 +278,7 @@ For this lab we will be taking a TDD (Test Driven Design) approach to building a
 
 When we generated our custom resource definition and controller, we also generated a stub for a test suite: `controllers\suite_test.go`
 
-We are going to want update our Test Suite file to look like the following:  https://bit.ly/2Yveih6
+We are going to want update our Test Suite file to look like the following:  https://bit.ly/2Qi9ZRQ
 
 When observing the additions made to the generated stub: 
 
