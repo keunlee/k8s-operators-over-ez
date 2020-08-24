@@ -405,7 +405,7 @@ This will change as we implement our controller and update these tests.
 
 (3) Run Tests
 
-You can these tests by running the following at the terminal of the root directory of the lab: 
+You can run these tests by running the following at the terminal of the root directory of the lab: 
 
 ```bash
 make test
