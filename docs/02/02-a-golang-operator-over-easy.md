@@ -291,7 +291,7 @@ When observing the additions made to the generated stub:
 
 (2) Add Test Controller and Test Stubs
 
-Create the following file: `controller/opsovereasy_controller_test.go`
+Create the following file: `controllers/opsovereasy_controller_test.go`
 
 Add the following contents to the file:
 
@@ -376,8 +376,9 @@ var _ = Describe("CR Controller", func() {
 		})
 	})
 })
-
 ```
+
+You can find a full implementation of this file here: https://bit.ly/2YxaAnb
 
 (3) Run Tests
 
