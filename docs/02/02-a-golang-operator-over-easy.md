@@ -313,6 +313,8 @@ import (
 )
 
 var _ = Describe("CR Controller", func() {
+	const timeout = time.Second * 60
+	const interval = time.Second * 1
 
 	Context("BDD Test Scenarios", func() {
 		Context("CR Instance with Specifications Provided", func() {
@@ -332,13 +334,8 @@ var _ = Describe("CR Controller", func() {
 			//GIVEN: An Operator instance
 			//WHEN: the specification timeout is set to a numeric value in seconds
 			//THEN: the busy box pod will remain available for the specified timeout in seconds,
-			//AND: shutdown after the specified amount timeout duration
 			When("The specification timeout is set to a numeric value in seconds", func() {
 				It("Should remain available for the specified timeout duration in seconds", func() {
-					Expect(true).To(BeFalse())
-				})
-
-				It("Should shutdown after the specified amount timeout duration", func() {
 					Expect(true).To(BeFalse())
 				})
 			})
