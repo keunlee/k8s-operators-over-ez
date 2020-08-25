@@ -290,9 +290,23 @@ In these following sections, we will make observations on the additions added to
   - ![Screenshot from 2020-08-25 13-27-28](https://user-images.githubusercontent.com/61749/91213646-86137280-e6d7-11ea-9cb2-e3c47e49dac5.png)
 
 - **(b)** Added additional variables and helper functions that we'd like to make available to our controller tests. 
+  - Public variables and functions can are accessible in the test suite by our controller test. Leveraging this feature, we can reuse these methods, potentially, across multiple controller test files. 
+  - Variables:
+    - *k8sManager*
+	- *opsOverEasyReconciler*
+	- *crdInstance*
+	- *testCtx*
+	- *timeout*
+	- *interval*
+	- *podDuration*
+  - Functions: 
+    - *getCrKey*: helper method for building a key for the Custom Resource
+    - *getPodKey*: helper method for building a key for a Pod Resource
+    - *getCrd*: helper method for building a Custom Resource Definition instance
   - ![Screenshot from 2020-08-25 13-28-28](https://user-images.githubusercontent.com/61749/91213648-86ac0900-e6d7-11ea-8e76-ce9a12abc3ce.png)
 
-- **(c)** Since we'll need to validate the internals of our deployment (i.e. such as pod phase, etc.), we'll be want to run these tests against a live cluster. To automate a test cluster, one suggestion would be to automate the provisioning of a cluster, leveraging a lightweight cluster implementation such as  [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) or [K3S/K3D](https://k3d.io/) 
+- **(c)** Bootstrap our test enviornment to a real cluster. 
+  - Since we'll need to validate the internals of our deployment (i.e. such as pod phase, etc.), we'll be want to run these tests against a live cluster. To automate a test cluster, one suggestion would be to automate the provisioning of a cluster, leveraging a lightweight cluster implementation such as  [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) or [K3S/K3D](https://k3d.io/) 
   - ![Screenshot from 2020-08-25 13-30-49](https://user-images.githubusercontent.com/61749/91213651-86ac0900-e6d7-11ea-9ed3-356f9979aff3.png)
 
 - **(d)** An instance of a controller reconciler we'll be using in our test 
