@@ -274,7 +274,7 @@ For this lab we will be taking a TDD (Test Driven Design) approach to building a
 
 **(1)** Update the Test Suite
 
-> :warning: Do This
+> <ins>:warning: Do This</ins>
 
 When we generated our custom resource definition and controller, we also generated a stub for a test suite.  
 
