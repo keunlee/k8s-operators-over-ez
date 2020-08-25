@@ -324,9 +324,17 @@ In these following sections, we will make observations on the additions added to
 
 > <ins>:warning: Do This</ins>
 
-> :paperclip: For reference, the full Controller Implementation can be found here:  https://bit.ly/2YxaAnb
+> :paperclip: The contents of a **partial** of the Controller Test Implementation can be found here:  https://bit.ly/2QvfBrT
 
 Create the following file: `controllers/opsovereasy_controller_test.go`
+
+And copy the contents of the "partial" implementation into it. 
+
+
+
+> :paperclip: For reference, the **full** Controller Test Implementation can be found here:  https://bit.ly/2YxaAnb
+
+<!-- Create the following file: `controllers/opsovereasy_controller_test.go`
 
 Copy the following contents of test implementation stub to the file:
 
@@ -340,7 +348,7 @@ Currently when these tests are executed they will fail as expected.
 
 This will change as we implement our controller and update these tests. 
 
-> You can find a full implementation of this file here: https://bit.ly/2YxaAnb
+> You can find a full implementation of this file here: https://bit.ly/2YxaAnb -->
 
 (3) Run Tests
 
