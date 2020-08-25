@@ -22,6 +22,7 @@ import (
 	"k8s.io/apimachinery/pkg/types"
 	"path/filepath"
 	ctrl "sigs.k8s.io/controller-runtime"
+	"time"
 
 	"testing"
 
@@ -50,13 +51,32 @@ var k8sManager ctrl.Manager
 var opsOverEasyReconciler *OpsOverEasyReconciler
 var crdInstance = &operatorsoverezv1alpha1.OpsOverEasy{}
 var testCtx = context.Background()
-var crKey = types.NamespacedName{
-	Name:      "operator-overeasy",
-	Namespace: "default",
+
+const timeout = time.Second * 120
+const interval = time.Second * 1
+const podDuration = 1
+
+func getCrKey(uuid string) types.NamespacedName {
+	var crKey = types.NamespacedName{
+		Name:      "operator-overeasy" + "-" + uuid,
+		Namespace: "default",
+	}
+
+	return crKey
 }
 
-func getCrd(withSpecification bool) *operatorsoverezv1alpha1.OpsOverEasy {
+func getPodKey(uuid string) types.NamespacedName {
+	var crKey = types.NamespacedName{
+		Name:      "operator-overeasy" + "-" + uuid + "-pod",
+		Namespace: "default",
+	}
+
+	return crKey
+}
+
+func getCrd(withSpecification bool, uuid string) *operatorsoverezv1alpha1.OpsOverEasy {
 	var crd *operatorsoverezv1alpha1.OpsOverEasy
+	var crKey = getCrKey(uuid)
 
 	if withSpecification {
 		crd = &operatorsoverezv1alpha1.OpsOverEasy{
@@ -66,7 +86,7 @@ func getCrd(withSpecification bool) *operatorsoverezv1alpha1.OpsOverEasy {
 			},
 
 			Spec: operatorsoverezv1alpha1.OpsOverEasySpec{
-				Timeout: 30,
+				Timeout: podDuration,
 				Message: "message",
 			},
 		}

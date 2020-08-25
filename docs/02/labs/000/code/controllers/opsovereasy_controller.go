@@ -18,19 +18,26 @@ package controllers
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 	"github.com/go-logr/logr"
+	operatorsoverezv1alpha1 "github.com/mydomain/operators-over-ez/api/v1alpha1"
+	"io/ioutil"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/types"
+	"net/http"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
-
-	operatorsoverezv1alpha1 "github.com/mydomain/operators-over-ez/api/v1alpha1"
 )
+
+type ApiSampleResponse struct {
+	Timeout int32  `json:"timeout"`
+	Message string `json:"message"`
+}
 
 // OpsOverEasyReconciler reconciles a OpsOverEasy object
 type OpsOverEasyReconciler struct {
@@ -59,12 +66,18 @@ func (r *OpsOverEasyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 		return ctrl.Result{}, err
 	}
 
-	//resp, err := http.Get("http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response")
-	//if ( resp != nil) {}
+	if instance.Spec.Message == "" && instance.Spec.Timeout == int32(0) {
+		resp := getSampleRestAPIResponse()
+		if resp != nil {
+			instance.Spec.Message = resp.Message
+			instance.Spec.Timeout = resp.Timeout
+			r.Client.Update(context.TODO(), instance)
+		}
+	}
 
 	pod := newPodForCR(instance)
 
-	// Set Mycrd instance as the owner and controller
+	// Set the crd instance as the owner and controller
 	if err := controllerutil.SetControllerReference(instance, pod, r.Scheme); err != nil {
 		return ctrl.Result{}, err
 	}
@@ -91,8 +104,8 @@ func (r *OpsOverEasyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 			return ctrl.Result{}, err
 		}
 
-		// Pod created successfully - don't requeue
-		return ctrl.Result{}, nil
+		// Pod created successfully
+		return ctrl.Result{Requeue: true}, nil
 	} else if err != nil {
 		return ctrl.Result{}, err
 	}
@@ -135,4 +148,17 @@ func newPodForCR(cr *operatorsoverezv1alpha1.OpsOverEasy) *corev1.Pod {
 			RestartPolicy: corev1.RestartPolicyNever,
 		},
 	}
+}
+
+func getSampleRestAPIResponse() *ApiSampleResponse {
+	resp, err := http.Get("http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response")
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	strResponse := string(body)
+	var apiSampleResponse ApiSampleResponse
+	json.Unmarshal([]byte(strResponse), &apiSampleResponse)
+	return &apiSampleResponse
 }
