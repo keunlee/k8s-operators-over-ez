@@ -194,7 +194,7 @@ These resources will be particularly important going forward.
 
 In this step, you will define your operator specifications and status attributes. 
 
-For reference, the full CR Definition Implementation can be found here: https://bit.ly/32jOlSU
+> : paperclip: For reference, the full CR Definition Implementation can be found here: https://bit.ly/32jOlSU
 
 **Operator Specifications**:
 
@@ -280,7 +280,7 @@ For this lab we will be taking a TDD (Test Driven Design) approach to building a
 
 When we generated our custom resource definition and controller, we also generated a stub for a test suite.  
 
-A completed example of the test suite can be found here: https://bit.ly/2Qi9ZRQ
+> : paperclip: A completed example of the test suite can be found here: https://bit.ly/2Qi9ZRQ
 
 Copy the contents of the file to your local Test Suite file: `controllers\suite_test.go`
 
