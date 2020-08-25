@@ -288,23 +288,23 @@ When observing the additions made to the generated stub:
 
 - Added imports to additional packages that we will be leveraging 
 
-![Screenshot from 2020-08-24 15-26-01](https://user-images.githubusercontent.com/61749/91093790-87816400-e61f-11ea-91a5-b9ca1cf9e6fe.png)
+![Screenshot from 2020-08-25 13-27-28](https://user-images.githubusercontent.com/61749/91213646-86137280-e6d7-11ea-9cb2-e3c47e49dac5.png)
 
 - Added additional variables and helper functions that we'd like to make available to our controller tests. 
 
-![Screenshot from 2020-08-24 15-26-35](https://user-images.githubusercontent.com/61749/91093791-8819fa80-e61f-11ea-8e8f-d2fe926d2524.png)
+![Screenshot from 2020-08-25 13-28-28](https://user-images.githubusercontent.com/61749/91213648-86ac0900-e6d7-11ea-8e76-ce9a12abc3ce.png)
 
 - Since we'll need to validate the internals of our deployment (i.e. such as pod phase, etc.), we'll be want to run these tests against a live cluster. To automate a test cluster, one suggestion would be to automate the provisioning of a cluster, leveraging a lightweight cluster implementation such as [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) or [K3S/K3D](https://k3d.io/) 
 
-![Screenshot from 2020-08-24 22-14-59](https://user-images.githubusercontent.com/61749/91118825-7ce2c100-e657-11ea-83e3-6b6840540bdc.png)
+![Screenshot from 2020-08-25 13-30-49](https://user-images.githubusercontent.com/61749/91213651-86ac0900-e6d7-11ea-9ed3-356f9979aff3.png)
 
 - An instance of a controller reconciler we'll be using in our test 
 
-![Screenshot from 2020-08-24 15-27-11](https://user-images.githubusercontent.com/61749/91093794-88b29100-e61f-11ea-8df5-f3e855770e57.png)
+![Screenshot from 2020-08-25 13-31-25](https://user-images.githubusercontent.com/61749/91213653-86ac0900-e6d7-11ea-8949-357876ec1228.png)
 
 - We can automate the uninstall of a CRD after it has been tested on our cluster. 
 
-![Screenshot from 2020-08-24 22-15-36](https://user-images.githubusercontent.com/61749/91118827-7d7b5780-e657-11ea-9c4c-2f248ac294e5.png)
+![Screenshot from 2020-08-25 13-31-52](https://user-images.githubusercontent.com/61749/91213655-86ac0900-e6d7-11ea-8ffd-f0816fc49b84.png)
 
 (2) Add Test Controller and Test Stubs
 

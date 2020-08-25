@@ -20,10 +20,10 @@ import (
 	"context"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
-	"path/filepath"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"time"
 
+	"path/filepath"
 	"testing"
 
 	. "github.com/onsi/ginkgo"
@@ -66,12 +66,12 @@ func getCrKey(uuid string) types.NamespacedName {
 }
 
 func getPodKey(uuid string) types.NamespacedName {
-	var crKey = types.NamespacedName{
+	var podKey = types.NamespacedName{
 		Name:      "operator-overeasy" + "-" + uuid + "-pod",
 		Namespace: "default",
 	}
 
-	return crKey
+	return podKey
 }
 
 func getCrd(withSpecification bool, uuid string) *operatorsoverezv1alpha1.OpsOverEasy {
