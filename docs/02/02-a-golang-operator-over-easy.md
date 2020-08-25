@@ -320,7 +320,7 @@ In these following sections, we will make observations on the additions added to
 - **(e)** Automate the uninstall of a CRD after it has been tested on our cluster. 
   - ![Screenshot from 2020-08-25 13-31-52](https://user-images.githubusercontent.com/61749/91213655-86ac0900-e6d7-11ea-8ffd-f0816fc49b84.png)
 
-(2) Add Controller Tests and define Test Stubs
+**(3)** Add Controller Tests and define Test Stubs
 
 > <ins>:warning: Do This</ins>
 
