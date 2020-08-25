@@ -72,6 +72,18 @@ func (r *OpsOverEasyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 	// Check if this Pod already exists
 	found := &corev1.Pod{}
 	err = r.Client.Get(context.TODO(), types.NamespacedName{Name: pod.Name, Namespace: pod.Namespace}, found)
+	if err == nil {
+		if found.Status.Phase == corev1.PodSucceeded {
+			instance.Status.MessageLogged = true
+			instance.Status.TimeoutExpired = true
+
+			err = r.Client.Status().Update(context.TODO(), instance)
+			if err != nil {
+				return ctrl.Result{}, err
+			}
+		}
+	}
+
 	if err != nil && errors.IsNotFound(err) {
 		r.Log.Info("Creating a new Pod", "Pod.Namespace", pod.Namespace, "Pod.Name", pod.Name)
 		err = r.Client.Create(context.TODO(), pod)

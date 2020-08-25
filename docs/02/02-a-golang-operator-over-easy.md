@@ -278,7 +278,11 @@ When we generated our custom resource definition and controller, we also generat
 
 <ins>Do This</ins>
 
-We are going to want update our Test Suite file to look like the following:  https://bit.ly/2Qi9ZRQ
+Copy the contents of the following file: 
+
+https://bit.ly/2Qi9ZRQ
+
+To the Test Suite file.   
 
 When observing the additions made to the generated stub: 
 

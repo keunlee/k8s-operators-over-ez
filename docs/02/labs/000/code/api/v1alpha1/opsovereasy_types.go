@@ -41,6 +41,12 @@ type OpsOverEasySpec struct {
 type OpsOverEasyStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+
+	// Denotes if the time duration has expired
+	TimeoutExpired bool `json:"expired,omitempty"`
+
+	// Denotes if a message was logged
+	MessageLogged bool `json:"logged,omitempty"`
 }
 
 // +kubebuilder:object:root=true
