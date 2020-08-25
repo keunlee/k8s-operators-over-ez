@@ -294,8 +294,8 @@ In these following sections, we will make observations on the additions added to
 - **(b)** Added additional variables and helper functions that we'd like to make available to our controller tests. 
   - Public variables and functions can are accessible in the test suite by our controller test. Leveraging this feature, we can reuse these methods, potentially, across multiple controller test files. 
   - Variables:
-    - *k8sManager*
-	- *opsOverEasyReconciler*
+    - *k8sManager* : Instance of our Kubernetes API Manager
+	- *opsOverEasyReconciler*: Instance of our Controller
 	- *crdInstance*
 	- *testCtx*
 	- *timeout*
