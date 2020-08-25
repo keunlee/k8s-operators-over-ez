@@ -1,6 +1,6 @@
 domain: mydomain.com
 layout: go.kubebuilder.io/v2
-projectName: operators-over-ez-002
+projectName: operators-over-ez
 repo: github.com/mydomain/operators-over-ez
 resources:
 - group: operators-over-ez

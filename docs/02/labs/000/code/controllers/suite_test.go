@@ -20,9 +20,9 @@ import (
 	"context"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
+	"path/filepath"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	"path/filepath"
 	"testing"
 
 	. "github.com/onsi/ginkgo"
@@ -93,9 +93,11 @@ func TestAPIs(t *testing.T) {
 var _ = BeforeSuite(func(done Done) {
 	logf.SetLogger(zap.LoggerTo(GinkgoWriter, true))
 
-	By("bootstrapping test environment")
+	By("bootstrapping test environment - to a real cluster")
+	usingExistingCluster := true
 	testEnv = &envtest.Environment{
-		CRDDirectoryPaths: []string{filepath.Join("..", "config", "crd", "bases")},
+		CRDDirectoryPaths:  []string{filepath.Join("..", "config", "crd", "bases")},
+		UseExistingCluster: &usingExistingCluster,
 	}
 
 	var err error
@@ -131,6 +133,11 @@ var _ = BeforeSuite(func(done Done) {
 
 var _ = AfterSuite(func() {
 	By("tearing down the test environment")
+	options := envtest.CRDInstallOptions{
+		Paths:           []string{filepath.Join("..", "config", "crd", "bases")},
+		CleanUpAfterUse: true,
+	}
+	envtest.UninstallCRDs(cfg, options)
 	err := testEnv.Stop()
 	Expect(err).ToNot(HaveOccurred())
 })

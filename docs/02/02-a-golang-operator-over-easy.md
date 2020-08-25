@@ -38,8 +38,7 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 - **SCENARIO 1**: Shutdown the busybox pod after a user specified amount of time in seconds
   - **GIVEN**: An Operator instance
   - **WHEN**: the specification `timeout` is set to a numeric value in seconds
-  - **THEN**: the busy box pod will remain available for the specified `timeout` in seconds,
-  - **AND**: shutdown after the specified amount `timeout` duration
+  - **THEN**: the busy box pod will remain available for the specified `timeout` duration in seconds,
 
 - **SCENARIO 2**: Log a user specified message before shutting down the busybox pod
   - **GIVEN**: An Operator instance
@@ -55,8 +54,8 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
   - **GIVEN**: An Operator instance
   - **WHEN**: the busy box pod's duration has expired
   - **AND**: the busy box pod has logged a message
-  - **THEN**: set the `expired` status to `true`
-  - **AND**: set the `logged` status to `true`
+  - **THEN**: set the operators `expired` status to `true`
+  - **AND**: set the operators `logged` status to `true`
 
 ### Acceptance Criteria Notes
 
@@ -287,8 +286,11 @@ When observing the additions made to the generated stub:
 
 - Added additional variables and helper functions that we'd like to make available to our controller tests. ![Screenshot from 2020-08-24 15-26-35](https://user-images.githubusercontent.com/61749/91093791-8819fa80-e61f-11ea-8e8f-d2fe926d2524.png)
 
+- Since we'll need to validate the internals of our deployment (i.e. such as pod phase, etc.), we'll be want to run these tests against a live cluster. To automate a test against a test cluster, one suggestion would be to automate provisioning, leveraging a lightweight cluster such as [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) or [K3S/K3D](https://k3d.io/) ![Screenshot from 2020-08-24 22-14-59](https://user-images.githubusercontent.com/61749/91118825-7ce2c100-e657-11ea-83e3-6b6840540bdc.png)
+
 - An instance of a controller reconciler we'll be using in our test ![Screenshot from 2020-08-24 15-27-11](https://user-images.githubusercontent.com/61749/91093794-88b29100-e61f-11ea-8df5-f3e855770e57.png)
 
+- We can automate the uninstall of a CRD after it has been tested on our cluster. ![Screenshot from 2020-08-24 22-15-36](https://user-images.githubusercontent.com/61749/91118827-7d7b5780-e657-11ea-9c4c-2f248ac294e5.png)
 
 (2) Add Test Controller and Test Stubs
 
