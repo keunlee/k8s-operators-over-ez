@@ -292,131 +292,45 @@ In these following sections, we will make observations on the additions added to
   - ![Screenshot from 2020-08-25 13-27-28](https://user-images.githubusercontent.com/61749/91213646-86137280-e6d7-11ea-9cb2-e3c47e49dac5.png)
 
 - **(b)** Added additional variables and helper functions that we'd like to make available to our controller tests. 
-  - Public variables and functions can are accessible in the test suite by our controller test. Leveraging this feature, we can reuse these methods, potentially, across multiple controller test files. 
+  - Public variables and functions are accessible in the test suite by our controller test. Leveraging this feature, we can reuse these methods, potentially, across multiple controller test files. 
   - Variables:
-    - *k8sManager* : Instance of our Kubernetes API Manager
-	- *opsOverEasyReconciler*: Instance of our Controller
-	- *crdInstance*
-	- *testCtx*
-	- *timeout*
-	- *interval*
-	- *podDuration*
+    - *k8sManager*: Instance of our Kubernetes API Manager.
+	- *opsOverEasyReconciler*: Instance of our Controller.
+	- *crdInstance*: Instance of our Custom Resource.
+	- *testCtx*: Intance of our testing context. 
+	- *timeout*: Timeout duration for asynch tests. Used primarily for evaluating Ginkgo/Gomega `Eventually` async assertions. 
+	- *interval*: Interval to evaluate async assertions.
+	- *podDuration*: Duration for which our busybox pods will run for
   - Functions: 
-    - *getCrKey*: helper method for building a key for the Custom Resource
-    - *getPodKey*: helper method for building a key for a Pod Resource
-    - *getCrd*: helper method for building a Custom Resource Definition instance
+    - *getCrKey*: Helper method for building a key for the Custom Resource.
+    - *getPodKey*: Helper method for building a key for a Pod Resource.
+    - *getCrd*: Helper method for building a Custom Resource Definition instance
   - ![Screenshot from 2020-08-25 13-28-28](https://user-images.githubusercontent.com/61749/91213648-86ac0900-e6d7-11ea-8e76-ce9a12abc3ce.png)
 
 - **(c)** Bootstrap our test enviornment to a real cluster. 
   - Since we'll need to validate the internals of our deployment (i.e. such as pod phase, etc.), we'll be want to run these tests against a live cluster. To automate a test cluster, one suggestion would be to automate the provisioning of a cluster, leveraging a lightweight cluster implementation such as  [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) or [K3S/K3D](https://k3d.io/) 
   - ![Screenshot from 2020-08-25 13-30-49](https://user-images.githubusercontent.com/61749/91213651-86ac0900-e6d7-11ea-9ed3-356f9979aff3.png)
 
-- **(d)** An instance of a controller reconciler we'll be using in our test 
+- **(d)** Setup our Custom Resource Controller. 
+  - Create an instance of our controller reconciler that we'll be using in our controller tests
+  - Add the appropriate "watches" on the resources that the Custom Resource owns. 
+  - The call to `(opsOverEasyReconciler).SetupWithManager(k8sManager)` is responsible for add "watches" on resources owned by your Custom Resource. You will later implement this method in your controller. 
   - ![Screenshot from 2020-08-25 13-31-25](https://user-images.githubusercontent.com/61749/91213653-86ac0900-e6d7-11ea-8949-357876ec1228.png)
 
-- **(e)** We can automate the uninstall of a CRD after it has been tested on our cluster. 
+- **(e)** Automate the uninstall of a CRD after it has been tested on our cluster. 
   - ![Screenshot from 2020-08-25 13-31-52](https://user-images.githubusercontent.com/61749/91213655-86ac0900-e6d7-11ea-8ffd-f0816fc49b84.png)
 
 (2) Add Test Controller and Test Stubs
 
 > <ins>:warning: Do This</ins>
 
+> :paperclip: For reference, the full Controller Implementation can be found here:  https://bit.ly/2YxaAnb
+
 Create the following file: `controllers/opsovereasy_controller_test.go`
 
 Copy the following contents of test implementation stub to the file:
 
-```golang
-package controllers
 
-import (
-	operatorsoverezv1alpha1 "github.com/mydomain/operators-over-ez/api/v1alpha1"
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
-	corev1 "k8s.io/api/core/v1"
-	"k8s.io/apimachinery/pkg/types"
-	"sigs.k8s.io/controller-runtime/pkg/reconcile"
-)
-
-var _ = Describe("CR Controller", func() {
-	const timeout = time.Second * 60
-	const interval = time.Second * 1
-
-	Context("BDD Test Scenarios", func() {
-		Context("CR Instance with Specifications Provided", func() {
-			BeforeEach(func() {
-				// Given: An Operator Instance
-				crdInstance = getCrd(true)
-				err := k8sClient.Create(testCtx, crdInstance)
-				Expect(err).ShouldNot(HaveOccurred())
-			})
-
-			AfterEach(func() {
-				err := k8sClient.Delete(testCtx, crdInstance)
-				Expect(err).ShouldNot(HaveOccurred())
-			})
-
-			//SCENARIO: Shutdown the busybox pod after a user specified amount of time in seconds
-			//GIVEN: An Operator instance
-			//WHEN: the specification timeout is set to a numeric value in seconds
-			//THEN: the busy box pod will remain available for the specified timeout in seconds,
-			When("The specification timeout is set to a numeric value in seconds", func() {
-				It("Should remain available for the specified timeout duration in seconds", func() {
-					Expect(true).To(BeFalse())
-				})
-			})
-
-			//SCENARIO: Log a user specified message before shutting down the busybox pod
-			//GIVEN: An Operator instance
-			//WHEN: the specification message is set to a string value
-			//THEN: the busy box pod will log the message, from the message specification after the timeout duration has expired.
-			When("The specification message is set to a string value", func() {
-				It("Should log the message, from the message specification after the time out duration has expired", func() {
-					Expect(true).To(BeFalse())
-				})
-			})
-
-			//SCENARIO: Update status expired and logged when the busybox pod has expired
-			//GIVEN: An Operator instance
-			//WHEN: the busy box pod's duration has expired
-			//THEN: set the expired status to true
-			//AND: set the logged status to true
-			When("The duration has expired", func() {
-				It("Should set the expired status to true", func() {
-					Expect(true).To(BeFalse())
-				})
-
-				It("Should set the logged status to true", func() {
-					Expect(true).To(BeFalse())
-				})
-			})
-		})
-
-		Context("CR Instance with no Specifications Provided", func() {
-			BeforeEach(func() {
-				// Given: An Operator Instance
-				crdInstance = getCrd(false)
-				err := k8sClient.Create(testCtx, crdInstance)
-				Expect(err).ShouldNot(HaveOccurred())
-			})
-
-			AfterEach(func() {
-				err := k8sClient.Delete(testCtx, crdInstance)
-				Expect(err).ShouldNot(HaveOccurred())
-			})
-
-			//SCENARIO: Retrieve the timeout and message from a given REST API if one and/or the other is not supplied.
-			//GIVEN: An Operator instance
-			//WHEN: the specification message OR timeout is NOT set
-			//THEN: the busy box pod will supply these values from the following REST API: GET http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response
-			When("The specification message OR timeout is NOT set", func() {
-				It("Should supply these values from the following REST API: GET http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response", func() {
-					Expect(true).To(BeFalse())
-				})
-			})
-		})
-	})
-})
-```
 
 Notice how we we've created stubs for each corresponding BDD scenario. 
 
