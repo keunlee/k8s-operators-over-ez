@@ -272,39 +272,34 @@ You can validate specification updates on your CRD by examining the updated file
 
 For this lab we will be taking a TDD (Test Driven Design) approach to building and implementing our operator. 
 
-(1) Update the Test Suite
+**(1)** Update the Test Suite
 
-When we generated our custom resource definition and controller, we also generated a stub for a test suite: `controllers\suite_test.go`
+When we generated our custom resource definition and controller, we also generated a stub for a test suite.  
 
 <ins>Do This</ins>
 
-Copy the contents of the following file: 
+A completed example of the test suite can be found here: https://bit.ly/2Qi9ZRQ
 
-https://bit.ly/2Qi9ZRQ
+Copy the contents of the file to your local Test Suite file: `controllers\suite_test.go`
 
-To the Test Suite file.   
+**(2)** Observation of updates
 
-When observing the additions made to the generated stub: 
+In these following sections, we will make observations on the additions added to the Test Suite file. 
 
-- Added imports to additional packages that we will be leveraging 
+- **(a)** Added imports to additional packages that we will be leveraging 
+  - ![Screenshot from 2020-08-25 13-27-28](https://user-images.githubusercontent.com/61749/91213646-86137280-e6d7-11ea-9cb2-e3c47e49dac5.png)
 
-![Screenshot from 2020-08-25 13-27-28](https://user-images.githubusercontent.com/61749/91213646-86137280-e6d7-11ea-9cb2-e3c47e49dac5.png)
+- **(b)** Added additional variables and helper functions that we'd like to make available to our controller tests. 
+  - ![Screenshot from 2020-08-25 13-28-28](https://user-images.githubusercontent.com/61749/91213648-86ac0900-e6d7-11ea-8e76-ce9a12abc3ce.png)
 
-- Added additional variables and helper functions that we'd like to make available to our controller tests. 
+- **(c)** Since we'll need to validate the internals of our deployment (i.e. such as pod phase, etc.), we'll be want to run these tests against a live cluster. To automate a test cluster, one suggestion would be to automate the provisioning of a cluster, leveraging a lightweight cluster implementation such as  [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) or [K3S/K3D](https://k3d.io/) 
+  - ![Screenshot from 2020-08-25 13-30-49](https://user-images.githubusercontent.com/61749/91213651-86ac0900-e6d7-11ea-9ed3-356f9979aff3.png)
 
-![Screenshot from 2020-08-25 13-28-28](https://user-images.githubusercontent.com/61749/91213648-86ac0900-e6d7-11ea-8e76-ce9a12abc3ce.png)
+- **(d)** An instance of a controller reconciler we'll be using in our test 
+  - ![Screenshot from 2020-08-25 13-31-25](https://user-images.githubusercontent.com/61749/91213653-86ac0900-e6d7-11ea-8949-357876ec1228.png)
 
-- Since we'll need to validate the internals of our deployment (i.e. such as pod phase, etc.), we'll be want to run these tests against a live cluster. To automate a test cluster, one suggestion would be to automate the provisioning of a cluster, leveraging a lightweight cluster implementation such as [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) or [K3S/K3D](https://k3d.io/) 
-
-![Screenshot from 2020-08-25 13-30-49](https://user-images.githubusercontent.com/61749/91213651-86ac0900-e6d7-11ea-9ed3-356f9979aff3.png)
-
-- An instance of a controller reconciler we'll be using in our test 
-
-![Screenshot from 2020-08-25 13-31-25](https://user-images.githubusercontent.com/61749/91213653-86ac0900-e6d7-11ea-8949-357876ec1228.png)
-
-- We can automate the uninstall of a CRD after it has been tested on our cluster. 
-
-![Screenshot from 2020-08-25 13-31-52](https://user-images.githubusercontent.com/61749/91213655-86ac0900-e6d7-11ea-8ffd-f0816fc49b84.png)
+- **(e)** We can automate the uninstall of a CRD after it has been tested on our cluster. 
+  - ![Screenshot from 2020-08-25 13-31-52](https://user-images.githubusercontent.com/61749/91213655-86ac0900-e6d7-11ea-8ffd-f0816fc49b84.png)
 
 (2) Add Test Controller and Test Stubs
 
