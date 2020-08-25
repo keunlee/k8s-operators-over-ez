@@ -324,7 +324,7 @@ In these following sections, we will make observations on the additions added to
 
 > <ins>:warning: Do This</ins>
 
-> :paperclip: The contents of a **partially** implemented Controller Test file can be found here:  https://bit.ly/2QvfBrT
+> :paperclip: The contents of a **partially** implemented Controller Test file can be found here:  https://bit.ly/2YwXFBI
 
 Create the following file: `controllers/opsovereasy_controller_test.go`
 
