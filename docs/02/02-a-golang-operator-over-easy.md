@@ -194,6 +194,8 @@ These resources will be particularly important going forward.
 
 In this step, you will define your operator specifications and status attributes. 
 
+For reference, the full CR Definition Implementation can be found here: https://bit.ly/32jOlSU
+
 **Operator Specifications**:
 
 These are user defined properties of your operator. When you add a specification, you typically implement your operator to respond/react off of the specification that is set. 
