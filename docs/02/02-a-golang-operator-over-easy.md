@@ -359,13 +359,13 @@ Let's go ahead and look at the Controller Test file and analyze a few key additi
 - **(a)**: Added variables and helper functions that we'd like to make available to our controller tests.
   - Variables: 
     - *pod*: The pod instance we'll be using to track our busybox pod deployment.
-    - *currUid*: A naming helper that we use to assist in allowing us to create unique Custom Resource and Pod instance names. 
+    - *currUuid*: A naming helper that we use to assist in allowing us to create unique Custom Resource and Pod instance names. 
   - Functions: 
     - *createReconcileRequest*: Invokes the `Reconcile` method of our controller, thereby changing the state of our Operator. 
     - *getPodLogs*: Retrieves the "logs" of a pod leveraging Kubernetes API calls and returns them as a string.   
   - ![Screenshot from 2020-08-25 23-06-10](https://user-images.githubusercontent.com/61749/91254401-f1853080-e727-11ea-9e4c-315bf2949959.png)
 
-- **(b)**: For each test, ensure that a new Operator instance created. This will create a new Custom Resource Definition and Custom Resource Controller instance. 
+- **(b)**: For each test, we must ensure that a new Operator instance created for the current running test. These additions will create a new Custom Resource Definition and Custom Resource Controller instance. 
   - On running of the `BeforeEach` method, a new Operator instance will be created.
   - On running of the `AfterEach` method, the last Operator instance, is deleted. When deleted, any resources created and "watched" by the Operator instance (i.e. pods, etc.) are also deleted. 
   - ![Screenshot from 2020-08-25 23-07-30](https://user-images.githubusercontent.com/61749/91254402-f21dc700-e727-11ea-9757-0f1134ba5218.png)
