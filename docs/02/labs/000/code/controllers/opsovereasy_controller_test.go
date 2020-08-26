@@ -13,6 +13,7 @@ import (
 )
 
 var pod = &corev1.Pod{}
+var currUuid string
 
 func createReconcileRequest() error {
 	// make request to Reconcile
@@ -63,8 +64,6 @@ func getPodLogs(pod corev1.Pod) string {
 	return str
 }
 
-var currUuid string
-
 var _ = Describe("CR Controller", func() {
 	Context("BDD Test Scenarios", func() {
 		Context("CR Instance with Specifications Provided", func() {
@@ -94,8 +93,7 @@ var _ = Describe("CR Controller", func() {
 				It("Should remain available for the specified timeout duration in seconds", func() {
 					Expect(crdInstance.Spec.Timeout).Should(Equal(int32(podDuration)))
 
-					var err error = nil
-					err = createReconcileRequest()
+					err := createReconcileRequest()
 					Expect(err).NotTo(HaveOccurred())
 
 					Eventually(func() corev1.PodPhase {
@@ -116,8 +114,7 @@ var _ = Describe("CR Controller", func() {
 				It("Should log the message, from the message specification after the time out duration has expired", func() {
 					Expect(crdInstance.Spec.Message).Should(Equal("message"))
 
-					var err error = nil
-					err = createReconcileRequest()
+					err := createReconcileRequest()
 					Expect(err).NotTo(HaveOccurred())
 
 					Eventually(func() corev1.PodPhase {
@@ -145,8 +142,7 @@ var _ = Describe("CR Controller", func() {
 					Expect(crdInstance.Status.TimeoutExpired).Should(BeFalse())
 					Expect(crdInstance.Status.MessageLogged).Should(BeFalse())
 
-					var err error = nil
-					err = createReconcileRequest()
+					err := createReconcileRequest()
 					Expect(err).NotTo(HaveOccurred())
 
 					Eventually(func() corev1.PodPhase {
@@ -199,8 +195,7 @@ var _ = Describe("CR Controller", func() {
 					Expect(crdInstance.Spec.Timeout).Should(Equal(int32(0)))
 					Expect(crdInstance.Spec.Message).Should(Equal(""))
 
-					var err error = nil
-					err = createReconcileRequest()
+					err := createReconcileRequest()
 					Expect(err).NotTo(HaveOccurred())
 
 					Eventually(func() corev1.PodPhase {

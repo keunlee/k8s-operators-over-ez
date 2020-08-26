@@ -14,11 +14,21 @@
 
 ## Overview
 
-This is a guided lab. In comparison to some of the other golang opeator labs that you will find in this guide, you will notice that this lab is heavier in annotations and explanations.
+This is a guided lab. In comparison to some of the other operator labs that you will find in this guide, you will notice that this lab is heavier in annotations and explanations.
 
-Please do not rush through this lab. You should leverage this lab to **learn**, get things to work, experiment and "break" stuff. It's okay to do that here. We will clean up the mess together!
+Please do not rush through this lab. You should leverage this lab to **learn**, get things to work, experiment and "break" stuff. It's okay to do that here in this context. 
 
-That being said, these labs are meant to be run in a sandboxed development environment.
+That being said, these labs are meant to be run in a sandboxed development environment. Do not run this lab in a critical and/or production environment. 
+
+## How to use this Lab 
+
+You can do either of the following in this lab: 
+
+1. Read through the lab in it's entirety and follow all of the directions, step by step. Going down this route, you will be given crash course in Behavioral Driven Design (BDD), Test Driven Design (TDD), and how to apply thme towards building a Golang based Operator. If this sounds like, then proceed to the next section below. 
+
+2. View the implementation of the lab code in it's entirety, and do with it what you will. If that is the case, the lab code can be found in the following location: `docs/02/labs/000/code`
+
+There's no wrong way to learn. 
 
 ## Environment Setup
 
@@ -73,9 +83,9 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 
 In a nutshell, we want to start up a pod, running a busybox image for a specific duration and logging a user specific message, and then setting our Operator's status. 
 
-We'll want our Operator to provision our pod with the necessary attribute specifications, eventually. 
+We'll want our Operator to provision our busybox pod with the necessary attribute specifications, eventually. 
 
-For now, our strategy to reach the end state is detailed as followed: 
+Our strategy to reach the end state is detailed as followed: 
 
 - **I - Prototyping** - Create a YAML specification for a pod which runs for a specified amount of time and logs a specific message. Do this to validate our design. We'll eventually want our Operator controller implementation to dynamically set the pods timeout duration and log message. For now, we will validate our prototype. 
 
@@ -322,25 +332,46 @@ In these following sections, we will make observations on the additions added to
 
 **(3)** Add Controller Tests and define Test Stubs
 
+For our tests, we are leveraging the Golang Testing Libraires [Ginkgo](https://onsi.github.io/ginkgo/) and [Gomega](https://onsi.github.io/gomega/). More information can be found by clicking on the links. 
+
 > <ins>:warning: Do This</ins>
 
-> :paperclip: The contents of a **partially** implemented Controller Test file can be found here:  https://bit.ly/2YwXFBI
+> :paperclip: The contents of a **partially** implemented Controller Test file, where only the test stubs are implemented, can be found here:  https://bit.ly/2YwXFBI
 
 Create the following file: `controllers/opsovereasy_controller_test.go`
 
 And copy the contents of the "partially" implemented Controller Test into it. 
 
-> :paperclip: For reference, the **fully** implemented Controller Test file can be found here:  https://bit.ly/2YxaAnb. Please refer to it as we go over updates/additions to your implementation.
-
 Notice how we we've created stubs for each corresponding BDD scenario. 
 
-As we implement each BDD scenario we will also leverage these stubs to test and validate our scenario requirements. 
+As we implement our Custom Resource Controller, we will also leverage these stubs to test and validate our scenario requirements. 
 
 Currently when these tests are executed they will fail as expected. 
 
-This will change as we implement our controller and update these tests. 
+You can run them by executing the following at the root of the source directory: 
 
-(3) Run Tests
+```bash
+make test
+```
+
+Let's go ahead and look at the Controller Test file and analyze what we've added. 
+
+**(a)**: 
+
+**(b)**
+
+**(c)**
+
+**(d)**
+
+**(e)**
+
+
+
+
+> :paperclip: For reference, the **fully** implemented Controller Test file can be found here:  https://bit.ly/2YxaAnb. Please refer to it as we go over updates/additions to your implementation.
+
+**(4)** Run Tests
 
 You can run these tests by running the following at the terminal of the root directory of the lab: 
 
@@ -348,7 +379,7 @@ You can run these tests by running the following at the terminal of the root dir
 make test
 ```
 
-All tests should fail at this point. This is as  expected. 
+All tests should fail at this point. This is as expected.
 
 ### V. CR Controller Implementation
 

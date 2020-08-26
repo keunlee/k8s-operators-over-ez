@@ -13,6 +13,7 @@ import (
 )
 
 var pod = &corev1.Pod{}
+var currUuid string
 
 func createReconcileRequest() error {
 	// make request to Reconcile
@@ -62,8 +63,6 @@ func getPodLogs(pod corev1.Pod) string {
 
 	return str
 }
-
-var currUuid string
 
 var _ = Describe("CR Controller", func() {
 	Context("BDD Test Scenarios", func() {
