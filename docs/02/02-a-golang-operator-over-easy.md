@@ -314,7 +314,7 @@ In these following sections, we will make observations on the additions added to
   - Functions: 
     - *getCrKey*: Helper method for building a key for the Custom Resource.
     - *getPodKey*: Helper method for building a key for a Pod Resource.
-    - *getCrd*: Helper method for building a Custom Resource Definition instance
+    - *getCrd*: Helper method for building a Custom Resource Definition instance with or without specification attributes provided. 
   - ![Screenshot from 2020-08-25 13-28-28](https://user-images.githubusercontent.com/61749/91213648-86ac0900-e6d7-11ea-8e76-ce9a12abc3ce.png)
 
 - **(c)** Bootstrap our test enviornment to a real cluster. 
@@ -354,32 +354,35 @@ You can run them by executing the following at the root of the source directory:
 make test
 ```
 
-Let's go ahead and look at the Controller Test file and analyze what we've added. 
+Let's go ahead and look at the Controller Test file and analyze a few key additions that will help us implement our test stubs: 
 
-**(a)**: 
+- **(a)**: Added variables and helper functions that we'd like to make available to our controller tests.
+  - Variables: 
+    - *pod*: The pod instance we'll be using to track our busybox pod deployment.
+    - *currUid*: A naming helper that we use to assist in allowing us to create unique Custom Resource and Pod instance names. 
+  - Functions: 
+    - *createReconcileRequest*: Invokes the `Reconcile` method of our controller, thereby changing the state of our Operator. 
+    - *getPodLogs*: Retrieves the "logs" of a pod leveraging Kubernetes API calls and returns them as a string.   
+  - ![Screenshot from 2020-08-25 23-06-10](https://user-images.githubusercontent.com/61749/91254401-f1853080-e727-11ea-9e4c-315bf2949959.png)
 
-**(b)**
+- **(b)**: For each test, ensure that a new Operator instance created. This will create a new Custom Resource Definition and Custom Resource Controller instance. 
+  - On running of the `BeforeEach` method, a new Operator instance will be created.
+  - On running of the `AfterEach` method, the last Operator instance, is deleted. When deleted, any resources created and "watched" by the Operator instance (i.e. pods, etc.) are also deleted. 
+  - ![Screenshot from 2020-08-25 23-07-30](https://user-images.githubusercontent.com/61749/91254402-f21dc700-e727-11ea-9757-0f1134ba5218.png)
 
-**(c)**
-
-**(d)**
-
-**(e)**
-
-
-
-
-> :paperclip: For reference, the **fully** implemented Controller Test file can be found here:  https://bit.ly/2YxaAnb. Please refer to it as we go over updates/additions to your implementation.
+> :paperclip: For reference, the **fully** implemented Controller Test file can be found here:  https://bit.ly/2YxaAnb. Please refer to it as we go over updates/additions to our stubbed implementation.
 
 **(4)** Run Tests
 
-You can run these tests by running the following at the terminal of the root directory of the lab: 
+You can run tests by running the following at a terminal from the root directory of the lab code: `docs/02/labs/000/code`
 
 ```bash
 make test
 ```
 
-All tests should fail at this point. This is as expected.
+This will run the entire Test Suite. 
+
+When you run this, all tests will fail at this point. This is as expected, since we have not filled in the test stubs with test code.
 
 ### V. CR Controller Implementation
 

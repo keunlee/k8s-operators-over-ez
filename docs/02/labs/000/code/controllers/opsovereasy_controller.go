@@ -21,11 +21,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"net/http"
+
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
-	"net/http"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 
 	"github.com/go-logr/logr"
@@ -162,5 +163,6 @@ func getSampleRestAPIResponse() *ApiSampleResponse {
 	strResponse := string(body)
 	var apiSampleResponse ApiSampleResponse
 	json.Unmarshal([]byte(strResponse), &apiSampleResponse)
+
 	return &apiSampleResponse
 }
