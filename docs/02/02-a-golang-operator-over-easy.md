@@ -310,7 +310,7 @@ In these following sections, we will make observations on the additions added to
   - ![Screenshot from 2020-08-25 13-28-28](https://user-images.githubusercontent.com/61749/91213648-86ac0900-e6d7-11ea-8e76-ce9a12abc3ce.png)
 
 - **(c)** Bootstrap our test enviornment to a real cluster. 
-  - Since we'll need to validate the internals of our deployment (i.e. such as pod phase, etc.), we'll be want to run these tests against a live cluster. To automate a test cluster, one suggestion would be to automate the provisioning of a cluster, leveraging a lightweight cluster implementation such as  [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) or [K3S/K3D](https://k3d.io/) 
+  - Since we'll need to validate the internals of our deployment (i.e. such as pod phase, etc.), we'll want to run these tests against a live cluster. To automate a test cluster, one suggestion would be to automate the provisioning of a cluster, leveraging a lightweight cluster implementation such as  [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/) or [K3S/K3D](https://k3d.io/) 
   - ![Screenshot from 2020-08-25 13-30-49](https://user-images.githubusercontent.com/61749/91213651-86ac0900-e6d7-11ea-9ed3-356f9979aff3.png)
 
 - **(d)** Setup our Custom Resource Controller. 
@@ -365,6 +365,9 @@ Let's go ahead and look at the Controller Test file and examine it in further de
   - On running of the `BeforeEach` method, a new Operator instance will be created.
   - On running of the `AfterEach` method, the last Operator instance, is deleted. When deleted, any resources created and "watched" by the Operator instance (i.e. pods, etc.) are also deleted. 
   - ![Screenshot from 2020-08-25 23-07-30](https://user-images.githubusercontent.com/61749/91254402-f21dc700-e727-11ea-9757-0f1134ba5218.png)
+
+- **(c)**: The entire Custom Resource Controller test file has been structured and implemented in a way to follow the Gherkin as noted in the requirements. Please see the full implementation of the Custom Resource Controller Test if you have not done so. 
+  - By being able to create your tests up front like this, before the Controller implementation, you force the design and implementation of your controller. Your tests will dictate the controllers implementation. This is a hallmark of Test Driven Design (TDD).
 
 ### V. CR Controller Implementation
 

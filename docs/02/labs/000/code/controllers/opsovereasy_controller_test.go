@@ -123,7 +123,7 @@ var _ = Describe("CR Controller", func() {
 						err = opsOverEasyReconciler.Client.Get(testCtx, podKey, pod)
 						return pod.Status.Phase
 					}, timeout, interval).Should(Equal(corev1.PodSucceeded))
-					Expect(err).ShouldNot(HaveOccurred())
+					Expect(err).NotTo(HaveOccurred())
 
 					logs := getPodLogs(*pod)
 					Expect(logs).NotTo(BeEmpty())
@@ -151,7 +151,7 @@ var _ = Describe("CR Controller", func() {
 						err = opsOverEasyReconciler.Client.Get(testCtx, podKey, pod)
 						return pod.Status.Phase
 					}, timeout, interval).Should(Equal(corev1.PodSucceeded))
-					Expect(err).ShouldNot(HaveOccurred())
+					Expect(err).NotTo(HaveOccurred())
 
 					err = createReconcileRequest()
 					Expect(err).NotTo(HaveOccurred())
@@ -204,7 +204,7 @@ var _ = Describe("CR Controller", func() {
 						err = opsOverEasyReconciler.Client.Get(testCtx, podKey, pod)
 						return pod.Status.Phase
 					}, timeout, interval).Should(Equal(corev1.PodSucceeded))
-					Expect(err).ShouldNot(HaveOccurred())
+					Expect(err).NotTo(HaveOccurred())
 
 					crdInstance = getCrd(false, currUuid)
 					crKey := getCrKey(currUuid)
