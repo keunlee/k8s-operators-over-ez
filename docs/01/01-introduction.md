@@ -114,6 +114,8 @@ An operator based deployment in this regards, buys consistency, by offering you 
 
 ## How do Operators Work? 
 
+![](../assets/operator-crd-crcontroller.png)
+
 From a high level, an operator is composed of the following components: 
 
   - A Custom Resource
@@ -123,11 +125,11 @@ A Custom Resource (CRD) **allows you to extend the Kubernetes API**
 
 The relationship between the two: **A Custom Resource (CRD) needs a Controller to act upon it's presence (i.e. CRD instance)**
 
-Otherwise, without a controller, the Custom Resource does nothing for you.
+Without a controller for your custom resource, then it’s just a stateless object w/in Kubernetes. 
 
-How does the controller work? What does it do? 
+So then, How does a controller work? What does it do? What’s inside of a controller? 
 
-![](../assets/resource-controller-reconciliation-cycle.png)
+![](../assets/resource-controller-reconciliation-cycle-full-example.png)
 
 In a nutshell, the Resource Controller ensures that the current state of a resource matches the desired state of a resource. 
 
