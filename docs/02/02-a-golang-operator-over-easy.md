@@ -81,7 +81,7 @@ Ensure lab pre-requisites have been met. See: [Lab Requirements](../01/03-lab-re
 
 ## Execution Strategy
 
-In a nutshell, we want to start up a pod, running a busybox image for a specific duration and logging a user specific message, and then setting our Operator's status. 
+In a nutshell, we want our operator to start up a pod, running a busybox image for a specific duration and logging a user specific message, and then setting our Operator's status. 
 
 We'll want our Operator to provision our busybox pod with the necessary attribute specifications, eventually. 
 
