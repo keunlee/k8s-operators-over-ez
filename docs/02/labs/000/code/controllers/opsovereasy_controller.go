@@ -59,8 +59,9 @@ func (r *OpsOverEasyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 	_ = r.Log.WithValues("opsovereasy", req.NamespacedName)
 
 	// your logic here
+	currentContext := context.TODO()
 	instance := &operatorsoverezv1alpha1.OpsOverEasy{}
-	err := r.Client.Get(context.TODO(), req.NamespacedName, instance)
+	err := r.Client.Get(currentContext, req.NamespacedName, instance)
 	if err != nil {
 		if errors.IsNotFound(err) {
 			return ctrl.Result{}, nil
@@ -69,15 +70,17 @@ func (r *OpsOverEasyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 		return ctrl.Result{}, err
 	}
 
+	// if timeout and message are not specified, retrieve them via REST API call, per requirements
 	if instance.Spec.Message == "" && instance.Spec.Timeout == int32(0) {
 		resp := getSampleRestAPIResponse()
 		if resp != nil {
 			instance.Spec.Message = resp.Message
 			instance.Spec.Timeout = resp.Timeout
-			r.Client.Update(context.TODO(), instance)
+			r.Client.Update(currentContext, instance)
 		}
 	}
 
+	// create a new busybox pod instance
 	pod := newPodForCR(instance)
 
 	// Set the crd instance as the owner and controller
@@ -88,21 +91,30 @@ func (r *OpsOverEasyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 	// Check if this Pod already exists
 	found := &corev1.Pod{}
 	err = r.Client.Get(context.TODO(), types.NamespacedName{Name: pod.Name, Namespace: pod.Namespace}, found)
+
+	// if the pod exists, then examine the pod stage to see if it's run it's duration.
+	// if the pod has run it's duration, then update the operator and it's status attributes
 	if err == nil {
+		// pod has run it's duration
 		if found.Status.Phase == corev1.PodSucceeded {
+			// update operator instance status
 			instance.Status.MessageLogged = true
 			instance.Status.TimeoutExpired = true
 
-			err = r.Client.Status().Update(context.TODO(), instance)
+			// update the operator instance
+			err = r.Client.Status().Update(currentContext, instance)
 			if err != nil {
 				return ctrl.Result{}, err
 			}
 		}
 	}
 
+	// if the pod doesn't already exist, then create it
 	if err != nil && errors.IsNotFound(err) {
 		r.Log.Info("Creating a new Pod", "Pod.Namespace", pod.Namespace, "Pod.Name", pod.Name)
-		err = r.Client.Create(context.TODO(), pod)
+
+		// create an operator instance
+		err = r.Client.Create(currentContext, pod)
 		if err != nil {
 			return ctrl.Result{}, err
 		}
@@ -153,6 +165,7 @@ func newPodForCR(cr *operatorsoverezv1alpha1.OpsOverEasy) *corev1.Pod {
 	}
 }
 
+// get response from REST API call
 func getSampleRestAPIResponse() *ApiSampleResponse {
 	resp, err := http.Get("http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response")
 	if err != nil {

@@ -24,7 +24,7 @@ That being said, these labs are meant to be run in a sandboxed development envir
 
 You can do either of the following in this lab: 
 
-1. Read through the lab in it's entirety and follow all of the directions, step by step. Going down this route, you will be given a crash course in Behavioral Driven Design (BDD), Test Driven Design (TDD), and how to apply them towards building a Golang based Operator. If this interests you, then proceed to the next section below. 
+1. Read through the lab in it's entirety and follow all of the directions, step by step. Going down this route, you will be given a crash course in Behavioral Driven Design (BDD), Test Driven Design (TDD), and how to apply them towards building a Golang based Operator. If this interests you, then proceed to the next section below. OR...
 
 2. View the implementation of the lab code in it's entirety, study it, run it, and/or do with it what you will. If that is the case, the lab code can be found in the following location: `docs/02/labs/000/code`
 
@@ -104,6 +104,10 @@ Our strategy to reach the end state is detailed as followed:
 > :information_source: CR is an acronym for "Custom Resource"
 
 ### I. Prototyping
+
+(0) Create a Workspace
+
+Before you begin, make sure to set a directory that you'd like to work from. This directory will contain all of your lab code. 
 
 (1) Build a Proof of Concept
 
