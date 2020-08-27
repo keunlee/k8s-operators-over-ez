@@ -91,9 +91,9 @@ Our strategy to reach the end state is detailed as followed:
 
 - **II - Operator Scaffolding** - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
 
-- **III - CR Definition Implementation** - Add the `timeout` attribute to our CRD.
+- **III - CR Definition Implementation** - Add properties for your Custom Resources Specifications and Status attributes. 
 
-- **IV - TDD Setup** - Create a Unit Test file for our Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
+- **IV - TDD Setup** - Create a Unit Test file for our Custom Resource Controller to validate our requirements leveraging TDD (Test Driven Design). We will validate the tests as we implement our controller. 
 
 - **V - CR Controller Implementation**- Implement our Resource Controller logic to help fulfill the Story and Acceptance Criteria.
 
@@ -127,7 +127,7 @@ Create the yaml for a pod which will start a busybox container and run for a spe
 
 ```bash
 # create the pod yaml
-kubectl run busybox --image=busybox --restart=Never --dry-run -o yaml -- /bin/sh -c 'sleep 15; echo "hello world"' > golang-op-lab-00-pod.yam
+kubectl run busybox --image=busybox --restart=Never --dry-run -o yaml -- /bin/sh -c 'sleep 15; echo "hello world"' > golang-op-lab-00-pod.yaml
 ```
 
 Running the following will yield the following generated yaml contents: 
@@ -390,11 +390,12 @@ When you run this, all tests will fail at this point. This is as expected, since
 
 ### V. CR Controller Implementation
 
+TODO
+
 ### VI. Test Validation
 
-```bash
-go test ./controllers -timeout 30s -run ^TestAPIs$ -v
-```
+TODO
 
 ### VII. Deployment
 
+TODO
