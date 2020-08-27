@@ -394,7 +394,7 @@ Let us now examine the Resource Controller implementation from the context of th
 
 Since we are starting off with a new Operator instance, the desired state for our operator will be a new instance. 
 
-An instance of that operator with respect to our Custom Resource Definition might look like this. 
+An instance definition of that operator with respect to our Custom Resource Definition might look like this. 
 
 ```yaml
 apiVersion: operators-over-ez.mydomain.com/v1alpha1
@@ -407,7 +407,7 @@ spec:
   message: "hello world"
 ```
 
-Which will yield a busybox pod for 15 seconds and then log the message "hello world" before the pod stops as well as updating the operator's status fields. Ultimately the final state of our operator instance will report `0/1` pods running and will look like this (notice the added status attributes): 
+Which will yield a busybox pod for 15 seconds and then log the message "hello world" before the pod stops as well as updating the operator's status fields. Ultimately the final state of our operator instance's resources would report `0/1` pods running and would look like this if we queried the operator instance (notice the added status attributes): 
 
 ```yaml
 # at terminal: kubectl get opsovereasies your-operator-instance -o yaml
