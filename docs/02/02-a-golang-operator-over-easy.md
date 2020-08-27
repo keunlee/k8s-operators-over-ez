@@ -328,17 +328,19 @@ For our tests, we are leveraging the Golang Testing Libraires [Ginkgo](https://o
 
 > <ins>:warning: Do This</ins>
 
-> :paperclip: The contents of a **partially** implemented Controller Test file, where only the test stubs are implemented, can be found here:  https://bit.ly/2YwXFBI
+> :paperclip: The contents of a **partially** implemented Controller Test file, where only the test stubs are implemented, can be found here:  https://bit.ly/2YwXFBI. You can leverage the contents of this file if you wish to flesh out the test stubs yourself. Otherwise, there's a full implementation you can leverage too. 
+
+> :paperclip: For reference, the **fully** implemented Controller Test file can be found here:  https://bit.ly/2YxaAnb.
 
 Create the following file: `controllers/opsovereasy_controller_test.go`
 
-And copy the contents of the "partially" implemented Controller Test into it. 
+And copy the contents of the **"fully"** implemented Controller Test into it. 
 
-Notice how we we've created stubs for each corresponding BDD scenario. 
+Notice how each test corresponds to a BDD scenario. 
 
-As we implement our Custom Resource Controller, we will also leverage these stubs to test and validate our scenario requirements. 
+As we implement our Custom Resource Controller, we will leverage these tests validate our scenario requirements and controller implementation.
 
-Currently when these tests are executed they will fail as expected. 
+Currently when these tests are executed they will fail. This is expected, because we have not implemented our controller. 
 
 You can run them by executing the following at the root of the source directory: 
 
@@ -346,7 +348,7 @@ You can run them by executing the following at the root of the source directory:
 make test
 ```
 
-Let's go ahead and look at the Controller Test file and analyze a few key additions that will help us implement our test stubs: 
+Let's go ahead and look at the Controller Test file and examine it in further details. 
 
 - **(a)**: Added variables and helper functions that we'd like to make available to our controller tests.
   - Variables: 
@@ -361,8 +363,6 @@ Let's go ahead and look at the Controller Test file and analyze a few key additi
   - On running of the `BeforeEach` method, a new Operator instance will be created.
   - On running of the `AfterEach` method, the last Operator instance, is deleted. When deleted, any resources created and "watched" by the Operator instance (i.e. pods, etc.) are also deleted. 
   - ![Screenshot from 2020-08-25 23-07-30](https://user-images.githubusercontent.com/61749/91254402-f21dc700-e727-11ea-9757-0f1134ba5218.png)
-
-> :paperclip: For reference, the **fully** implemented Controller Test file can be found here:  https://bit.ly/2YxaAnb. Please refer to it as we go over updates/additions to our stubbed implementation.
 
 **(4)** Run Tests
 
