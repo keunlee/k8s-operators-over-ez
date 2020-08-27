@@ -371,6 +371,75 @@ Let's go ahead and look at the Controller Test file and examine it in further de
 
 ### V. CR Controller Implementation
 
+<!-- TODO
+
+key areas of interest: 
+
+Reconciliation Cycle
+- Observe/Watch Phase 
+  - Adding Watches
+- Analyze Phase
+  - Defining the CRD instance definition
+- Act/Reconcile Phase
+  - Breakdown of the Reconcile Implementation
+    - Updating custom resource specification attributes dynamically
+    - Updating custom resource status dynamically
+    - Creating a Kubernetes Pod resource dynamically -->
+
+Let us now examine the Resource Controller implementation from the context of the Reconciliation Cycle. 
+
+![](../assets/resource-controller-reconciliation-cycle-golang-operators.png)
+
+#### Understanding the Different States of our Operator
+
+Since we are starting off with a new Operator instance, the desired state for our operator will be a new instance. 
+
+An instance of that operator with respect to our Custom Resource Definition might look like this. 
+
+```yaml
+apiVersion: operators-over-ez.mydomain.com/v1alpha1
+kind: OpsOverEasy
+metadata:
+  name: opsovereasy-sample
+spec:
+  # specification attributes as defined in the CRD
+  timeout: 15
+  message: "hello world"
+```
+
+Which will yield a busybox pod for 15 seconds and then log the message "hello world" before the pod stops as well as updating the operator's status fields. Ultimately the final state of our operator instance will report `0/1` pods running and will look like this (notice the added status attributes): 
+
+```yaml
+# at terminal: kubectl get opsovereasies your-operator-instance -o yaml
+
+apiVersion: operators-over-ez.mydomain.com/v1alpha1
+kind: OpsOverEasy
+metadata:
+  name: opsovereasy-sample
+spec:
+  # specification attributes as defined in the CRD
+  timeout: 15
+  message: "hello world"
+status: 
+   # status attributes as defined in the CRD
+  expired: true
+  logged: true
+```
+
+So what about that requirement where we don't specify the `timeout` and `message` specifications? 
+
+Based on the requirements, we would make a REST API call to get a response that gives us values for the `timeout` and `message` specification before creating the operator's busybox pod instance. 
+
+#### Observe/Watch Phase
+
+TODO
+
+#### Analyze Phase
+
+TODO
+
+#### Act/Reconcile Phase
+
 TODO
 
 ### VI. Test Validation

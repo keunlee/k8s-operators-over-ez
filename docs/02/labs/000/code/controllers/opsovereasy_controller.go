@@ -80,7 +80,7 @@ func (r *OpsOverEasyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 		}
 	}
 
-	// create a new busybox pod instance
+	// create a new busybox pod definition
 	pod := newPodForCR(instance)
 
 	// Set the crd instance as the owner and controller
@@ -101,7 +101,7 @@ func (r *OpsOverEasyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 			instance.Status.MessageLogged = true
 			instance.Status.TimeoutExpired = true
 
-			// update the operator instance
+			// update the operator instance with new status updates
 			err = r.Client.Status().Update(currentContext, instance)
 			if err != nil {
 				return ctrl.Result{}, err

@@ -4,4 +4,5 @@ metadata:
   name: opsovereasy-sample
 spec:
   # Add fields here
-  foo: bar
+  timeout: 15
+  message: "hello world"
