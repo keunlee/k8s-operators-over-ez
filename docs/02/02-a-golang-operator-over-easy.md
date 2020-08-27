@@ -336,17 +336,19 @@ Create the following file: `controllers/opsovereasy_controller_test.go`
 
 And copy the contents of the **"fully"** implemented Controller Test into it. 
 
-Notice how each test corresponds to a BDD scenario. 
+Notice how each test corresponds to a BDD scenario, as noted in the comments of each test. 
 
-As we implement our Custom Resource Controller, we will leverage these tests validate our scenario requirements and controller implementation.
-
-Currently when these tests are executed they will fail. This is expected, because we have not implemented our controller. 
+As we implement our Custom Resource Controller, we will leverage these tests to validate our scenario requirements and controller implementation.
 
 You can run them by executing the following at the root of the source directory: 
 
 ```bash
 make test
 ```
+
+This will run the entire Test Suite. 
+
+When you run this, all tests will fail at this point. This is as expected, since we have not filled in the test stubs with test code.
 
 Let's go ahead and look at the Controller Test file and examine it in further details. 
 
@@ -363,18 +365,6 @@ Let's go ahead and look at the Controller Test file and examine it in further de
   - On running of the `BeforeEach` method, a new Operator instance will be created.
   - On running of the `AfterEach` method, the last Operator instance, is deleted. When deleted, any resources created and "watched" by the Operator instance (i.e. pods, etc.) are also deleted. 
   - ![Screenshot from 2020-08-25 23-07-30](https://user-images.githubusercontent.com/61749/91254402-f21dc700-e727-11ea-9757-0f1134ba5218.png)
-
-**(4)** Run Tests
-
-You can run tests by running the following at a terminal from the root directory of the lab code: `docs/02/labs/000/code`
-
-```bash
-make test
-```
-
-This will run the entire Test Suite. 
-
-When you run this, all tests will fail at this point. This is as expected, since we have not filled in the test stubs with test code.
 
 ### V. CR Controller Implementation
 
