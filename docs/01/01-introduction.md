@@ -65,6 +65,41 @@ An operator allows you to encapsulate kubernetes application resources (i.e. pod
 
 Operator = Resource + Controller + Domain Specific Operations
 
+### Kubernetes: Resources + Controllers
+
+![](../assets/k8s-resources-and-controllers.png)
+
+In Kubernetes, for simplicity's sake, the basic building blocks that we use to orchestrate our containers can be categorized into either "resources" and "controllers"
+
+Resources can be composed of things like Nodes, Pods, ConfigMaps, and Services to name a few. Controllers can be composed of things like Deployments, ReplicaSets, and DaemonSetsIf you've worked with Kubernetes, then you may already be familiar with some of the constructs that we're looking at. 
+
+You are not Limited to the readily available resources and controller types offered by Kubernetes. That’s because Kubernetes is a platform. It was made to be expanded upon. And when you treat it like a platform, you can do some pretty amazing things. 
+
+You can create your own Resources and Controllers to communicate and extend the Kubernetes orchestration platform. It's supported by rich APIs and libraries written in Golang. Consequently, you can leverage those same libraries and APIs to aid you in the creation of your own Custom Resources and Controllers. 
+
+By being able to leverage existing resources and creating your own resources and controllers, you can orchestrate and automate your workloads in anyway possible that you can imagine. It's not a static platform. And so therefore, you're not boxed into a default set of resources and controllers. 
+
+### Domain Specific Knowledge/Operations
+
+Domain or Application specific knowledge is another crucial piece w/in the Operator Pattern. It is generally part of your business logic. This knowledge ties in heavily to a Custom Resource Controller. The reason for this, is because all of the operational knowledge that you want to codify and automate, gets put into the controller! The Custom Resource itself, merely provides useful information that the Resource controller can leverage, in the form of custom resource specification and status attributes. 
+
+Examples of Domain Specific Tasks and Operations may include, but not limited too
+- Configuration requirements
+- Installation requirements
+- Logging/Security requirements
+- HA/Scaling requirements
+- Application start-up and shutdown routines
+- Process and workflow triggers
+- Application Deployment
+- Etc. 
+
+This isn’t an exhaustive list, by any means,  The possibilities, however, of what you can accomplish are quite limitless.
+
+Regardless of what the operation is, what business requirements or needs you must fullfill, all of these things must be coded w/in a Customer Resource controller. 
+
+
+### Conventional versus Operator based Deployments
+
 The advantages of an operator can be seen when you start thinking about how you manage your applications deployed into a Kubernetes cluster. Typically, you manage the deployment of each individual resource which usually composes the entirety of the application you deploy.
 
 With operators, these resources are packaged up, and generally expose domain specific attributes (i.e. specifications ) for your deployment from a single point of configuration -- your "Operator" instance. 
