@@ -386,6 +386,10 @@ Reconciliation Cycle
     - Updating custom resource status dynamically
     - Creating a Kubernetes Pod resource dynamically -->
 
+> :paperclip: For reference, a **fully** implemented Custom Resource Controller can be found here: https://bit.ly/34CEtqa.
+
+Copy the contents of the file to your local Custom Resource Controller: `controllers\opsovereasy_controller.go`
+
 Let us now examine the Resource Controller implementation from the context of the Reconciliation Cycle. 
 
 ![](../assets/resource-controller-reconciliation-cycle-golang-operators.png)
