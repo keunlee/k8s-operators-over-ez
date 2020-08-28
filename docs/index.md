@@ -31,7 +31,6 @@
     - [V. CR Controller Implementation](02/02-a-golang-operator-over-easy.md#v-cr-controller-implementation)
     - [VI. Test Validation](02/02-a-golang-operator-over-easy.md#vi-test-validation)
     - [VII. Deployment](02/02-a-golang-operator-over-easy.md#vii-deployment)
-  - [Going Forward]()
 
 - [Debugging Golang Operators](02/03-debugging-golang-operators.md)
 
@@ -45,6 +44,4 @@
 
 ## V - Other types of  Operators
 
-- Other Types of Operators
-
-  - Lab 001
+- [Alternative Types of Operators](05/01-alternative-operator-types.md)
