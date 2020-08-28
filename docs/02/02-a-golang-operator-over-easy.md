@@ -348,7 +348,7 @@ make test
 
 This will run the entire Test Suite. 
 
-When you run this, all tests will fail at this point. This is as expected, since we have not filled in the test stubs with test code.
+When you run this, all tests will fail at this point. This is as expected, since we have not yet implemented our Resource Controller. 
 
 Let's go ahead and look at the Controller Test file and examine it in further details. 
 
