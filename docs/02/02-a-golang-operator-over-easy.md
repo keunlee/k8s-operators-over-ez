@@ -328,8 +328,6 @@ For our tests, we are leveraging the Golang Testing Libraires [Ginkgo](https://o
 
 > <ins>:warning: Do This</ins>
 
-> :paperclip: The contents of a **partially** implemented Controller Test file, where only the test stubs are implemented, can be found here:  https://bit.ly/2YwXFBI. You can leverage the contents of this file if you wish to flesh out the test stubs yourself. Otherwise, there's a full implementation you can leverage too. 
-
 > :paperclip: For reference, the **fully** implemented Controller Test file can be found here:  https://bit.ly/2YxaAnb.
 
 Create the following file: `controllers/opsovereasy_controller_test.go`
@@ -385,6 +383,8 @@ Reconciliation Cycle
     - Updating custom resource specification attributes dynamically
     - Updating custom resource status dynamically
     - Creating a Kubernetes Pod resource dynamically -->
+
+> <ins>:warning: Do This</ins>
 
 > :paperclip: For reference, a **fully** implemented Custom Resource Controller can be found here: https://bit.ly/34CEtqa.
 
