@@ -18,10 +18,6 @@ You can do either of the following in this lab:
 
 2. View the implementation of the lab code in it's entirety, study it, run it, and/or do with it what you will. If that is the case, the lab code can be found in the following location: `docs/02/labs/000/code`
 
-    - __*OR*__
-
-3. Do both!
-
 There's no wrong way to learn. 
 
 ## Environment Setup
