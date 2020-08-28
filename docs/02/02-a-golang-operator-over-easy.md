@@ -427,9 +427,12 @@ spec:
   message: "hello world"
 status: 
    # status attributes as defined in the CRD
+   # NOTE: these are added/updated after the `timeout` duration and log `message`
   expired: true
   logged: true
 ```
+
+By design, our operator will add/update the status attributes after the `timeout` duration has been reached and a `message` has been logged. 
 
 #### Act/Reconcile Phase
 
