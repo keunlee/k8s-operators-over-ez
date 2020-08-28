@@ -14,11 +14,11 @@
 
 ## II - Golang Operators
 
-- [Golang Operators](02/01-golang-operators-overview.md)
-  - [Golang Operator Resources](02/01-golang-operators-overview.md#golang-operator-resources)
-    - [Development Libraries](02/01-golang-operators-overview.md#development-libraries)
-    - [Useful Golang API References](02/01-golang-operators-overview.md#useful-golang-api-references)
-  - [The Reconciliation Cycle - Revisited](02/01-golang-operators-overview.md#the-reconciliation-cycle---revisited)
+- [Golang Operators](02/01-golang-operators.md)
+  - [Golang Operator Resources](02/01-golang-operators.md#golang-operator-resources)
+    - [Development Libraries](02/01-golang-operators.md#development-libraries)
+    - [Useful Golang API References](02/01-golang-operators.md#useful-golang-api-references)
+  - [The Reconciliation Cycle - Revisited](02/01-golang-operators.md#the-reconciliation-cycle---revisited)
     
 - [A Golang Operator Lab - Over Easy](02/02-a-golang-operator-over-easy.md)
   - [Environment Setup](02/02-a-golang-operator-over-easy.md#environment-setup)
