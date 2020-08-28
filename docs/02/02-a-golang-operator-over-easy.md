@@ -403,6 +403,8 @@ For our Operator, we are deploying a busybox pod through our Operator deployment
 
 In order for our Operator to keep an eye on this pod, we need to watch for changes that happen upon it. 
 
+> <ins>:warning: Do This</ins>
+
 To do that we specify the resource type(s) that our Operator will be deploying and looking at by leveraging the Controller Runtime API call to `Owns`. 
 
 ![Screenshot from 2020-08-28 11-49-37](https://user-images.githubusercontent.com/61749/91593258-75583c00-e925-11ea-9451-865baa9bdc67.png)
@@ -463,6 +465,8 @@ By design, our operator will add/update the status attributes after the `timeout
 
 To ensure that we are able to reconcile all of the resources that we are watching we need to make sure that we are authorized to do so. Specifically, we need to specify the types of resources that we watch. 
 
+> <ins>:warning: Do This</ins>
+
 We can do that by adding a few extra directives in the form of comments, right above our `Reconcile` function. 
 
 ```golang
@@ -492,6 +496,8 @@ The second line similarly translates:
    - *update*
    - *patch*
    - *delete*
+
+> <ins>:warning: Do This</ins>
 
 After adding the following we need to run the following at the terminal to update our RBAC policies for our Operator: 
 
