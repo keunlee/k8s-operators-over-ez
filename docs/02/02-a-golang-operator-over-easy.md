@@ -397,7 +397,21 @@ Let us now examine the Resource Controller implementation from the context of th
 
 #### Observe/Watch Phase
 
-TODO
+For our Operator, we are deploying a busybox pod through our Operator deployment. 
+
+In order for our Operator to keep an eye on this pod, we need to watch for changes that happen upon it. 
+
+To do that we specify the resource type(s) that our Operator will be deploying and looking at by leveraging the Controller Runtime API call to `Owns`. 
+
+In this context, `Owns` defines types of Objects being *generated* by the `NewControllerManagedBy`, and configures the `NewControllerManagedBy` to respond to create / delete / update events by *reconciling the owner object*, which in this case `&corev1.Pod{}`. 
+
+In other words, if there's a resource type that your operator is deploying, and you'd like to keep tabs on it, then use `Owns` to keep tabs on the resource type that you want to keep tabs on. 
+
+Should you have more types of resources that you want to deploy and keep tabs on, you can do so by chaining the `Owns` API (i.e. `...Owns(&corev1.Pod{}).Owns(&corev1.PersistentVolume{}.Owns(/****/).Complete(r)` )
+
+You can get more information about available resource types (i.e. pods, services, pv, pvc, services, etc.) here: 
+
+https://pkg.go.dev/k8s.io/api@v0.19.0/core/v1?tab=doc
 
 ![Screenshot from 2020-08-28 11-49-37](https://user-images.githubusercontent.com/61749/91593258-75583c00-e925-11ea-9451-865baa9bdc67.png)
 
