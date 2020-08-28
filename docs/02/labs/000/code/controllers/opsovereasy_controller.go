@@ -17,17 +17,16 @@ limitations under the License.
 package controllers
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
-
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
+	"context"
 
 	"github.com/go-logr/logr"
 	"k8s.io/apimachinery/pkg/runtime"
@@ -37,16 +36,59 @@ import (
 	operatorsoverezv1alpha1 "github.com/mydomain/operators-over-ez/api/v1alpha1"
 )
 
-type ApiSampleResponse struct {
-	Timeout int32  `json:"timeout"`
-	Message string `json:"message"`
-}
-
 // OpsOverEasyReconciler reconciles a OpsOverEasy object
 type OpsOverEasyReconciler struct {
 	client.Client
 	Log    logr.Logger
 	Scheme *runtime.Scheme
+}
+
+type ApiSampleResponse struct {
+	Timeout int32  `json:"timeout"`
+	Message string `json:"message"`
+}
+
+// newPodForCR returns a busybox pod with the same name/namespace as the cr
+func newPodForCR(cr *operatorsoverezv1alpha1.OpsOverEasy) *corev1.Pod {
+	timeout := cr.Spec.Timeout
+	message := cr.Spec.Message
+
+	labels := map[string]string{
+		"app": cr.Name,
+	}
+
+	return &corev1.Pod{
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      cr.Name + "-pod",
+			Namespace: cr.Namespace,
+			Labels:    labels,
+		},
+		Spec: corev1.PodSpec{
+			Containers: []corev1.Container{
+				{
+					Name:  "busybox",
+					Image: "busybox",
+					Args:  []string{"/bin/sh", "-c", fmt.Sprintf("sleep %d; echo '%s'", timeout, message)},
+				},
+			},
+			RestartPolicy: corev1.RestartPolicyNever,
+		},
+	}
+}
+
+// get response from REST API call
+func getSampleRestAPIResponse() *ApiSampleResponse {
+	resp, err := http.Get("http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response")
+	if err != nil {
+		panic(err)
+	}
+	defer resp.Body.Close()
+	body, err := ioutil.ReadAll(resp.Body)
+	strResponse := string(body)
+	var apiSampleResponse ApiSampleResponse
+	json.Unmarshal([]byte(strResponse), &apiSampleResponse)
+
+	return &apiSampleResponse
 }
 
 // +kubebuilder:rbac:groups=operators-over-ez.mydomain.com,resources=opsovereasies,verbs=get;list;watch;create;update;patch;delete
@@ -135,47 +177,4 @@ func (r *OpsOverEasyReconciler) SetupWithManager(mgr ctrl.Manager) error {
 		For(&operatorsoverezv1alpha1.OpsOverEasy{}).
 		Owns(&corev1.Pod{}).
 		Complete(r)
-}
-
-// newPodForCR returns a busybox pod with the same name/namespace as the cr
-func newPodForCR(cr *operatorsoverezv1alpha1.OpsOverEasy) *corev1.Pod {
-	timeout := cr.Spec.Timeout
-	message := cr.Spec.Message
-
-	labels := map[string]string{
-		"app": cr.Name,
-	}
-
-	return &corev1.Pod{
-		ObjectMeta: metav1.ObjectMeta{
-			Name:      cr.Name + "-pod",
-			Namespace: cr.Namespace,
-			Labels:    labels,
-		},
-		Spec: corev1.PodSpec{
-			Containers: []corev1.Container{
-				{
-					Name:  "busybox",
-					Image: "busybox",
-					Args:  []string{"/bin/sh", "-c", fmt.Sprintf("sleep %d; echo '%s'", timeout, message)},
-				},
-			},
-			RestartPolicy: corev1.RestartPolicyNever,
-		},
-	}
-}
-
-// get response from REST API call
-func getSampleRestAPIResponse() *ApiSampleResponse {
-	resp, err := http.Get("http://my-json-server.typicode.com/keunlee/test-rest-repo/golang-lab00-response")
-	if err != nil {
-		panic(err)
-	}
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	strResponse := string(body)
-	var apiSampleResponse ApiSampleResponse
-	json.Unmarshal([]byte(strResponse), &apiSampleResponse)
-
-	return &apiSampleResponse
 }

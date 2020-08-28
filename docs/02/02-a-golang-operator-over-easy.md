@@ -290,7 +290,7 @@ Copy the contents of the file to your local Test Suite file: `controllers\suite_
 
 In these following sections, we will make observations on the additions added to the Test Suite file. 
 
-- **(a)** Added imports to additional packages that we will be leveraging 
+- **(a)** Added additional package imports that we will be leveraging 
   - ![Screenshot from 2020-08-25 13-27-28](https://user-images.githubusercontent.com/61749/91213646-86137280-e6d7-11ea-9cb2-e3c47e49dac5.png)
 
 - **(b)** Added additional variables and helper functions that we'd like to make available to our controller tests. 
@@ -395,6 +395,8 @@ Let us now examine the Resource Controller implementation from the context of th
 
 TODO
 
+![Screenshot from 2020-08-28 11-49-37](https://user-images.githubusercontent.com/61749/91593258-75583c00-e925-11ea-9451-865baa9bdc67.png)
+
 #### Analyze Phase
 
 Since we are starting off with a new Operator instance, the desired state for our operator will be a new instance. 
@@ -438,6 +440,18 @@ By design, our operator will add/update the status attributes after the `timeout
 
 TODO
 
+added variables and helpers
+
+![Screenshot from 2020-08-28 11-54-36](https://user-images.githubusercontent.com/61749/91593263-76896900-e925-11ea-9568-e8b31cc13ed9.png)
+![Screenshot from 2020-08-28 11-55-14](https://user-images.githubusercontent.com/61749/91593265-76896900-e925-11ea-91d1-d7d5090a07f9.png)
+
+reconciliation function
+
+![Screenshot from 2020-08-28 11-50-52](https://user-images.githubusercontent.com/61749/91593261-75f0d280-e925-11ea-80df-2adede7533e9.png)
+
+![Screenshot from 2020-08-28 11-51-33](https://user-images.githubusercontent.com/61749/91593262-75f0d280-e925-11ea-8c5c-ff0f73945185.png)
+
+
 ### VI. Test Validation
 
 TODO
@@ -445,3 +459,6 @@ TODO
 ### VII. Deployment
 
 TODO
+
+
+
