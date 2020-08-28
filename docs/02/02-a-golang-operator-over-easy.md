@@ -413,9 +413,10 @@ In other words, if there's a resource type that your operator is deploying, and 
 
 Should you have more types of resources that you want to deploy and keep tabs on, you can do so by chaining the `Owns` API (i.e. `...Owns(&corev1.Pod{}).Owns(&corev1.PersistentVolume{}.Owns(/****/).Complete(r)` )
 
-You can get more information about available resource types (i.e. pods, services, pv, pvc, services, etc.) here: 
+You can get more information about available resource types (i.e. pods, services, pv, pvc, etc.) here: 
 
-https://pkg.go.dev/k8s.io/api@v0.19.0/core/v1?tab=doc
+- https://pkg.go.dev/k8s.io/api@v0.19.0/core/v1?tab=doc
+- https://github.com/kubernetes/api/blob/v0.19.0/core/v1/types.go
 
 #### Analyze Phase
 
