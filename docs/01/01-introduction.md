@@ -1,18 +1,3 @@
-<!--
-- Introduction
-  - How to Learn to Write Operators Using this Resource
-  - What's an Operator?
-  - Types of Operators
-  - Operator Tooling & Resources  
-
-  address feedback: 
-  
-  - [x] work on the description of "what is an operator". Maybe more of the what and why and less of the how. Your description assumes a lot of what someone knows already.
-
-  - [x] start by defining the problem that operators solve.  It's a good way to set the context and makes the definitions easier to fully understand.  Typically the technology is easy to follow, but the "why" is lacking.  
-
--->
-
 # Introduction
 
 This guide serves all but one purpose: 
@@ -160,3 +145,4 @@ But wait, there's more! Outside of the Operator Framework:
 - Javascript/Typescript Operators
 - JSONNET Operators
 
+[Return to Table of Contents](../../../../)
