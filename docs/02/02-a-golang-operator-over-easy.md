@@ -390,7 +390,12 @@ Let us now examine the Resource Controller implementation from the context of th
 
 ![](../assets/resource-controller-reconciliation-cycle-golang-operators.png)
 
-#### Understanding the Different States of our Operator
+
+#### Observe/Watch Phase
+
+TODO
+
+#### Analyze Phase
 
 Since we are starting off with a new Operator instance, the desired state for our operator will be a new instance. 
 
@@ -425,18 +430,6 @@ status:
   expired: true
   logged: true
 ```
-
-So what about that requirement where we don't specify the `timeout` and `message` specifications? 
-
-Based on the requirements, we would make a REST API call to get a response that gives us values for the `timeout` and `message` specification before creating the operator's busybox pod instance. 
-
-#### Observe/Watch Phase
-
-TODO
-
-#### Analyze Phase
-
-TODO
 
 #### Act/Reconcile Phase
 
