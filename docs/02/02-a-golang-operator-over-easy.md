@@ -463,7 +463,7 @@ By design, our operator will add/update the status attributes after the `timeout
 
 To ensure that we are able to reconcile all of the resources that we are watching we need to make sure that we are authorized to do so. Specifically, we need to specify the types of resources that we watch. 
 
-We can do that by adding few extra directives in the form of comments, right above our `Reconcile` function. 
+We can do that by adding a few extra directives in the form of comments, right above our `Reconcile` function. 
 
 ```golang
 // +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
@@ -492,6 +492,16 @@ The second line similarly translates:
    - *update*
    - *patch*
    - *delete*
+
+After adding the following we need to run the following at the terminal to update our RBAC policies for our Operator: 
+
+```bash
+# generate/update code for resource types
+make generate
+
+# generate/update manifests for the CRD
+make manifests
+```
 
 **Operator Implementation - Breakdown**
 
