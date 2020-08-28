@@ -50,4 +50,6 @@ Kubernetes Operators Done Over-Easy
 
 ## V - Other types of  Operators
 
-- [Alternative Types of Operators](docs/05/01-alternative-operator-types.md)
+- [Alternative Operators](docs/05/01-alternative-operator-types.md)
+
+# How to Contribute
