@@ -440,16 +440,16 @@ By design, our operator will add/update the status attributes after the `timeout
 
 TODO
 
-added variables and helpers
-
-![Screenshot from 2020-08-28 11-54-36](https://user-images.githubusercontent.com/61749/91593263-76896900-e925-11ea-9568-e8b31cc13ed9.png)
-![Screenshot from 2020-08-28 11-55-14](https://user-images.githubusercontent.com/61749/91593265-76896900-e925-11ea-91d1-d7d5090a07f9.png)
-
 reconciliation function
 
 ![Screenshot from 2020-08-28 11-50-52](https://user-images.githubusercontent.com/61749/91593261-75f0d280-e925-11ea-80df-2adede7533e9.png)
 
 ![Screenshot from 2020-08-28 11-51-33](https://user-images.githubusercontent.com/61749/91593262-75f0d280-e925-11ea-8c5c-ff0f73945185.png)
+
+added variables and helpers - additional observations and updates
+
+![Screenshot from 2020-08-28 11-54-36](https://user-images.githubusercontent.com/61749/91593263-76896900-e925-11ea-9568-e8b31cc13ed9.png)
+![Screenshot from 2020-08-28 11-55-14](https://user-images.githubusercontent.com/61749/91593265-76896900-e925-11ea-91d1-d7d5090a07f9.png)
 
 
 ### VI. Test Validation
