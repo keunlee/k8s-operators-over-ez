@@ -3,7 +3,7 @@
 ## I - Introduction
 
 - [Introduction](01/01-introduction.md)
-  - [The Problem... Which Birthed the Operator](01/01-introduction.md#the-problem)
+  - [The Problem](01/01-introduction.md#the-problem)
   - [What's an Operator?](01/01-introduction.md#whats-an-operator)
   - [How do Operators Work?](01/01-introduction.md#how-do-operators-work)
   - [Types of Operators](01/01-introduction.md#types-of-operators)
