@@ -105,6 +105,7 @@ From a high level, an operator is composed of the following components:
 
   - A Custom Resource
   - A Resource Controller
+  - And w/in the Resource Controller, codified Domain Specific knowledge. 
 
 A Custom Resource (CRD) **allows you to extend the Kubernetes API**
 
