@@ -464,7 +464,5 @@ TODO
 
 TODO
 
-<div class="footer">
-Test Footer
-</div>
+[Return to Table of Contents](../)
 
