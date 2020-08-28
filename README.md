@@ -48,7 +48,7 @@ Kubernetes Operators Done Over-Easy
 
 - [Ansible Operators](docs/04/01-ansible-operators.md)
 
-## V - Other types of  Operators
+## V - Alternative Operators
 
 - [Alternative Operators](docs/05/01-alternative-operator-types.md)
 
