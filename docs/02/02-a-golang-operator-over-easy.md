@@ -77,6 +77,8 @@ We'll want our Operator to provision our busybox pod with the necessary attribut
 
 Our strategy to reach the end state is detailed as followed: 
 
+![](../assets/execution-strategy.png)
+
 - **I - Prototyping** - Create a YAML specification for a pod which runs for a specified amount of time and logs a specific message. Do this to validate our design. We'll eventually want our Operator controller implementation to dynamically set the pods timeout duration and log message. For now, we will validate our prototype. 
 
 - **II - Operator Scaffolding** - Scaffold a Golang Operator to give us an initial template for our CRD and Resource Controller
