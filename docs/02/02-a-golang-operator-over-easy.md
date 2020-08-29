@@ -550,11 +550,13 @@ spec:
 status: {}
 
 ```
-**(d)**: In this block, we attempt to apply our pod definition if one doesn't exist. This is the eqivalent of taking the above pod `yaml` definition and running `kubectl apply -f` on it. In this block, that 
+**(d)**: In this block, we attempt to apply our pod definition if one doesn't exist. This is the eqivalent of taking the above pod `yaml` definition and running `kubectl apply -f` on it.
 
 ![Screenshot from 2020-08-28 23-08-37](https://user-images.githubusercontent.com/61749/91628246-7b7d0580-e983-11ea-98f4-efdf873c4c9b.png)
 
-**(e)**:
+**(e)**: In this block, we update the status of the Operator based on the busybox `pods` current state. We set the status of the `pod` after it has run it's course and reaches a status of `PodSucceeded`. Once an updated status has been assigned, we must then update the status by a call to `r.Client.Status().Update`. 
+
+This block will likely not execute in the first call to `Reconcile` since the pod must be created first and then live out it's duration, specified by `timeout`. It will only execute in subsequent calls/triggers to `Reconcile`. 
 
 ![Screenshot from 2020-08-28 23-08-57](https://user-images.githubusercontent.com/61749/91628247-7c159c00-e983-11ea-941d-7d6d3e5e7756.png)
 
@@ -563,6 +565,21 @@ status: {}
 ![Screenshot from 2020-08-28 22-52-00](https://user-images.githubusercontent.com/61749/91627980-25a75e00-e981-11ea-9b30-2b45cbd0f9e3.png)
 
 **A Note on Reconcile Return Values**
+
+Notice that different variations of: `return ctrl.Result` that you see in the Reconcile function. 
+
+The Reconcile function can be ordered retrigger (or requeue) based on variations of the return value. 
+
+There's meaning to these variations. They are as followed: 
+
+- Reconcile is successful and do NOT requeue for re-trigger
+  - `return ctrl.Result{}, nil`
+- Reconcile has failed from error and requeue for re-trigger
+  - `return ctrl.Result{}, err`
+- Requeue the Reconcile for re-trigger
+  - `return ctrl.Result{Reqeue: true}, nil`
+- Requeue the Reconcile for re-trigger after a set amount of time
+  - return `ctrl.Result{RequeueAfter: time.Second*10}, nil`
 
 **Additional Observations**
 
