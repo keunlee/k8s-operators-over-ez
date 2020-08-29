@@ -504,10 +504,70 @@ make generate
 # generate/update manifests for the CRD
 make manifests
 ```
+**Reconcile Function Implementation - Breakdown**
 
-**Operator Implementation - Breakdown**
+Let us now dissect our `Reconcile` function. 
 
-![Screenshot from 2020-08-28 11-51-33](https://user-images.githubusercontent.com/61749/91593262-75f0d280-e925-11ea-8c5c-ff0f73945185.png)
+<!-- - Creating/Updating resources such as our busybox `pod`
+- Facilitating Domain Specific Operations. In our case, 
+  - Setting `message` and `timeout` spec attributes with the response of a REST API response
+  - Setting `logged` and `expired` status attributes when our pod has successfully run it's duration.
+  - Requeuing and terminating the Reconciliation cycle -->
+
+**(a)**: Here we make an attempt to retrieve an instance of our Custom Resource. That is done by the call to `r.Client.Get`. When this method executes and all goes well it will populate the `instance` of `OpsOverEasy{}`. Otherwise, the `err` object is populated. We validate this with the `err` check. 
+
+![Screenshot from 2020-08-28 22-45-18](https://user-images.githubusercontent.com/61749/91627926-bcbfe600-e980-11ea-9b94-0c84b1c580e9.png)
+
+**(b)**: Here we fullfill the requirement of obtaining values for specification attributes `message` and `timeout` from a REST API response. This code is executed only, if the specification attributes are not provided. We make our call to retrieve the API response, and assign new values to `message` and `timeout`. Once assigned, we make sure to update the operator instance by the call to `r.Client.Update`. 
+
+![Screenshot from 2020-08-28 22-45-54](https://user-images.githubusercontent.com/61749/91627927-bcbfe600-e980-11ea-98bb-98b1d6ad94b2.png)
+
+**(c)**: Here we make resource definition for a busybox `pod`. With this definition we'll be able to query if the `pod` has already been created in a previous `Reconcile` or if the `pod` needs to be recreated. We make the pod resource definition through a custom function `newPodForCR`. 
+
+![Screenshot from 2020-08-28 22-47-45](https://user-images.githubusercontent.com/61749/91627928-bcbfe600-e980-11ea-880b-9441744d94a6.png)
+
+If we look at the implementaiton of the `newPodForCR` function, we see some familiar looking code that isn't quite yaml: 
+
+![Screenshot from 2020-08-28 23-15-50](https://user-images.githubusercontent.com/61749/91628351-6f457800-e984-11ea-8d5c-52c7376eb3e8.png)
+
+This is equivalent to the following yaml: 
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    app: {{cr.Name}}
+  name: {{cr.Name}}-pod
+  namespace: {{cr.Namespace}}
+spec:
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - sleep {{timeout}}; echo {{message}}
+    image: busybox
+    name: busybox
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Never
+status: {}
+
+```
+**(d)**: In this block, we attempt to apply our pod definition if one doesn't exist. This is the eqivalent of taking the above pod `yaml` definition and running `kubectl apply -f` on it. In this block, that 
+
+![Screenshot from 2020-08-28 23-08-37](https://user-images.githubusercontent.com/61749/91628246-7b7d0580-e983-11ea-98f4-efdf873c4c9b.png)
+
+**(e)**:
+
+![Screenshot from 2020-08-28 23-08-57](https://user-images.githubusercontent.com/61749/91628247-7c159c00-e983-11ea-941d-7d6d3e5e7756.png)
+
+**(f)**:
+
+![Screenshot from 2020-08-28 22-52-00](https://user-images.githubusercontent.com/61749/91627980-25a75e00-e981-11ea-9b30-2b45cbd0f9e3.png)
+
+**A Note on Reconcile Return Values**
 
 **Additional Observations**
 

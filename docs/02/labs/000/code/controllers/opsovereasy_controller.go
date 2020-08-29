@@ -134,6 +134,22 @@ func (r *OpsOverEasyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 	found := &corev1.Pod{}
 	err = r.Client.Get(context.TODO(), types.NamespacedName{Name: pod.Name, Namespace: pod.Namespace}, found)
 
+	// if the pod doesn't already exist, then create it
+	if err != nil && errors.IsNotFound(err) {
+		r.Log.Info("Creating a new Pod", "Pod.Namespace", pod.Namespace, "Pod.Name", pod.Name)
+
+		// create an operator instance
+		err = r.Client.Create(currentContext, pod)
+		if err != nil {
+			return ctrl.Result{}, err
+		}
+
+		// Pod created successfully
+		return ctrl.Result{Requeue: true}, nil
+	} else if err != nil {
+		return ctrl.Result{}, err
+	}
+
 	// if the pod exists, then examine the pod stage to see if it's run it's duration.
 	// if the pod has run it's duration, then update the operator and it's status attributes
 	if err == nil {
@@ -149,22 +165,6 @@ func (r *OpsOverEasyReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error)
 				return ctrl.Result{}, err
 			}
 		}
-	}
-
-	// if the pod doesn't already exist, then create it
-	if err != nil && errors.IsNotFound(err) {
-		r.Log.Info("Creating a new Pod", "Pod.Namespace", pod.Namespace, "Pod.Name", pod.Name)
-
-		// create an operator instance
-		err = r.Client.Create(currentContext, pod)
-		if err != nil {
-			return ctrl.Result{}, err
-		}
-
-		// Pod created successfully
-		return ctrl.Result{Requeue: true}, nil
-	} else if err != nil {
-		return ctrl.Result{}, err
 	}
 
 	// Pod already exists - don't requeue
