@@ -469,11 +469,7 @@ To ensure that we are able to reconcile all of the resources that we are watchin
 
 We can do that by adding a few extra directives in the form of comments, right above our `Reconcile` function. 
 
-```golang
-// +kubebuilder:rbac:groups=apps,resources=deployments,verbs=get;list;watch;create;update;patch;delete
-
-// +kubebuilder:rbac:groups=core,resources=pods,verbs=get;list;watch;create;update;patch;delete
-```
+![Screenshot from 2020-08-28 11-50-52](https://user-images.githubusercontent.com/61749/91593261-75f0d280-e925-11ea-80df-2adede7533e9.png)
 
 The first line translates: 
 
@@ -511,15 +507,12 @@ make manifests
 
 **Operator Implementation - Breakdown**
 
-![Screenshot from 2020-08-28 11-50-52](https://user-images.githubusercontent.com/61749/91593261-75f0d280-e925-11ea-80df-2adede7533e9.png)
-
 ![Screenshot from 2020-08-28 11-51-33](https://user-images.githubusercontent.com/61749/91593262-75f0d280-e925-11ea-8c5c-ff0f73945185.png)
 
 **Additional Observations**
 
 ![Screenshot from 2020-08-28 11-54-36](https://user-images.githubusercontent.com/61749/91593263-76896900-e925-11ea-9568-e8b31cc13ed9.png)
 ![Screenshot from 2020-08-28 11-55-14](https://user-images.githubusercontent.com/61749/91593265-76896900-e925-11ea-91d1-d7d5090a07f9.png)
-
 
 ### VI. Test Validation
 
