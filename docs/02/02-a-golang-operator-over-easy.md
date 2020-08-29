@@ -99,9 +99,13 @@ Our strategy to reach the end state is detailed as followed:
 
 (0) Create a Workspace
 
+> <ins>:warning: Do This</ins>
+
 Before you begin, make sure to set a directory that you'd like to work from. This directory will contain all of your lab code. 
 
 (1) Build a Proof of Concept
+
+> <ins>:warning: Do This</ins>
 
 Let's begin by creating a project namespace in our cluster. 
 
@@ -173,6 +177,8 @@ We now have a purpose for building an operator, which will automate our domain s
 ### II. Operator Scaffolding
 
 To begin codifying our domain specific operations, run the following to scaffold your operator and create a resource and controller. Say 'yes' to all prompts. 
+
+> <ins>:warning: Do This</ins>
 
 ```bash
 # scaffold a new operator - over-ez-operator
@@ -263,6 +269,8 @@ type OpsOverEasyStatus struct {
 ```
 
 (2) Regenerate/update resource and manifest
+
+> <ins>:warning: Do This</ins>
 
 Always do this after you update your custom resource in `*_types.go`
 
