@@ -371,21 +371,6 @@ Let's go ahead and look at the Controller Test file and examine it in further de
 
 ### V. CR Controller Implementation
 
-<!-- TODO
-
-key areas of interest: 
-
-Reconciliation Cycle
-- Observe/Watch Phase 
-  - Adding Watches
-- Analyze Phase
-  - Defining the CRD instance definition
-- Act/Reconcile Phase
-  - Breakdown of the Reconcile Implementation
-    - Updating custom resource specification attributes dynamically
-    - Updating custom resource status dynamically
-    - Creating a Kubernetes Pod resource dynamically -->
-
 > <ins>:warning: Do This</ins>
 
 > :paperclip: For reference, a **fully** implemented Custom Resource Controller can be found here: https://bit.ly/34CEtqa.
@@ -397,7 +382,7 @@ Let us now examine the Resource Controller implementation from the context of th
 ![](../assets/resource-controller-reconciliation-cycle-golang-operators.png)
 
 
-#### Observe/Watch Phase
+#### I. Observe/Watch Phase
 
 For our Operator, we are deploying a busybox pod through our Operator deployment. 
 
@@ -420,7 +405,7 @@ You can get more information about available resource types (i.e. pods, services
 - https://pkg.go.dev/k8s.io/api@v0.19.0/core/v1?tab=doc
 - https://github.com/kubernetes/api/blob/v0.19.0/core/v1/types.go
 
-#### Analyze Phase
+#### II. Analyze Phase
 
 Since we are starting off with a new Operator instance, the desired state for our operator will be a new instance. 
 
@@ -459,7 +444,7 @@ status:
 
 By design, our operator will add/update the status attributes after the `timeout` duration has been reached and a `message` has been logged. 
 
-#### Act/Reconcile Phase
+#### III. Act/Reconcile Phase
 
 **Setting Operator Permissions on Resources**
 
