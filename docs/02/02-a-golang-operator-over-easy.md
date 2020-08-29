@@ -403,7 +403,7 @@ For our Operator, we are deploying a busybox pod through our Operator deployment
 
 In order for our Operator to keep an eye on this pod, we need to watch for changes that happen upon it. 
 
-> <ins>:warning: Do This</ins>
+> <ins>:book: Analyze This</ins>
 
 To do that we specify the resource type(s) that our Operator will be deploying and looking at by leveraging the Controller Runtime API call to `Owns`. 
 
@@ -465,7 +465,7 @@ By design, our operator will add/update the status attributes after the `timeout
 
 To ensure that we are able to reconcile all of the resources that we are watching we need to make sure that we are authorized to do so. Specifically, we need to specify the types of resources that we watch. 
 
-> <ins>:warning: Do This</ins>
+> <ins>:book: Analyze This</ins>
 
 We can do that by adding a few extra directives in the form of comments, right above our `Reconcile` function. 
 
