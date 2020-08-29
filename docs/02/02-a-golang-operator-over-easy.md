@@ -507,7 +507,7 @@ Let us now dissect our `Reconcile` function.
 
 ![Screenshot from 2020-08-28 22-45-54](https://user-images.githubusercontent.com/61749/91627927-bcbfe600-e980-11ea-98bb-98b1d6ad94b2.png)
 
-**(c)**: Here we make resource definition for a busybox `pod`. With this definition we'll be able to query if the `pod` has already been created in a previous `Reconcile` or if the `pod` needs to be recreated. We make the pod resource definition through a custom function `newPodForCR`. 
+**(c)**: Here we make a resource definition for a busybox `pod`. With this definition we'll be able to query if the `pod` has already been created in a previous `Reconcile` or if the `pod` needs to be recreated. We make the pod resource definition through a custom function `newPodForCR`. 
 
 ![Screenshot from 2020-08-28 22-47-45](https://user-images.githubusercontent.com/61749/91627928-bcbfe600-e980-11ea-880b-9441744d94a6.png)
 
