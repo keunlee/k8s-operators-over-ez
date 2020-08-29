@@ -579,7 +579,7 @@ There's meaning to these variations. They are as followed:
 - Requeue the Reconcile for re-trigger
   - `return ctrl.Result{Reqeue: true}, nil`
 - Requeue the Reconcile for re-trigger after a set amount of time
-  - return `ctrl.Result{RequeueAfter: time.Second*10}, nil`
+  - `return ctrl.Result{RequeueAfter: time.Second*10}, nil`
 
 **Additional Observations**
 
