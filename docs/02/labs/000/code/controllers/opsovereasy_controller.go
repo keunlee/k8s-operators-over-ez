@@ -17,16 +17,16 @@ limitations under the License.
 package controllers
 
 import (
-	"context"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"net/http"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
-	"net/http"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
+	"context"
 
 	"github.com/go-logr/logr"
 	"k8s.io/apimachinery/pkg/runtime"
