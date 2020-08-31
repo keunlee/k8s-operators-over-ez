@@ -560,7 +560,7 @@ This block will likely not execute in the first call to `Reconcile` since the po
 
 ![Screenshot from 2020-08-28 23-08-57](https://user-images.githubusercontent.com/61749/91628247-7c159c00-e983-11ea-941d-7d6d3e5e7756.png)
 
-**(f)**:
+**(f)**: At this point, our operator has reached it's desired state. The reconciliation cycle will not execute until another change in state on the operator is requested. 
 
 ![Screenshot from 2020-08-28 22-52-00](https://user-images.githubusercontent.com/61749/91627980-25a75e00-e981-11ea-9b30-2b45cbd0f9e3.png)
 
@@ -581,10 +581,6 @@ There's meaning to these variations. They are as followed:
 - Requeue the Reconcile for re-trigger after a set amount of time
   - `return ctrl.Result{RequeueAfter: time.Second*10}, nil`
 
-**Additional Observations**
-
-![Screenshot from 2020-08-28 11-54-36](https://user-images.githubusercontent.com/61749/91593263-76896900-e925-11ea-9568-e8b31cc13ed9.png)
-![Screenshot from 2020-08-28 11-55-14](https://user-images.githubusercontent.com/61749/91593265-76896900-e925-11ea-91d1-d7d5090a07f9.png)
 
 ### VI. Test Validation
 
@@ -595,4 +591,5 @@ TODO
 TODO
 
 [Return to Table of Contents](../../../../)
+
 
