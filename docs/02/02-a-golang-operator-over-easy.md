@@ -581,6 +581,18 @@ There's meaning to these variations. They are as followed:
 - Requeue the Reconcile for re-trigger after a set amount of time
   - `return ctrl.Result{RequeueAfter: time.Second*10}, nil`
 
+**Additional Observations**
+
+Variables and helper functions: 
+
+  - Variables/Structs:
+    - *ApiSampleResponse*: The response object type that we leverage when unmarshalling the sample REST API response
+  - Functions: 
+    - *newPodForCR*: This function creates a busybox pod definition
+    - *getSampleRestAPIResponse*: This function makes a REST API request and returns the response as an `ApiSampleResponse` type.
+
+![Screenshot from 2020-08-28 11-54-36](https://user-images.githubusercontent.com/61749/91593263-76896900-e925-11ea-9568-e8b31cc13ed9.png)
+![Screenshot from 2020-08-28 11-55-14](https://user-images.githubusercontent.com/61749/91593265-76896900-e925-11ea-91d1-d7d5090a07f9.png)
 
 ### VI. Test Validation
 
