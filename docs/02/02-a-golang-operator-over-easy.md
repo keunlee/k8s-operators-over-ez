@@ -550,7 +550,7 @@ spec:
 status: {}
 
 ```
-**(d)**: In this block, we attempt to apply our pod definition if one doesn't exist. This is the eqivalent of taking the above pod `yaml` definition and running `kubectl apply -f` on it.
+**(d)**: In this block, we attempt to apply our pod definition if one doesn't exist. This is the eqivalent of taking the above pod `yaml` definition and running `kubectl apply -f` on it. The code equivalent of this statement is seen in the call to `r.Client.Create`.
 
 ![Screenshot from 2020-08-28 23-08-37](https://user-images.githubusercontent.com/61749/91628246-7b7d0580-e983-11ea-98f4-efdf873c4c9b.png)
 
@@ -596,7 +596,54 @@ Variables and helper functions:
 
 ### VI. Test Validation
 
-TODO
+#### I. Running Tests
+
+To run tests on your operator, run the following: 
+
+```bash
+make test
+```
+
+#### II. Run and Validate Your Operator Locally
+
+To run the operator locally without deploying it to your cluster, from the root of the code directory (`docs/02/labs/000/code`). 
+
+**(a)**
+
+Run the following ( we will call this terminal #1): 
+
+```bash
+# install the Operator CRD
+make install
+
+# run the operator locally
+make run ENABLE_WEBHOOKS=false
+```
+
+**(b)**
+
+In a separate terminal (terminal #2): 
+
+```bash
+# create an operator instance
+kubectl apply -f config/samples/operators-over-ez_v1alpha1_opsovereasy.yaml
+
+# describe the operator instance you've created
+# depending on the state of the operator and it's deployment, you may want
+# to run this multiple times to observe the operator's state changes
+# or execute it in a `watch` statement to observe the operator's state changes
+# watch describe opsovereasies opsovereasy-sample 
+kubectl describe opsovereasies opsovereasy-sample
+```
+
+**(c)**
+
+`ctrl-c` in terminal #1 to stop the operator from running. Run the following to remove the operator from your cluster: 
+
+```bash
+# uninstall the operator and it's associated deployments. 
+make uninstall
+```
 
 ### VII. Deployment
 
