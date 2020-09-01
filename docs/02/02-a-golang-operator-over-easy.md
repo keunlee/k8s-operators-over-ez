@@ -606,6 +606,8 @@ make test
 
 #### II. Run and Validate Your Operator Locally
 
+> <ins>:warning: Do This</ins>
+
 To run the operator locally without deploying it to your cluster, from the root of the code directory (`docs/02/labs/000/code`). 
 
 **(a)**
@@ -649,6 +651,8 @@ make uninstall
 
 #### Conventional Artifact-based Deployment
 
+> <ins>:warning: Do This</ins>
+
 For this method of deployment, we will containerize our operator as a deployable artifact. To create that artifact, we will be leveraging a container registry. Examples of container registry providers (not an exhaustive list): 
 
 - Docker Hub
@@ -658,8 +662,6 @@ For this method of deployment, we will containerize our operator as a deployable
 - Azure Container Registry
 
 **(a)**: Login to Container Registry via Docker CLI 
-
-> <ins>:warning: Do This</ins>
 
 Before proceeding you will need to make sure that you have logged into your container registry. 
 
@@ -672,8 +674,6 @@ Before proceeding you will need to make sure that you have logged into your cont
 
 **(b)**: Build and Push Operator Image to Container Registry
 
-> <ins>:warning: Do This</ins>
-
 Once you have logged in, execute the following: 
 
 ```bash
@@ -685,8 +685,6 @@ make docker-push
 ```
 
 **(c)**: Deploy the Operator
-
-> <ins>:warning: Do This</ins>
 
 ```bash
 export NAMESPACE="default"
