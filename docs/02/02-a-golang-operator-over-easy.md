@@ -691,8 +691,6 @@ make deploy
 
 #### Validate Your Deployment
 
-**(c)**
-
 ```bash
 # Verify your CRD is available - should yield a result
 kubectl get crd opsovereasies
