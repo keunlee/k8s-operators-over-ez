@@ -659,6 +659,8 @@ For this method of deployment, we will containerize our operator as a deployable
 
 **(a)**: Login to Container Registry via Docker CLI 
 
+> <ins>:warning: Do This</ins>
+
 Before proceeding you will need to make sure that you have logged into your container registry. 
 
 ```bash
@@ -669,6 +671,8 @@ Before proceeding you will need to make sure that you have logged into your cont
 ```
 
 **(b)**: Build and Push Operator Image to Container Registry
+
+> <ins>:warning: Do This</ins>
 
 Once you have logged in, execute the following: 
 
@@ -682,6 +686,8 @@ make docker-push
 
 **(c)**: Deploy the Operator
 
+> <ins>:warning: Do This</ins>
+
 ```bash
 export NAMESPACE="default"
 cd config/default/ && kustomize edit set namespace $NAMESPACE && cd ../..
@@ -690,6 +696,8 @@ make deploy
 ```
 
 #### Validate Your Deployment
+
+> <ins>:warning: Do This</ins>
 
 ```bash
 # Verify your CRD is available - should yield a result
