@@ -628,11 +628,11 @@ In a separate terminal (terminal #2):
 # create an operator instance
 kubectl apply -f config/samples/operators-over-ez_v1alpha1_opsovereasy.yaml
 
-# describe the operator instance you've created
+# describe the operator instance you've created.
 # depending on the state of the operator and it's deployment, you may want
 # to run this multiple times to observe the operator's state changes
 # or execute it in a `watch` statement to observe the operator's state changes
-# watch describe opsovereasies opsovereasy-sample 
+# i.e. watch describe opsovereasies opsovereasy-sample 
 kubectl describe opsovereasies opsovereasy-sample
 ```
 
@@ -647,7 +647,65 @@ make uninstall
 
 ### VII. Deployment
 
-TODO
+#### Conventional Artifact-based Deployment
+
+For this method of deployment, we will containerize our operator as a deployable artifact. To create that artifact, we will be leveraging a container registry. Examples of container registry providers (not an exhaustive list): 
+
+- Docker Hub
+- Quay.io
+- VMware Harbor
+- Google Container Registry
+- Azure Container Registry
+
+**(a)**: Login to Container Registry via Docker CLI 
+
+Before proceeding you will need to make sure that you have logged into your container registry. 
+
+```bash
+# example login
+# docker login quay.io
+# docker login registry-1.docker.io
+# docker login your-container-registry.io
+```
+
+**(b)**: Build and Push Operator Image to Container Registry
+
+Once you have logged in, execute the following: 
+
+```bash
+export UNAME=<container-registry-account-username>
+export IMG=quay.io/$UNAME/overeasy-operator:v0.0.1
+
+make docker-build
+make docker-push
+```
+
+**(c)**: Deploy the Operator
+
+```bash
+export NAMESPACE="default"
+cd config/default/ && kustomize edit set namespace $NAMESPACE && cd ../..
+
+make deploy
+```
+
+#### Validate Your Deployment
+
+**(c)**
+
+```bash
+# Verify your CRD is available - should yield a result
+kubectl get crd opsovereasies
+
+# Create an instance of the operator
+kubectl apply -f config/samples/operators-over-ez_v1alpha1_opsovereasy.yaml
+
+# Verify the operator instance was create - should yield a result
+kubectl get opsovereasies
+
+# Verify the busybox pod from the operator is deployed - should yield a result
+kubectl get po opsovereasy-sample-pod
+```
 
 [Return to Table of Contents](../../../../)
 
