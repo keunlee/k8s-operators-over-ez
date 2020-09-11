@@ -41,9 +41,10 @@ To debug an operator instance:
 - Create an instance of an operator: ` k apply -f config/samples/operators-over-ez_v1alpha1_opsovereasy.yaml`
 
 
-[Goto Previous Section: ]()
 
-[Goto Next Section: ]()
+[Goto Previous Section](02-a-golang-operator-over-easy.md)
+
+[Goto Next Section](../03/01-helm-operators.md)
 
 [Return to Table of Contents](../../../../)
 

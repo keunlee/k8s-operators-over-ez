@@ -203,8 +203,9 @@ func (r *MycrdReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 }
 ```
 
-[Goto Previous Section: ]()
 
-[Goto Next Section: ]()
+[Goto Previous Section](../01/03-lab-requirements.md)
+
+[Goto Next Section](02-a-golang-operator-over-easy.md)
 
 [Return to Table of Contents](../../../../)
