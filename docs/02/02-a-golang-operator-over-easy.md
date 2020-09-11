@@ -711,6 +711,11 @@ kubectl get opsovereasies
 kubectl get po opsovereasy-sample-pod
 ```
 
+
+[Goto Previous Section](01-golang-operators.md)
+
+[Goto Next Section](03-debugging-golang-operators.md)
+
 [Return to Table of Contents](../../../../)
 
 
