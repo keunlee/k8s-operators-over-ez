@@ -20,8 +20,8 @@
 - https://github.com/zalando-incubator/kopf
 - https://github.com/ContainerSolutions/java-operator-sdk
 
-[Goto Previous Section: ]()
+[Goto Previous Section](01-introduction.md)
 
-[Goto Next Section: ]()
+[Goto Next Section](03-lab-requirements.md)
 
 [Return to Table of Contents](../../../../)
