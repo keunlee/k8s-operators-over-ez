@@ -146,4 +146,6 @@ But wait, there's more! Outside of the Operator Framework:
 - Javascript/Typescript Operators
 - JSONNET Operators
 
-[Return to Table of Contents](../../../../)
+[Goto Next Section: ]()
+
+[Return to Table of Contents](02-resources.md)

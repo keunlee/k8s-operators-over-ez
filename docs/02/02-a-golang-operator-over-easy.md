@@ -711,6 +711,10 @@ kubectl get opsovereasies
 kubectl get po opsovereasy-sample-pod
 ```
 
+[Goto Previous Section: ]()
+
+[Goto Next Section: ]()
+
 [Return to Table of Contents](../../../../)
 
 

@@ -41,5 +41,9 @@ To debug an operator instance:
 - Create an instance of an operator: ` k apply -f config/samples/operators-over-ez_v1alpha1_opsovereasy.yaml`
 
 
+[Goto Previous Section: ]()
+
+[Goto Next Section: ]()
+
 [Return to Table of Contents](../../../../)
 
