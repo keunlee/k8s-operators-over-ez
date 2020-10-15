@@ -16,7 +16,7 @@ You can do either of the following in this lab:
 
     - __*OR*__
 
-2. View the implementation of the lab code in it's entirety, study it, run it, and/or do with it what you will. If that is the case, the lab code can be found in the following location: `docs/02/labs/000/code`
+2. View the implementation of the lab code in it's entirety, study it, run it, and/or do with it what you will. If that is the case, the lab code can be found in the following location: `docs/02/lab`
 
 There's no wrong way to learn. 
 
@@ -608,7 +608,7 @@ make test
 
 > <ins>:warning: Do This</ins>
 
-To run the operator locally without deploying it to your cluster, from the root of the code directory (`docs/02/labs/000/code`). 
+To run the operator locally without deploying it to your cluster, from the root of the code directory (`docs/02/lab`). 
 
 **(a)**
 
