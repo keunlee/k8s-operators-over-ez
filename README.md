@@ -34,13 +34,14 @@
     - [VII. Deployment](docs/02/02-a-golang-operator-over-easy.md#vii-deployment)
 - [Debugging Golang Operators](docs/02/03-debugging-golang-operators.md)
 
-## III - Helm Operators
 
-- [Helm Operators](docs/03/01-helm-operators.md)
+## III - Ansible Operators
 
-## IV - Ansible Operators
+- [Ansible Operators](docs/03/01-ansible-operators.md)
 
-- [Ansible Operators](docs/04/01-ansible-operators.md)
+## IV - Helm Operators
+
+- [Helm Operators](docs/04/01-helm-operators.md)
 
 ## V - Alternative Operators
 
