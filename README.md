@@ -34,7 +34,6 @@
     - [VII. Deployment](docs/02/02-a-golang-operator-over-easy.md#vii-deployment)
 - [Debugging Golang Operators](docs/02/03-debugging-golang-operators.md)
 
-
 ## III - Ansible Operators
 
 - [Ansible Operators](docs/03/01-ansible-operators.md)
