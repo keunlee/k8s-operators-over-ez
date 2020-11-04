@@ -1,8 +1,0 @@
-apiVersion: operators-over-ez.mydomain.com/v1alpha1
-kind: OpsOverEasy
-metadata:
-  name: opsovereasy-sample
-spec:
-  # Add fields here
-  timeout: 15
-  message: "hello world"

@@ -1,1 +1,0 @@
-`Coming soon. Please check back weekly!`
